@@ -24,7 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.mapper.CustomerMapper;
 import com.example.vo.CustomerVO;
 
-//djfjajsTESTasdasd
+//djfjajsTESTasdasdasd
 
 @Controller
 @RequestMapping(value="customer") //url에서 이 코드가 합쳐진다. host를 구별하기 위해 설정
