@@ -11,6 +11,11 @@
 	server.servlet.context-path=/ROOT context-path값을 읽어온다  -->
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	body {
+		background-image: url("${pageContext.request.contextPath}/resources/images/Search_001.png");
+	}
+</style>
 </head>
 <body>
 	<header

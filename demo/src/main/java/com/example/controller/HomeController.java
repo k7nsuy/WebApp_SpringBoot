@@ -12,7 +12,7 @@ public class HomeController {
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String homeGET() {
 		
-		return "customer/home"; 
+		return "home"; 
 		//views에 있는 home.jsp를 화면에 표시 .jsp는 application properties에서 설정하여 생략.
 	} 
 	@RequestMapping(value="/home", method=RequestMethod.POST)
