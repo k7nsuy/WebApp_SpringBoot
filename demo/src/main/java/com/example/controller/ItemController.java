@@ -86,8 +86,10 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value="batchdelete",method=RequestMethod.POST)
-	public String batchDeletePOST(@RequestParam(value="chk[]") long[] code) {
+	public String batchDeletePOST(@RequestParam(value="chk[]",required=false) long[] code) {
+		if(code!=null) {
 		itemMapper.deleteItemBatch(code);
+		}
 		return "redirect:list";
 	}
 	
