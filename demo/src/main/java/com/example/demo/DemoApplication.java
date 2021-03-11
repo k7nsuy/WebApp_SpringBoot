@@ -4,9 +4,11 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
-@ComponentScan({"com.example.controller"}) //컨트롤러 패키지명
+@EnableAspectJAutoProxy // 추가
+@ComponentScan({"com.example.controller","com.example.aop"}) //컨트롤러 패키지명
 @MapperScan({"com.example.mapper"}) //mapper 패키지
 //controller를 찾기 위해 componentscan 설정
 public class DemoApplication {

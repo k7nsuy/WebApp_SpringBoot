@@ -31,7 +31,9 @@
 		<a href="${pageContext.request.contextPath}/customer/home" class="btn btn-primary">홈으로</a>
 	</form>
 	
-	<form action="${pageContext.request.contextPath}/item/batchdelete" method="post">
+	<form action="${pageContext.request.contextPath}/item/batchdelete" method="post"
+	id="form">
+		<input type="button" name="btn" value="일괄수정" id="btn" class="btn btn-warning" />
 		<input type="submit" name="btn" value="일괄삭제" class="btn btn-danger" />
 		
 		<table class="table table-hover">
@@ -85,8 +87,7 @@
 			</tbody>
 		</table>
 		</form>
-		<a href="${pageContext.request.contextPath}/item/batchinsert" class="btn-outline-success">일괄추가</a>
-		<a href="${pageContext.request.contextPath}/item/batchupdate" class="btn-outline-primary">일괄수정</a>
+		<a href="${pageContext.request.contextPath}/item/batchinsert" class="btn-outline-primary">일괄추가</a>
 		 <ul id="pagination-demo" class="pagination justify-content-center"></ul>
 	</div>
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
@@ -104,6 +105,14 @@
 		/* 1page에서의 검색어가 2page에도 남아 있게 해야 검색결과가 유지되므로 위의 코드 추가 */
 				}
 			});
+    	    //태그중에서 id가 btn인 것을 클릭하게 되면,
+    	    $('#btn').click(function() {
+    	    	// 태그중에서 id가 form인것의 속성 action을 변경
+    	    	$('#form').attr('action',
+    	    	'${pageContext.request.contextPath}/item/batchupdate');
+    	    $('#form').submit();
+    	    });
+    	    
     	});
 	</script>
 </body>

@@ -74,6 +74,28 @@ spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
 
 src/main/webapp 에서 WEB-INF와 views폴더를 만든 후 jsp를 저장
+=================================================
+2021-03-11 Spring framework
+
+=================jqeury=========================
+//태그중에서 id가 btn인 것을 클릭하게 되면,
+    	    $('#btn').click(function() {
+    	    	// 태그중에서 id가 form인것의 속성 action을 변경
+    	    	$('#form').attr('action',
+    	    	'${pageContext.request.contextPath}/item/batchupdate');
+    	    $('#form').submit();
+    	    });
+=> form태그안에 submit 기능을 2개를 넣고 싶으면,
+jquery문을 써서 특정 id에 form action을 바꿔준다.
+그러면 한 form안에 2개의 action을 가질 수 있다.
+============================================
+get방식은 배열 형태로 보낼 수 없다(주소창이 끝도 없이 길어지므로 한계가 있다.)
+ => post로 보내야 한다.
+하지만 post방식으로도 값을 view로 전달하는데 한계가 있기 때문에 post방식으로
+데이터베이스에서 값을 가져온 뒤 다시 get 방식으로 보내 view로 나타내야 한다.
+
+=======================================================================
+
 
 
 

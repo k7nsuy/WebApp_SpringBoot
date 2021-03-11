@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.vo.ItemVO;
 
@@ -60,5 +61,48 @@ public interface ItemMapper {
 		")",
 		"</script>"})
 	public int deleteItemBatch(@Param("array") long[] code);
+	
+	//물품에 해당하는 항목만 조회
+	@Select({"<script>",
+		"SELECT CODE,NAME,PRICE,QUANTITY,REGDATE,CATEGORY FROM ITEM2 WHERE CODE IN (",
+		"<foreach collection='array' item='vo' separator=','>",
+			"#{vo}",
+		"</foreach>",
+		")",
+		"</script>"})
+	public List<ItemVO> selectItemListWhere(@Param("array") long[] code);
+	
+	//일괄수정
+	@Update({
+		"<script>",
+			"UPDATE ITEM2 SET ",
+				"NAME=(CASE ",
+					"<foreach collection='list' item='vo' separator=' '> ",
+						"WHEN CODE=#{vo.code} THEN #{vo.name} ",
+					"</foreach>",
+				"END), ",
+				"PRICE=(CASE ",
+					"<foreach collection='list' item='vo' separator=' '> ",
+						"WHEN CODE=#{vo.code} THEN #{vo.price} ",
+					"</foreach>",
+				"END), ",
+				"QUANTITY=(CASE ",
+					"<foreach collection='list' item='vo' separator=' '> ",
+						"WHEN CODE=#{vo.code} THEN #{vo.quantity} ",
+					"</foreach>",
+				"END), ",
+				"CATEGORY=(CASE ",
+					"<foreach collection='list' item='vo' separator=' '> ",
+						"WHEN CODE=#{vo.code} THEN #{vo.category} ",
+					"</foreach>",
+				"END) ",
+			"WHERE CODE IN ( ",	
+    			"<foreach collection='list' item='vo' separator=','> ",
+    				"#{vo.code} ",
+    			"</foreach> ",
+    		") ",
+		"</script>"
+	})
+	public int updateItemBatch(@Param("list") List<ItemVO> list);
 
 }
