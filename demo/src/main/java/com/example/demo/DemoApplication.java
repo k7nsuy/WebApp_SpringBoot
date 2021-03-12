@@ -8,7 +8,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
 @EnableAspectJAutoProxy // 추가
-@ComponentScan({"com.example.controller","com.example.aop"}) //컨트롤러 패키지명
+@ComponentScan({"com.example.controller","com.example.aop","com.example.restcontroller"}) //컨트롤러 패키지명
 @MapperScan({"com.example.mapper"}) //mapper 패키지
 //controller를 찾기 위해 componentscan 설정
 public class DemoApplication {
