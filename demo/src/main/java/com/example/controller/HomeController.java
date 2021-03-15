@@ -22,12 +22,6 @@ public class HomeController {
 		return "home";
 	}
 	//127.0.0.1:9090/jsp01/main => GET방식
-	@RequestMapping(value="/main", method=RequestMethod.GET)
-	public String mainGet() {
-		return "home";
-	}
-	@RequestMapping(value="/main", method=RequestMethod.POST)
-	public String mainPost() {
-		return "home";
-	}
+	
+	
 }

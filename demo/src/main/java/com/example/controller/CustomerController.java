@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +80,32 @@ public class CustomerController {
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String loginGET() {
 		return "customer/login";
+	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String loginPOST(
+			//login상태를 유지하기 위한 session 필요
+			HttpSession httpSession,
+			@RequestParam(value="userid") String userid,
+			@RequestParam(value="userpw") String userpw) {
+		CustomerVO vo = userMapper.selectCustomerLogin(userid, userpw);
+		
+		if(vo !=null) { //로그인이 성공했다면 세션에 필요한 정보들을 추가함.
+			//세션 기본적으로 30분 동안 자료가 저장됨 => 변경 가능
+			//controller에서 값을 변경하거나 가져올 수 있음
+			//views에서 값을 읽을 수 있음
+			httpSession.setAttribute("USERID", vo.getUserid());
+			httpSession.setAttribute("USERNAME", vo.getUsername());
+		}
+		
+		return "redirect:/customer/home";
+	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logoutGET(
+			HttpSession httpSession) {
+		httpSession.invalidate(); //세션 삭제
+		return "redirect:/customer/home";
 	}
 
 	//join.jsp를 만들고 아이디,암호,이름,연락처,등록일

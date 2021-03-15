@@ -12,7 +12,7 @@
 <title>JOIN</title>
 </head>
 <body>
-	<div class="container">
+	<div class="container"x>
 
 		<div style="margin-top: 30px">
 			<h3>Join</h3>

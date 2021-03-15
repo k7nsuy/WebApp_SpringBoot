@@ -18,6 +18,14 @@ import com.example.vo.CustomerVO;
 @Mapper
 public interface CustomerMapper {
 	
+	@Select({"SELECT USERID, USERPW, USERNAME, USERPHONE, USERDATE FROM CUSTOMER WHERE ",
+		"USERID=#{userid} AND USERPW=#{userpw}"})
+	public CustomerVO selectCustomerLogin(
+			@Param("userid") String userid,
+			@Param("userpw") String userpw);
+		
+		
+	
 	@Update({
 		"<script>",
 		"UPDATE CUSTOMER SET USERNAME=#{map.username},USERPHONE=#{map.userphone}",
