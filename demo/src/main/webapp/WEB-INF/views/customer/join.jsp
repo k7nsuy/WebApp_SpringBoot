@@ -24,7 +24,9 @@
 					method="post" enctype="multipart/form-data">
 
 					<div class="row" style="margin-bottom: 5px">
-
+					
+						<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
+							<!-- sercurity를 위해 위의 코드를 추가해 준다. -->
 						<label for="labelId" class="col-sm-3 col-form-label">아이디</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="userid"
@@ -55,7 +57,17 @@
 							<input type="text" class="form-control" name="userphone"
 								id="labelphone" placeholder="휴대번호를 입력 하세요." autofocus /><br />
 						</div>
+						
 
+						<div>						
+						<label for="labelphone" class="col-sm-3 col-form-label">회원등급</label>
+						<select name="usergrade">
+							<option value="GOLD">GOLD</option>
+							<option value="SILVER">SILVER</option>
+							<option value="BRONZE">BRONZE</option>
+						</select>
+						</div>
+						
 						<label for="labelphone" class="col-sm-3 col-form-label">이미지</label>
 						<div class="col-sm-9">
 							<input type="file" class="form-control" name="tmpimg"

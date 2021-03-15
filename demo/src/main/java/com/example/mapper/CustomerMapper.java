@@ -18,6 +18,11 @@ import com.example.vo.CustomerVO;
 @Mapper
 public interface CustomerMapper {
 	
+	@Select({"SELECT USERID, USERPW, USERNAME, USERPHONE, USERDATE,USERGRADE FROM CUSTOMER WHERE ",
+	"USERID=#{userid}"})
+public CustomerVO findByUsername(
+		@Param("userid") String userid);
+	
 	@Select({"SELECT USERID, USERPW, USERNAME, USERPHONE, USERDATE FROM CUSTOMER WHERE ",
 		"USERID=#{userid} AND USERPW=#{userpw}"})
 	public CustomerVO selectCustomerLogin(
@@ -50,9 +55,9 @@ public interface CustomerMapper {
 	//return 값은 int (INSERT,DELETE,UPDATE)
 	//mybatis => ? => #{}
 	@Insert({"INSERT INTO CUSTOMER ",
-			"(USERID, USERPW, USERNAME, USERPHONE, USERDATE,USERIMG) ",
+			"(USERID, USERPW, USERNAME, USERPHONE, USERDATE,USERIMG,USERGRADE) ",
 			"VALUES(#{obj.userid}, #{obj.userpw}, #{obj.username}, #{obj.userphone},", 
-			"CURRENT_DATE,#{obj.userimg,jdbcType=BLOB})"})
+			"CURRENT_DATE,#{obj.userimg,jdbcType=BLOB},#{obj.usergrade})"})
 	public int insertCustomerOne(@Param("obj") CustomerVO obj);
 	
 	@Select({"SELECT USERID,USERPW,USERNAME,USERPHONE,USERDATE ",

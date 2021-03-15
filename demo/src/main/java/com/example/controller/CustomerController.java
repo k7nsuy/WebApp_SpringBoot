@@ -14,12 +14,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.mapper.CustomerMapper;
@@ -33,6 +35,21 @@ public class CustomerController {
  // test
 	@Autowired // DBConnection
 	CustomerMapper userMapper;
+	
+	@RequestMapping(value="/page403",method = RequestMethod.GET)
+	public String page403GET() {
+		return "/customer/page403";
+	}
+	
+	@RequestMapping(value="/gold",method = RequestMethod.GET)
+	public @ResponseBody String goldGET() {
+		return "gold페이지";
+	}
+	
+	@RequestMapping(value="/silver",method = RequestMethod.GET)
+	public @ResponseBody String silverGET() {
+		return "silver페이지";
+	}
 	
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public String updatePOST(
@@ -49,6 +66,8 @@ public class CustomerController {
 		userMapper.updateCustomerOne(map);
 		return "redirect:" + "/customer/list";
 	}
+	
+	
 	
 	@RequestMapping(value="/update",method=RequestMethod.GET)
 	public String updateGET(
@@ -120,7 +139,11 @@ public class CustomerController {
 			@RequestParam(value="tmpimg") MultipartFile imgs) throws IOException { //ModelAttribute가 모든 객체를 불러옴
 		// 이미지를 제외한 값들
 		System.out.println(vo.toString());
-
+		
+		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
+		String changepw = bcpe.encode(vo.getUserpw());
+		vo.setUserpw(changepw);
+		
 		// 이미지 첨부가 되었다면 vo객체에 이미지 추가
 		if(imgs.getBytes().length > 0) {
 			// 이미지 파일명

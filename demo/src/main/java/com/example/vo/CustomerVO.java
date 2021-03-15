@@ -7,6 +7,7 @@ public class CustomerVO {
 	private String username;
 	private String userphone;
 	private String userdate;
+	private String usergrade;
 	private byte[] userimg = null;
 	
 	//생성자
@@ -15,13 +16,14 @@ public class CustomerVO {
 		super();
 	}
 	
-	public CustomerVO(String userid, String userpw, String username, String userphone, String userdate) {
+	public CustomerVO(String userid, String userpw, String username, String userphone, String userdate, String usergrade) {
 		super();
 		this.userid = userid;
 		this.userpw = userpw;
 		this.username = username;
 		this.userphone = userphone;
 		this.userdate = userdate;
+		this.usergrade = usergrade;
 	}
 
 	//get/setter
@@ -78,6 +80,14 @@ public class CustomerVO {
 
 	public void setUserimg(byte[] userimg) {
 		this.userimg = userimg;
+	}
+
+	public String getUsergrade() {
+		return usergrade;
+	}
+
+	public void setUsergrade(String usergrade) {
+		this.usergrade = usergrade;
 	}
 	
 	

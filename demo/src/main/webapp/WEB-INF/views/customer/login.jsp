@@ -16,7 +16,7 @@
 		<hr>
 		<div class="row">
 			<div class="col-sm-4">
-				<form action="login" method="post">
+				<form action="${pageContext.request.contextPath}/customer/loginProcess" method="post">
 					<div class="row" style="margin-bottom: 5px">
 						<label for="labelId" class="col-sm-3 col-form-label">아이디</label>
 						<div class="col-sm-9">
