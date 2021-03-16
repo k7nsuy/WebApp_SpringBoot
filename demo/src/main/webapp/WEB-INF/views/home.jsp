@@ -24,28 +24,30 @@
 	<header
 		class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
 		<p class="h5 my-0 me-md-auto fw-normal">HOME</p>
-		
+			
 			<security:authorize access="!isAuthenticated()">
 			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/customer/login">로그인</a> 
-			</security:authorize>
-
-
-			<security:authorize access="!isAuthenticated()">
-			
-			<form action="${pageContext.request.contextPath}/customer/logout" class="p-2 text-dark" 
-			method="post">
-				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
-				<input type="submit" class="btn btn-outline-success" value="로그아웃" />
-			</form> 
-			</security:authorize>
-
 			<a class="p-2 text-dark" href="join">회원가입</a>
+			</security:authorize>
+
+
+			<security:authorize access="isAuthenticated()">
+			
+				<!-- security 에서 form이 if문 역할을 한다.  -->
+				<form action="${pageContext.request.contextPath}/customer/logout" class="p-2 text-dark" 
+				method="post">
+					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
+					<input type="submit" class="btn btn-outline-success" value="로그아웃" />
+				</form> 	
+				권한 : <security:authentication property="authorities" /> <br />
+				아이디 : <security:authentication property="name" /> 님 환영합니다. <br />
 			<a class="p-2 text-dark" href="mypage">MYPAGE</a> 
 			<a class="p-2 text-dark" href="board">게시판</a>
+			</security:authorize>
+
 			<a class="p-2 text-dark" href="shop">쇼핑몰</a> 
 			<a class="p-2 text-dark" href="admin">관리자</a>
-			권한 : <security:authentication property="authorities" /> <br />
-			아이디 : <security:authentication property="name" /> 님 환영합니다. <br />
+
 	</header>
 </body>
 </html>
