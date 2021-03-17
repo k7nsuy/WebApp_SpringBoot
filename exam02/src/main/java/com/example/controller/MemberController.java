@@ -1,8 +1,5 @@
 package com.example.controller;
 
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -81,11 +78,11 @@ public class MemberController {
 
 	@RequestMapping(value="/update",method = RequestMethod.POST)
 	public String updatePOST(
-			) {
-
-//			memberMapper.updateMember(id);
+			@ModelAttribute MemberVO vo) {
+		
+		memberMapper.updateMember(vo);
 			
-			return "redirect:/member/update";
+		return "redirect:/member/main";
 	}
 }
 

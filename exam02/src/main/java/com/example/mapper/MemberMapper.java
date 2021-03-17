@@ -1,7 +1,5 @@
 package com.example.mapper;
 
-import java.util.Map;
-
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -32,9 +30,9 @@ public interface MemberMapper {
 	@Update({
 		"UPDATE CUSTOMER SET USERNAME=#{vo.username}, ", 
 		" USERBIRTH=#{vo.userbirth} WHERE USERID=#{vo.userid}"})
-	public MemberVO updateMember(@Param("userid") String userid);
+	public int updateMember(@Param("vo") MemberVO vo );
 
-	@Delete({"DELETE FROM MEMBERTBL WHERE USERID=#{vo.userid} AND USERPW=#{vo.userpw}"})
+	@Delete({"DELETE FROM MEMBERTBL WHERE USERID=#{vo.userid}"})
 	public int deleteMemberOne(@Param("vo") MemberVO vo);
 
 	
