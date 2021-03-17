@@ -29,8 +29,6 @@ public CustomerVO findByUsername(
 			@Param("userid") String userid,
 			@Param("userpw") String userpw);
 		
-		
-	
 	@Update({
 		"<script>",
 		"UPDATE CUSTOMER SET USERNAME=#{map.username},USERPHONE=#{map.userphone}",

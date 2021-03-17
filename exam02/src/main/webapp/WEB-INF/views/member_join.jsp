@@ -20,7 +20,7 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-4">
-				<form action="${pageContext.request.contextPath}/member/member_join"
+				<form action="${pageContext.request.contextPath}/member/join"
 					method="post" enctype="multipart/form-data">
 
 					<div class="row" style="margin-bottom: 5px">
@@ -52,35 +52,31 @@
 								id="labelname" placeholder="이름을 입력 하세요." autofocus /><br />
 						</div>
 
-						<label for="labelphone" class="col-sm-3 col-form-label">생년월일</label>
+						<label  class="col-sm-3 col-form-label">생년월일</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="userphone"
-								id="labelphone" placeholder="생일을 입력 하세요." autofocus /><br />
+							<input type="text" class="form-control" name="userbirth"
+								 placeholder="생일을 입력 하세요." autofocus /><br />
 						</div>
 						
 						<div>						
 						<label for="labelphone" class="col-sm-3 col-form-label">권한</label>
-						<select name="usergrade">
+						<select name="usergrade" >
 							<option value="ADMIN">ADMIN</option>
 							<option value="MANAGER">MANAGER</option>
 							<option value="USER">USER</option>
 						</select>
 						</div>
-						
 					</div>
 
 					<div class="row">
-
 						<div class="col-sm-3"></div>
 						<div class="col-sm-9">
 							<input type="submit" class="btn btn-success" value="회원가입" /> <a
-								href="home" class="btn btn-primary">홈으로</a>
+								href="${pageContext.request.contextPath}/member/main" class="btn btn-primary">홈으로</a>
 						</div>
-
 					</div>
 				</form>
 			</div>
-		<div class="col-sm-8">8/12</div>
 		</div>
 	</div>
 

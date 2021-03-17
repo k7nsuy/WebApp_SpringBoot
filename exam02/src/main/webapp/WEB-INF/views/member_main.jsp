@@ -18,19 +18,18 @@
 		<p class="h5 my-0 me-md-auto fw-normal">HOME</p>
 		
 			<security:authorize access="!isAuthenticated()">
-			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/login">로그인</a> 
-			<a class="btn btn-outline-success" href="join">회원가입</a>
+			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/member/login">로그인</a> 
+			<a class="btn btn-outline-success" href="${pageContext.request.contextPath}/member/join">회원가입</a>
 			</security:authorize>
 
 
 			<security:authorize access="isAuthenticated()">
-			<form action="${pageContext.request.contextPath}/logout" class="p-2 text-dark" 
+			<form action="${pageContext.request.contextPath}/member/logout" class="p-2 text-dark" 
 			method="post">
 				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
 				<input type="submit" class="btn btn-outline-success" value="로그아웃" />
 			</form> 
-			<a class="p-2 text-dark" href="board">회원정보변경</a>
-			<a class="p-2 text-dark" href="shop">회원탈퇴</a> 
+			<a class="p-2 text-dark" href="${pageContext.request.contextPath}/member/update">정보수정</a>
 			권한 : <security:authentication property="authorities" /> <br />
 			아이디 : <security:authentication property="name" /> 님 환영합니다. <br />
 			</security:authorize>

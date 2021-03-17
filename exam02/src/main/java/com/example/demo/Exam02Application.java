@@ -8,7 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan({"com.example.controller",
 	"com.example.security",
-	"com.example.aop"}) //@Cntroller, @Service, @Component위치
+	"com.example.aop",
+	"com.example.restcontroller"}) //@Cntroller, @Service, @Component위치
 @MapperScan({"com.example.mapper"}) //@Mapper의 위치 설정
 public class Exam02Application {
 

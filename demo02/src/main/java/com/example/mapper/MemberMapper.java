@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.vo.MemberVO;
 
@@ -14,23 +15,27 @@ import com.example.vo.MemberVO;
 public interface MemberMapper {
 
 	@Insert({"INSERT INTO MEMBERTBL ",
-			"(USERID, USERPW, USERNAME, USERBIRTH, USERPHONE,USERGRADE,REGDATE) ",
-			"VALUES(#{obj.userid}, #{obj.userpw},#{obj.username}, #{obj.userbirth}, #{obj.userphone},", 
+			"(USERID, USERPW, USERNAME, USERBIRTH,USERGRADE,REGDATE) ",
+			"VALUES(#{obj.userid}, #{obj.userpw},#{obj.username}, #{obj.userbirth},", 
 			"#{obj.usergrade},CURRENT_DATE)"})
 	public int insertMemberOne(@Param("obj") MemberVO obj);
 
-	
-	@Select({"SELECT USERID, USERPW, USERNAME, USERBIRTH, USERPHONE,USERGRADE,REGDATE FROM MEMBERTBL WHERE ",
-		"USERID=#{userid} AND USERPW=#{userpw}"})
-	public MemberVO selectMemberLogin(@Param("userid") String userid, 
-			@Param("userpw") String userpw);
+	@Select({"SELECT USERID, USERPW, USERNAME, USERBIRTH,USERGRADE FROM MEMBERTBL WHERE ",
+		" USERID=#{username}"})
+	public MemberVO selectMemberLogin(@Param("username") String username);
 
 	
-	@Select({"SELECT USERID, USERNAME, USERBIRTH, USERPHONE,REGDATE FROM ",
+	@Select({"SELECT USERID, USERNAME, USERBIRTH,REGDATE FROM ",
 		" MEMBERTBL WHERE USERID=#{userid}"})
-	public Map<String, Object> selectMemberOne(@Param("userid") String userid);
+	public MemberVO selectMemberOne(@Param("userid") String userid);
 
-	@Delete({"DELETE FROM MEMBERTBL WHERE "})
-	public Map<String, Object> deleteMemberOne(@Param("vo") MemberVO vo);
+	@Update({
+		"UPDATE CUSTOMER SET USERNAME=#{vo.username}, ", 
+		" USERBIRTH=#{vo.userbirth} WHERE USERID=#{vo.userid}"})
+	public MemberVO updateMember(@Param("userid") String userid);
+
+	@Delete({"DELETE FROM MEMBERTBL WHERE USERID=#{vo.userid} AND USERPW=#{vo.userpw}"})
+	public int deleteMemberOne(@Param("vo") MemberVO vo);
+
 	
 }

@@ -52,10 +52,10 @@
 								id="labelname" placeholder="이름을 입력 하세요." autofocus /><br />
 						</div>
 
-						<label for="labelphone" class="col-sm-3 col-form-label">생년월일</label>
+						<label  class="col-sm-3 col-form-label">생년월일</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="userphone"
-								id="labelphone" placeholder="생일을 입력 하세요." autofocus /><br />
+							<input type="text" class="form-control" name="userbirth"
+								 placeholder="생일을 입력 하세요." autofocus /><br />
 						</div>
 						
 						<div>						

@@ -17,6 +17,7 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<form action="${pageContext.request.contextPath}/member/loginProcess" method="post">
+				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
 					<div class="row" style="margin-bottom: 5px">
 						<label class="col-sm-3 col-form-label">아이디</label>
 						<div class="col-sm-9">
@@ -26,7 +27,8 @@
 						<label class="col-sm-3 col-form-label">비밀번호</label>
 						<div class="col-sm-9">
 							<input class="form-control" type="password" name="userpw"
-								placeholder="비밀번호를 입력 하세요."> <br /> <input
+								placeholder="비밀번호를 입력 하세요."> <br /> 
+								<input id="button"
 								type="submit" class="btn btn-success" value="로그인" />
 							<a href="${pageContext.request.contextPath}/member/main" class="btn btn-primary">홈으로</a>
 						</div>
