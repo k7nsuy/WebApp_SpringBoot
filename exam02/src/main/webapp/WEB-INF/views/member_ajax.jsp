@@ -15,7 +15,7 @@
 	<div class="container">
 
 		<div style="margin-top: 30px">
-			<h3>Join</h3>
+			<h3>회원탈퇴</h3>
 			<hr>
 		</div>
 		<div class="row">
@@ -33,7 +33,9 @@
 					<div class="row">
 						<div class="col-sm-3"></div>
 						<div class="col-sm-9">
-							<input type="submit" id="button" class="btn btn-success" value="회원탈퇴" /> <a
+							<input type="submit" id="button" class="btn btn-danger" value="회원탈퇴" /> 
+							<a href="${pageContext.request.contextPath}/member/update" class="btn btn-success">이전</a>
+							<a
 								href="${pageContext.request.contextPath}/member/main" class="btn btn-primary">홈으로</a>
 						</div>
 					</div>
@@ -43,6 +45,7 @@
 
 </body>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<script>
 		$(function(){
 			$('#button').click(function() {
@@ -63,18 +66,30 @@
 					success: function (res) {
 					    console.log(res);  //{ret:1}  or {ret:0}
 					    if(res.ret==1) {
-	                    	alert("성공");
+					    	Swal.fire({
+								position: 'center',
+								icon: 'success',
+								title: '성공했습니다.',
+								showConfirmButton: true,
+							}).then((result) => {
+								location.replace('${pageContext.request.contextPath}/member/main');
+							});
 					    }
 					    else {
-					    	alert("실패");
+					    	Swal.fire({
+								position: 'center',
+								icon: 'success',
+								title: '실패했습니다.',
+								showConfirmButton: true,
+							}).then((result) => {
+								location.replace('${pageContext.request.contextPath}/member/update');
+							});
 					    }
-	                    window.location.href='${pageContext.request.contextPath}/member/main';
 					},error: function (xhr) {
 					  	console.log(xhr.responseText)
-						alert("fail");
+						alert("오류가 있습니다.");
 					} 
 				});
-			
 			});
 		});
 	</script>

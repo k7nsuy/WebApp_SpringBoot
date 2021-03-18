@@ -41,7 +41,8 @@ public class MemberController {
 
 	@RequestMapping(value="/join",method = RequestMethod.POST)
 	public String joinPOST(
-			@ModelAttribute MemberVO vo) {
+			@ModelAttribute MemberVO vo,
+			Model model) {
 		//MemberVO에서 toString을 이용해서 전달받는 vo값을 콘솔에 출력 
 		System.out.println(vo.toString());
 
@@ -50,9 +51,18 @@ public class MemberController {
 		String changepw = bcpe.encode(vo.getUserpw());
 		vo.setUserpw(changepw);
 
-		memberMapper.insertMemberOne(vo);
+		int ret = memberMapper.insertMemberOne(vo);
+		
+		if ( ret >= 1) {
+			model.addAttribute("message", "회원가입에 성공했습니다.");
+		}
+		else {
+			model.addAttribute("message", "회원가입에 실패했습니다.");
+		}
+		
+		model.addAttribute("url", "/member/main");
 
-		return "redirect:/member/main";
+		return "alert";
 	}
 
 	@RequestMapping(value="/login",method = RequestMethod.GET)
@@ -77,12 +87,21 @@ public class MemberController {
 	}
 
 	@RequestMapping(value="/update",method = RequestMethod.POST)
-	public String updatePOST(
-			@ModelAttribute MemberVO vo) {
+	public String updatePOST(@ModelAttribute MemberVO vo,
+			Model model) {
 		
-		memberMapper.updateMember(vo);
-			
-		return "redirect:/member/main";
+		int ret = memberMapper.updateMember(vo);
+		
+		if(ret >= 1) {
+		model.addAttribute("message", "수정 완료했습니다.");
+		}
+		
+		else {
+			model.addAttribute("message", "수정에 실패했습니다.");
+		}
+		
+		model.addAttribute("url", "/member/main");
+		return "alert";
 	}
 }
 

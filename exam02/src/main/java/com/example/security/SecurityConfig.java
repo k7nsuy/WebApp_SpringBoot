@@ -46,8 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //			.hasAnyAuthority("ADMIN","MANAGER","USER") //
 			.anyRequest().permitAll() // 나머지는 모두 접근 가능
 			.and()
-		
 			//로그인 설정
+
 		.formLogin()
 			.loginPage("/member/login")
 			.loginProcessingUrl("/member/loginProcess") //action

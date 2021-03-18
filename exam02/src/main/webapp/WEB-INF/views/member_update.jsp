@@ -14,13 +14,14 @@
 	<div class="container">
 
 		<div style="margin-top: 30px">
-			<h3>UPDATE</h3>
+			<h3>회원정보수정</h3>
 			<hr>
 		</div>
 		<div class="row">
 			<div class="col-sm-4">
 				<form action="${pageContext.request.contextPath}/member/update"
 					method="post" enctype="multipart/form-data">
+					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
 
 					<div class="row" style="margin-bottom: 5px">
 					
@@ -52,8 +53,9 @@
 					<div class="row">
 						<div class="col-sm-3"></div>
 						<div class="col-sm-9">
-							<input type="submit" class="btn btn-success" value="수정완료" /> <a
-								href="${pageContext.request.contextPath}/member/main" class="btn btn-primary">홈으로</a>
+							<input type="submit" class="btn btn-success" value="수정완료" /> 
+							<a href="${pageContext.request.contextPath}/member/ajax" class="btn btn-danger">회원탈퇴</a>
+							<a href="${pageContext.request.contextPath}/member/main" class="btn btn-primary">홈으로</a>
 						</div>
 					</div>
 				</form>

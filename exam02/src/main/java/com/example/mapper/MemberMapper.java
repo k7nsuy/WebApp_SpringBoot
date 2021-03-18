@@ -6,9 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.vo.MemberVO;
 
+//오류가 나면 롤백을 시켜준다.
+@Transactional(rollbackFor = Exception.class)
 @Mapper
 public interface MemberMapper {
 
@@ -28,12 +31,10 @@ public interface MemberMapper {
 	public MemberVO selectMemberOne(@Param("userid") String userid);
 
 	@Update({
-		"UPDATE CUSTOMER SET USERNAME=#{vo.username}, ", 
+		"UPDATE MEMBERTBL SET USERNAME=#{vo.username}, ", 
 		" USERBIRTH=#{vo.userbirth} WHERE USERID=#{vo.userid}"})
-	public int updateMember(@Param("vo") MemberVO vo );
+	public int updateMember(@Param("vo") MemberVO vo);
 
 	@Delete({"DELETE FROM MEMBERTBL WHERE USERID=#{vo.userid}"})
 	public int deleteMemberOne(@Param("vo") MemberVO vo);
-
-	
 }

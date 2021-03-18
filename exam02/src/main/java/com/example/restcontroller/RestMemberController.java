@@ -3,6 +3,8 @@ package com.example.restcontroller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -51,10 +53,17 @@ public class RestMemberController {
 		produces = MediaType.APPLICATION_JSON_VALUE,
 		method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseStatus(value = HttpStatus.OK)
-	public Map<String, Object> deleteGETPOST( @RequestBody MemberVO vo ){
+	public Map<String, Object> deleteGETPOST( @RequestBody MemberVO vo,
+			HttpSession httpSession){
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		int ret = memberMapper.deleteMemberOne(vo);
+		
+		// delete가 성공했을 때 세션을 만료시키겠다. => 삭제했을 때 로그인으로 계속 남아있지 않고 세션을 만료해 
+		// 로그아웃을 해준다.
+		if(ret >= 1) {
+			httpSession.invalidate();
+		}
 		
 		map.put("ret", ret);
 		
