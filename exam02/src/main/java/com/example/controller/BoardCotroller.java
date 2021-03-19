@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.service.BoardDAO;
 import com.example.service.BoardDAOXML;
 import com.example.vo.BoardVO;
 
@@ -75,10 +73,11 @@ public class BoardCotroller {
 		return "redirect:/board/content?brdno="+no;
 	}
 	
-	public String deleteGET(Model model, @RequestParam(value="brdno", defaultValue = "0") long brdno) {
+	@RequestMapping(value = "/delete",method = RequestMethod.POST)
+	public String deletePOST(
+		 @RequestParam(value="brdno", defaultValue = "0") long brdno) {
 		
 		bDAOXML.deleteBoardOne2(brdno);
-		
-		return "board_list";
+		return "redirect:/board/list";
 	}
 }
