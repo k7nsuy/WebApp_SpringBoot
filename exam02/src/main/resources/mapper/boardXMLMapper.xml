@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- BoardMapper  -->
+<mapper namespace="BoardXMLMapper">
+<!--  BoardMapper에서는 여러 param을 불러오지만 xmlMapper에서는 1개만 불러올 수 있다. -->
+<!-- parameterType => 불러오는 값들    -->
+	<insert id="insertBoardOne2" parameterType="com.example.vo.BoardVO">
+	INSERT INTO BOARDTBL(BRDNO, BRDTITLE, BRDCONTENT, BRDHIT, BRDWRITER, BRDDATE)
+	VALUES(SEQ_BOARD_NO2.NEXTVAL,#{brdtitle},#{brdcontent},#{brdhit},#{brdwriter},CURRENT_DATE)
+	</insert>
+	<!-- resultType 보내는 값들  -->
+	<select id="selectBoardList2" resultType="com.example.vo.BoardVO">
+	SELECT BRDNO, BRDTITLE, BRDCONTENT, BRDHIT, BRDWRITER, BRDDATE FROM BOARDTBL ORDER BY BRDNO DESC
+	</select>
+	<select id="selectBoardOne2" parameterType="long" resultType="com.example.vo.BoardVO">
+		SELECT BRDNO, BRDTITLE, BRDCONTENT, BRDHIT, BRDWRITER, BRDDATE
+		FROM BOARDTBL WHERE BRDNO=#{brdno}
+	</select>
+		<update id="updateBoardOne2" parameterType="com.example.vo.BoardVO">
+		UPDATE BOARDTBL SET BRDTITLE=#{brdtitle}, BRDCONTENT=#{brdcontent}
+		, BRDWRITER=#{brdwriter} WHERE BRDNO=#{brdno}
+	</update>
+	<delete id="deleteBoardOne2" parameterType="long">
+	DELETE FROM BOARDTBL WHERE BRDNO=#{brdno}
+	</delete>
+</mapper>

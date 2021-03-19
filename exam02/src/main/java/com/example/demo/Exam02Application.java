@@ -11,7 +11,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @ComponentScan({"com.example.controller",
 	"com.example.security",
 	"com.example.aop",
-	"com.example.restcontroller"}) //@Cntroller, @Service, @Component위치
+	"com.example.restcontroller",
+	"com.example.service",
+	"com.example.config"}) //@Cntroller, @Service, @Component위치
 @MapperScan({"com.example.mapper"}) //@Mapper의 위치 설정
 public class Exam02Application {
 
