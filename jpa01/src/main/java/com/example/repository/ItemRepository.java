@@ -2,6 +2,7 @@ package com.example.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -30,4 +31,9 @@ public interface ItemRepository extends JpaRepository<Item1, Long> {
 	@Query(value="SELECT ITMNO , ITMNAME FROM ITEM1TBL ORDER BY ITMNO DESC", nativeQuery=true)
 	public List<ItemProjection> selectQueryOrderByNoDesc1();
 	
+	//SELECT * FROM ITEM1TBL WHERE ITMNAME LIKE '%' || '사과' || '%' ORDER BY ITMNO ASC
+	List<Item1> findByNameIgnoreCaseContainingOrderByNoAsc(String txt,Pageable pageable);
+	
+	//SELECT COUNT(*) FROM ITEM1TBL WHERE ITMNAME LIKE '%' || '사과' || '%'
+	long countByNameIgnoreCaseContaining(String txt);
 }

@@ -11,6 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 //오라클 테이블 명
@@ -41,10 +42,21 @@ public class Item1 {
 	
 	// 등록일자 ITMDATE, DATE
 	//@UpdateTimestamp => update날짜
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
 	@CreationTimestamp // CURRENT_DATE => 최초의 등록날짜
 	@Column(name = "ITMDATE")
 	private Date itmdate;
+	//byte[] base64 String으로 변경해서 보관할 변수
+	private String base64;
 	
+	public String getBase64() {
+		return base64;
+	}
+
+	public void setBase64(String base64) {
+		this.base64 = base64;
+	}
+
 	public Item1() {
 		super();
 	}

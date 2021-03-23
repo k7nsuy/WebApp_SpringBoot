@@ -1,9 +1,12 @@
 package com.example.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Item1;
-import com.example.entity.ItemProjection;
 import com.example.repository.ItemRepository;
 
 @Controller
@@ -35,15 +37,40 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = "/list")
-	public String selectGET(Model model) {
-		List<ItemProjection> list = itemRepository.selectQueryOrderByNoDesc1();
-		for(ItemProjection vo : list) {
-			System.out.println(vo.getItmNo()+","+vo.getItmName());
-			//jsp에서 출력할 경우 => ${vo.getItmNo()}
+	public String listGET(Model model,
+			@RequestParam(value = "txt", defaultValue="", required= false) String txt,
+			@RequestParam(value = "page",defaultValue = "0") int page) throws UnsupportedEncodingException {
+		//페이지 url에 기본 param값을 추가함.
+		
+		if(page==0) {
+			return "redirect:/item/list?txt="+URLEncoder.encode(txt,"UTF-8")+"&page=1";
 		}
+		
+		System.out.println(txt);
+		System.out.println(page);
+		
+		PageRequest pageable = PageRequest.of(page-1, 10);
+		
+		List<Item1> list = itemRepository.findByNameIgnoreCaseContainingOrderByNoAsc(txt,pageable);
+				//selectQueryOrderByNoDesc();
 		model.addAttribute("list", list);
+		
+		long totPages = itemRepository.countByNameIgnoreCaseContaining(txt);
+		model.addAttribute("totPages", (totPages-1)/10+1);
+		
 		return "item_list";
 	}
+	
+//	@RequestMapping(value = "/list")
+//	public String selectGET(Model model) {
+//		List<ItemProjection> list = itemRepository.selectQueryOrderByNoDesc1();
+//		for(ItemProjection vo : list) {
+//			System.out.println(vo.getItmNo()+","+vo.getItmName());
+//			//jsp에서 출력할 경우 => ${vo.getItmNo()}
+//		}
+//		model.addAttribute("list", list);
+//		return "item_list";
+//	}
 	
 	@RequestMapping(value="/content")
 	public String contentGET(@RequestParam(value="no", defaultValue = "0") Long no,
@@ -85,5 +112,4 @@ public class ItemController {
 		
 		return "redirect:/item/list";
 	}
-	
 }

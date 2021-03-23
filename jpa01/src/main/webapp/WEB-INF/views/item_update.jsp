@@ -48,6 +48,12 @@
 								value="${vo.quantity}" autofocus /><br />
 						</div>
 						
+						<label for="labelphone" class="col-sm-3 col-form-label">등록일</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="itmdate"
+								value="${vo.itmdate}" autofocus readonly /><br />
+						</div>
+						
 					</div>
 					<div class="row">
 						<div class="col-sm-3"></div>
