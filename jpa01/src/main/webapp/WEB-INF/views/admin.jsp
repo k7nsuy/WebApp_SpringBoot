@@ -24,8 +24,10 @@
 	<div class="home-top">
 	<div class="home-top__text">This is Home!</div>
 	<div class="home-top__menu">
-	<a href="${pageContext.request.contextPath}/user/login" class="btn btn-success">로그인</a>
-	<a href="${pageContext.request.contextPath}/user/join" class="btn btn-success">회원가입</a>
+	<a href="${pageContext.request.contextPath}/user/join" class="btn btn-success">유저등록</a>
+	<a href="${pageContext.request.contextPath}/user/list" class="btn btn-success">유저리스트</a>
+	<a href="${pageContext.request.contextPath}/team/insert" class="btn btn-primary">팀등록</a>
+	<a href="${pageContext.request.contextPath}/team/list" class="btn btn-primary">팀리스트</a>
 	</div>
 	</div>
 </body>

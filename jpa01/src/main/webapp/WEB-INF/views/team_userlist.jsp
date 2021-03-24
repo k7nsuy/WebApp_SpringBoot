@@ -12,28 +12,25 @@
 </head>
 <body>
 	<div class="container">
+		<h3>${team.id} / ${team.name}</h3>
 		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>아이디</th>
 					<th>암호</th>
 					<th>이름</th>
-					<th>팀아이디</th>
-					<th>팀등급</th>
 					<th>이미지</th>
 					<th>등록일</th>
 					<th>비고</th>
 				</tr>
 			</thead>
 			<tbody>
-			<c:if test="${!empty list}">
-				<c:forEach var="obj" items="${list}">
+			<c:if test="${!empty team.users}">
+				<c:forEach var="obj" items="${team.users}">
 				<tr>
 					<td>${obj.userid}</td>
 					<td>${obj.userpw}</td>
 					<td>${obj.username}</td>
-					<td>${obj.team.id}</td>
-					<td>${obj.team.name}</td>
 					<td>
 						<c:if test="${obj.base64 ne null}">
                     		<img src="data:image/png;base64,${obj.base64}" width="50px" height="50px" />
@@ -63,14 +60,13 @@
 				</tr>
 				</c:forEach>
 				 </c:if>
-	            <c:if test="${empty list}">
+	            <c:if test="${empty team.users}">
 	                <tr>
 	                    <td colspan="4">자료가 없습니다.</td>
 	                </tr>
 	            </c:if>
 			</tbody>
 		</table>
-		<a href="${pageContext.request.contextPath}/user/join" class="btn btn-success">등록</a>
 		<a href="${pageContext.request.contextPath}/home" class="btn btn-primary">홈으로</a>
 	</div>
 </body>

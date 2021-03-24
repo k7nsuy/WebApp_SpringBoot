@@ -23,9 +23,9 @@ public interface UserRepository extends JpaRepository<User1, Long> {
 //	@Query(value="DELETE FROM MEMBERTBL3 WHERE MEMID = :id", nativeQuery=true)
 //	int sqlDeleteById(@Param("id") String id);
 		
-	@Transactional
-	@Modifying(clearAutomatically = true)
-	@Query(value="UPDATE USERTBL1 SET USERNAME = :#{#obj.username} WHRER USERID = :#{#obj.userid}", nativeQuery=true)
-	int sqlUpdateByUserid(@Param("userid") User1 userid);
-	
+//	@Transactional
+//	@Modifying(clearAutomatically = true)
+//	@Query(value="UPDATE USERTBL1 SET USERNAME = :#{#obj.username} WHRER USERID = :#{#obj.userid}", nativeQuery=true)
+//	int sqlUpdateByUserid(@Param("userid") User1 userid);
+//	
 }

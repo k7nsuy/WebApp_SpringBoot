@@ -15,12 +15,8 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>아이디</th>
-					<th>암호</th>
-					<th>이름</th>
 					<th>팀아이디</th>
-					<th>팀등급</th>
-					<th>이미지</th>
+					<th>팀이름</th>
 					<th>등록일</th>
 					<th>비고</th>
 				</tr>
@@ -29,36 +25,21 @@
 			<c:if test="${!empty list}">
 				<c:forEach var="obj" items="${list}">
 				<tr>
-					<td>${obj.userid}</td>
-					<td>${obj.userpw}</td>
-					<td>${obj.username}</td>
-					<td>${obj.team.id}</td>
-					<td>${obj.team.name}</td>
+					<td><a href="${pageContext.request.contextPath}/team/userlist?teamid=${obj.id}">${obj.id}</a></td>
+					<td>${obj.name}</td>
+					<td>${obj.date}</td>
 					<td>
-						<c:if test="${obj.base64 ne null}">
-                    		<img src="data:image/png;base64,${obj.base64}" width="50px" height="50px" />
-                    	</c:if>
-	                    	
-                    	<c:if test="${obj.base64 eq null}">
-                    		NO이미지
-                    	</c:if>
-                   	</td>
-                   	<td>${obj.userdate}</td>
-					<td></td>
-					<td>
-						<form action="${pageContext.request.contextPath}/user/delete" 
+						<form action="${pageContext.request.contextPath}/team/delete" 
 						method="post">
-						<input type="hidden" name="userid" value="${obj.userid}" />
+						<input type="hidden" name="id" value="${obj.id}" />
 						<!-- 최소의 정보로 삭제하기 위해 USERID만 쓰기위해 숨겨놓는다.  -->
 						<input type="submit" value="삭제" />
 						</form>
-						<form action="${pageContext.request.contextPath}/user/update"
+						<form action="${pageContext.request.contextPath}/team/update"
 						method="get">
-						<input type="hidden" name="userid" value="${obj.userid}" />
+						<input type="hidden" name="id" value="${obj.id}" />
 						<input type="submit" value="수정" />
 						</form>
-						<%-- <a href="${pageContext.request.contextPath}/customer/update?
-						userid=${obj.userid}"></a> =>a tag방식 --%>
 					</td>
 				</tr>
 				</c:forEach>
@@ -70,7 +51,7 @@
 	            </c:if>
 			</tbody>
 		</table>
-		<a href="${pageContext.request.contextPath}/user/join" class="btn btn-success">등록</a>
+		<a href="${pageContext.request.contextPath}/team/insert" class="btn btn-success">등록하기</a>
 		<a href="${pageContext.request.contextPath}/home" class="btn btn-primary">홈으로</a>
 	</div>
 </body>

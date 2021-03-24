@@ -6,11 +6,14 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.ManyToAny;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -28,7 +31,7 @@ public class User1 {
 	@Column(name = "USERNAME")
 	private String username;
 	
-	@Lob
+	@Lob //BLOB ,CLOB 사용가능
 	@Column(name = "USERIMG")
 	public byte[] userimg;
 	
@@ -43,6 +46,22 @@ public class User1 {
 	@Transient
 	private String base64;
 	
+	// 회원(N)과 팀(1)의 관계 
+	@ManyToOne //회원 여러명은 하나의 팀에 소송 가능하다.
+	@JoinColumn(name = "TEAMID")
+	private Team1 team;
+	
+	// MyBatis
+	//private Long team;
+	
+	public Team1 getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team1 team) {
+		this.team = team;
+	}
+
 	public String getBase64() {
 		return base64;
 	}

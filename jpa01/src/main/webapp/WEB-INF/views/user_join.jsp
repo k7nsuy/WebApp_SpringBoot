@@ -55,10 +55,10 @@
 						
 						<div>						
 						<label for="labelphone" class="col-sm-3 col-form-label">회원등급</label>
-						<select name="usergrade">
-							<option value="GOLD">GOLD</option>
-							<option value="SILVER">SILVER</option>
-							<option value="BRONZE">BRONZE</option>
+						<select name="teamid">
+						<c:forEach var="obj" items="${teamList}">
+							<option value="${obj.id }">${obj.id}</option>
+						</c:forEach>
 						</select>
 						</div>
 
@@ -74,7 +74,7 @@
 						<div class="col-sm-3"></div>
 						<div class="col-sm-9">
 							<input type="submit" class="btn btn-success" value="회원가입" /> <a
-								href="home" class="btn btn-primary">홈으로</a>
+								href="${pageContext.request.contextPath}/home" class="btn btn-primary">홈으로</a>
 						</div>
 
 					</div>
