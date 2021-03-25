@@ -68,7 +68,6 @@ public class TeamController {
 			@RequestParam(value = "teamid") Long teamid) {
 		//팀번호를 이용하여 팀 정보 가져오기
 		Optional<Team1> team1 = teamRepository.findById(teamid);
-		System.out.println(team1.get());
 //		//팀정보 중에서 회원목록 가져오기
 //		List<User1> list = team1.get().getUsers();
 
