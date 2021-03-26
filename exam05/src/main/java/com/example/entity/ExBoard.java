@@ -33,6 +33,7 @@ public class ExBoard {
 	@Column(name = "BRDTITLE" , length = 100)
 	private String title = null;
 	
+	
 	@Lob //용량 제한을 크게 늘린다. CLOB(TEXT) BLOB(FILE)
 	@Column(name = "BRDCONTENT")
 	private String content = null;

@@ -1,12 +1,15 @@
 package com.example.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -46,6 +49,17 @@ public class Item5 {
 	@CreationTimestamp // CURRENT_DATE => 최초의 등록날짜
 	@Column(name = "ITMDATE")
 	private Date itmdate;
+	
+	@OneToMany(mappedBy = "item")
+	private List<Order5> orderList = new ArrayList<>();
+	
+	public List<Order5> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<Order5> orderList) {
+		this.orderList = orderList;
+	}
 
 	public Item5() {
 		super();

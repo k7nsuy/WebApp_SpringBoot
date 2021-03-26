@@ -14,10 +14,10 @@ import javax.persistence.Table;
 public class User5 {
 
 	@Id
-	@Column(name = "USERID")
+	@Column(name = "USERID",length = 100)
 	private String userid;
 	
-	@Column(name = "USERNAME")
+	@Column(name = "USERNAME",length = 30)
 	private String username;
 	
 	@OneToMany(mappedBy = "user")

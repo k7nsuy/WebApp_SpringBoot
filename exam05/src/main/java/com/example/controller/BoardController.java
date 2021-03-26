@@ -76,17 +76,25 @@ public class BoardController {
 		ExBoard vo = vo1.get();
 		model.addAttribute("vo", vo);
 		
-		
 		List<ExBoardReply> list = vo.getReplyList();
 		model.addAttribute("list", list);
 		
 		return "board_content";
 	}
 	
+	@RequestMapping(value = "/content",method = RequestMethod.POST)
+	public String contentPOST(@RequestParam(value="no", defaultValue = "0") Long no
+			) {
+
+		replyRepository.sqlDeleteReplyByNo(no);
+		
+		return "redirect:/board/content?no="+no;
+	}
+	
 	@RequestMapping(value = "/delete",method = RequestMethod.POST)
 	public String deletePOST(@RequestParam(value = "no") Long no) {
 		
-		boardRepository.deleteById(no);
+		boardRepository.sqlDeleteByNo(no);
 		
 		return "redirect:/board/list";
 	}
