@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.main-center {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.center {
+	--bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0rem;
+    display: flex;
+  flex-wrap:wrap;
+  align-items :flex-start;
+  margin-top: calc(var(--bs-gutter-y) * -0.2);
+  margin-right: calc(var(--bs-gutter-x) / 0.2);
+  margin-left: calc(var(--bs-gutter-x) / 0.2);
+}
+
+.center h2 {
+	font-weight: 900px;
+	margin-bottom: 20px;
+}
