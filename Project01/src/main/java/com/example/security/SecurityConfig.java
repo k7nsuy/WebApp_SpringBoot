@@ -12,10 +12,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class SecutiryConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
-	private MyUserDetailsService userDetailsService;
+	private MyMemberDetailService userDetailsService;
 	
 	@Bean
 	public BCryptPasswordEncoder bcpe() {
@@ -30,7 +30,7 @@ public class SecutiryConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// TODO Auto-generated method stub
-		web.ignoring().antMatchers("/css/**", "/js/**","/images/**","/font/**","/lib/**");
+		web.ignoring().antMatchers("/css/**", "/js/**","/images/**","/fonts/**","/lib/**");
 		//resources의 url은 무시한다.
 	}
 
@@ -40,11 +40,9 @@ public class SecutiryConfig extends WebSecurityConfigurerAdapter{
 		
 		
 		//127.0.0.1:9090/ROOT/vvip/aaa
-		//권한에 따른 페이지 설정 ex) 127.0.0.1:9090/ROOT/admin은 ADMIN권한만 접근가능
+		//권한에 따른 페이지 설정 ex) 127.0.0.1:9090/ROOT/admin은 adminAutority권한만 접근가능
 		http.authorizeRequests()
-		.antMatchers("/Admin", "/Admin/*").hasAnyAuthority("ADMIN") // url , * => 접근 할 수있는 모든 페이지
-		.antMatchers("/Silver", "/Silver/*").hasAnyAuthority("Silver")
-		.antMatchers("/Bronze", "/Bronze/*").hasAnyAuthority("Bronze")
+		.antMatchers("/admin", "/admin/*").hasAnyAuthority("adminAuthority") // url , * => 접근 할 수있는 모든 페이지
 		.anyRequest().permitAll()
 		.and()
 		
@@ -56,8 +54,8 @@ public class SecutiryConfig extends WebSecurityConfigurerAdapter{
 		.usernameParameter("username") //<input type="text" name="username" />
 		.passwordParameter("password") //<input type"password" name="password />
 		.permitAll()
-//		.defaultSuccessUrl("/home") // 로그인 성공시 127.0.0.1:9090/ROOT/home 으로 이동
-		.successHandler(new MyLoginHandler()) //권한 별 페이지 전환 구현
+		.defaultSuccessUrl("/home") // 로그인 성공시 127.0.0.1:9090/ROOT/home 으로 이동
+//		.successHandler(new MyLoginHandler()) //권한 별 페이지 전환 구현
 		.and()
 		
 		// 로그아웃
@@ -77,5 +75,4 @@ public class SecutiryConfig extends WebSecurityConfigurerAdapter{
 		//비권장!! CSRF공격에 취약!! => 일일이 jsp에서 csrfname과 token을 넣지 않아도 되게 해준다. 
 		//하지만 보안에 취약하므로 practice할 때만 사용
 	}
-	
 }

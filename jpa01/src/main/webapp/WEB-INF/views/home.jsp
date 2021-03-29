@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>  
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet" />
+	
 <title> HOME </title>
 <style>
 .home-top {
@@ -21,12 +24,20 @@
 </style>
 </head>
 <body>
-	<div class="home-top">
-	<div class="home-top__text">This is Home!</div>
-	<div class="home-top__menu">
-	<a href="${pageContext.request.contextPath}/user/login" class="btn btn-success">로그인</a>
-	<a href="${pageContext.request.contextPath}/user/join" class="btn btn-success">회원가입</a>
-	</div>
-	</div>
+	<h3>메인화면</h3>
+	<security:authorize access="!isAuthenticated()">
+	<a href="${pageContext.request.contextPath}/login">로그인</a>
+	</security:authorize>
+	
+	<security:authorize access="isAuthenticated()">
+		<security:authentication property="principal"/> <hr /> 
+		ROLE : <security:authentication property="authorities"/> <br />
+		USERID : <security:authentication property="name"/> 님 환영합니다 <br />
+		
+		<form action="${pageContext.request.contextPath}/logout" method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="submit" value="로그아웃" />
+		</form>
+	</security:authorize>
 </body>
 </html>

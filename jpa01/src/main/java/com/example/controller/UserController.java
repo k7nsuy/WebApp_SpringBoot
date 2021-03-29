@@ -65,10 +65,10 @@ public class UserController {
 		return "redirect:/user/join";
 	}
 
-	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String loginGET() {
-		return "user_login";
-	}
+//	@RequestMapping(value="/login", method=RequestMethod.GET)
+//	public String loginGET() {
+//		return "user_login";
+//	}
 
 //	@RequestMapping(value="/login", method=RequestMethod.POST)
 //	public String loginPOST(

@@ -5,11 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Member")
+@Table(name = "MEMBER")
 @SequenceGenerator(name = "SEQ" , 
 sequenceName = "SEQ_Member_NO",
 initialValue = 1,
@@ -38,6 +40,18 @@ public class Member {
 	
 	@Column(name = "userEmail")
 	private String userEmail;
+	
+	@ManyToOne
+	@JoinColumn(name = "GroupCode")
+	private Authority auth;
+	
+	public Authority getAuthority() {
+		return auth;
+	}
+
+	public void setAuthority(Authority auth) {
+		this.auth = auth;
+	}
 
 	public long getMemberNum() {
 		return memberNum;
