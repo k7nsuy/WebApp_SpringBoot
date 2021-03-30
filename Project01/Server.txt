@@ -1,3 +1,19 @@
+  # 서버구동
+  1.pom.xml 에서 스프링부트 스타터 웹 추가한 뒤 overview에서
+  packaging을 war로 바꿈
+  2.install new software
+  -2020-12 - http://download.eclipse.org/releases/2020-12
+  -General purpose tools
+  -back-end run 다운
+  -open perspective 에서 remote system explore
+  -Local => new connection
+  -SSH only
+  -host name 입력
+  -새호스트에서 sftp files port변경 => webapps생성
+  project => new => Run as => 5.maven build
+  goals : package 입력 후 finish 
+  
+  
   
   1.234.5.158:19090/id117/home
   mobaXterm 다운로드
