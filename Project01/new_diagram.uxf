@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>390</x>
+      <y>480</y>
+      <w>80</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Member</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>580</x>
+      <y>500</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Authority
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>810</x>
+      <y>480</y>
+      <w>60</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Admin</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>580</x>
+      <y>400</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>*Login*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>580</x>
+      <y>580</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>*Join*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>530</y>
+      <w>30</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>500</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Give Authority</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>500</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+Give Authority</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>440</y>
+      <w>130</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.&gt;
+User Authority</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>440</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.&gt;
+Admin Authority</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>400</y>
+      <w>340</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>*Main*
+fontsize=20
+bg=green
+transparency=90
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>40</x>
+      <y>450</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Item
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>180</x>
+      <y>450</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Best
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>40</x>
+      <y>520</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Anouncement
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>180</x>
+      <y>520</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Review
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>100</x>
+      <y>600</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Qustion
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>540</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>610</x>
+      <y>700</y>
+      <w>60</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Guest</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>640</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>40</y>
+      <w>340</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>*User*
+fontsize=20
+bg=yellow
+transparency=90</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>40</y>
+      <w>340</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>*Admin*
+fontsize=20
+bg=blue
+transparency=90</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1450</x>
+      <y>260</y>
+      <w>210</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>Some arbitrary figures to show
+coloring and line type and width
+customelement=
+//left top rectangle
+drawRectangle(50,40,50,50)fg=orange bg=blue lt=.
+
+//right rectangle with double dashed border
+drawRectangleRound(120,45,50,50,5) fg=orange bg=blue lt=:
+
+//gren point line
+drawLine(50,100,170,130)fg=green lt=..
+
+//very transparent circle with dashed border
+drawCircle(75,150,25) fg=black bg=yellow lw=2 lt=. transparency=80
+
+//Ellipse with backgroundcolor from HEX string
+drawEllipse(120,150,70,40) fg=cyan bg=#FFC000
+
+//drawing a solid Circle without border using drawArc
+drawArc(50,180,50,50,0,360,true) lw=0 bg=red transparency=0
+
+//a pie
+drawArc(80,200,120,40,0,30,false) fg=black bg=red lt=.
+
+//paint over other elements, to from complex figures
+drawRectangle(10,240,60,40) bg=blue transparency=0 lw=0
+drawCircle(40,260,15) bg=white transparency=0 lw=0
+
+drawRectangle(100,240,60,40) bg=red transparency=0
+drawCircle(100,240,15) bg=white transparency=0 lw=1 fg=white
+drawRectangle(130,260,31,21) bg=white transparency=0 lw=1 fg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1460</x>
+      <y>270</y>
+      <w>210</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>Some arbitrary figures to show
+coloring and line type and width
+customelement=
+//left top rectangle
+drawRectangle(50,40,50,50)fg=orange bg=blue lt=.
+
+//right rectangle with double dashed border
+drawRectangleRound(120,45,50,50,5) fg=orange bg=blue lt=:
+
+//gren point line
+drawLine(50,100,170,130)fg=green lt=..
+
+//very transparent circle with dashed border
+drawCircle(75,150,25) fg=black bg=yellow lw=2 lt=. transparency=80
+
+//Ellipse with backgroundcolor from HEX string
+drawEllipse(120,150,70,40) fg=cyan bg=#FFC000
+
+//drawing a solid Circle without border using drawArc
+drawArc(50,180,50,50,0,360,true) lw=0 bg=red transparency=0
+
+//a pie
+drawArc(80,200,120,40,0,30,false) fg=black bg=red lt=.
+
+//paint over other elements, to from complex figures
+drawRectangle(10,240,60,40) bg=blue transparency=0 lw=0
+drawCircle(40,260,15) bg=white transparency=0 lw=0
+
+drawRectangle(100,240,60,40) bg=red transparency=0
+drawCircle(100,240,15) bg=white transparency=0 lw=1 fg=white
+drawRectangle(130,260,31,21) bg=white transparency=0 lw=1 fg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>330</x>
+      <y>100</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Update Info
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

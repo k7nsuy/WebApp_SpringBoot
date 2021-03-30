@@ -1,5 +1,8 @@
 package com.example.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -44,10 +48,23 @@ public class Member {
 	@ManyToOne
 	@JoinColumn(name = "GroupCode")
 	private Authority auth;
+
+	@OneToMany(mappedBy = "member")
+	private List<OrderList> orderList = new ArrayList<>();
 	
 	public Authority getAuthority() {
 		return auth;
 	}
+
+	public List<OrderList> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<OrderList> orderList) {
+		this.orderList = orderList;
+	}
+
+
 
 	public void setAuthority(Authority auth) {
 		this.auth = auth;

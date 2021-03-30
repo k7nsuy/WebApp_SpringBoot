@@ -1,0 +1,6 @@
+  
+  1.234.5.158:19090/id117/home
+  mobaXterm 다운로드
+  Remote host : 1.234.5.158 Port:10722
+  id : user01
+  pw : pw01
