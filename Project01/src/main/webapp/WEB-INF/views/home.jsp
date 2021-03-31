@@ -8,24 +8,44 @@
     <meta charset="UTF-8">
         <title> HOME </title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main-center.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
     </head>
     <body>
         <div class="main-header">
+        
         	<security:authorize access="!isAuthenticated()">
+        	
             <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/login">로그인</a></span>
-            </security:authorize><security:authorize access="isAuthenticated()">
-			<security:authentication property="principal"/> <hr /> 
-				<security:authentication property="authorities"/> <br />
-				<security:authentication property="name"/> 님 환영합니다 <br />
+            </security:authorize>
+            
+            <security:authorize access="isAuthenticated()">
+            
+			<%-- <security:authentication property="principal"/>  --%>
+				Member : <security:authentication property="authorities"/> <br />
+				'<security:authentication property="name"/>'님 환영합니다. <br />
+				
 				
 				<form action="${pageContext.request.contextPath}/header/logout" method="post">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-					<input class="main-header_column" type="submit" value="로그아웃" />
+					<input class="main-header_column btn btn-outline-dark" type="submit" value="로그아웃" />
 				</form>
 			</security:authorize>
+			<security:authorize access="!isAuthenticated()">
             <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/join">회원가입</a></span>
+            </security:authorize>
             <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/orederlist">장바구니</a></span>
+            
+            <security:authorize access="isAuthenticated()">
+            <c:if test="${Authority eq 'USER'}">
             <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/mypage">마이페이지</a></span>
+            </c:if>
+            </security:authorize>
+            <security:authorize access="isAuthenticated()">
+            <c:if test="${Authority eq 'ADMIN'}">
+            <span class="main-header_column"><a href="${pageContext.request.contextPath}/admin">관리자페이지</a></span>
+            </c:if>
+            </security:authorize>
         </div>
         <div class="main-nav">
         	<span><a href="${pageContext.request.contextPath}/home">logo</a></span>

@@ -4,7 +4,7 @@
 <html>
     <head>
     <meta charset="UTF-8">
-        <title> JOIN </title>
+        <title> Item </title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main-center.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
@@ -29,25 +29,9 @@
 	            <img src="${pageContext.request.contextPath}/resources/images/ad4.gif">
 	            <img src="${pageContext.request.contextPath}/resources/images/ad5.gif">
 	        </div>
-	        <div class="main-body">
-	        	<div class="center">
-	        	<form action="${pageContext.request.contextPath}/loginProcess" method="post">
-	        	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		        	<h2 class="col-sm-8">로그인</h2>
-		        		<div class="col-sm-7">
-			        		<label class="col-sm-3 col-form-label">아이디</label>
-			        		<input class="form-control" type="text" name="userId" placeholder="아이디를 입력하세요.">
-		        		</div>
-		        		<div class="col-sm-7">
-			        		<label class="col-sm-3 col-form-label">비밀번호</label>
-			        		<input class="form-control" type="password" name="userPass" placeholder="비밀번호를 입력하세요.">
-		        		</div>
-							<div class="col-sm-6">
-								<input type="submit" class="btn btn-outline-dark" value="로그인" />
-							</div>
-				</form>
-	        	</div>
-	        </div>
+	        
+	        
+	        
 	        <div class="main-body">
 	        	<div class="clicked-items">
 	        		<div class="clicked-items_text">

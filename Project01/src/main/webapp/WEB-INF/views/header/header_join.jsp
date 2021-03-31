@@ -79,12 +79,6 @@
 		        		<input class="form-control" name="userEmail1" type="email" required 
 		        		placeholder="email 재입력">
 	        		</div>
-	        		<div class="col-sm-7">
-		        		<c:forEach var="vo" items="${list}">
-			        			<input class="form-control" name="GroupCode" type="hidden" value="${vo.userAuthority}" readonly />
-		        		</c:forEach>
-	        		</div>
-	        		
 						<div class="col-sm-6">
 							<input type="submit" class="btn btn-outline-dark" value="회원가입" />
 						</div>

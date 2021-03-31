@@ -14,22 +14,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Authority")
-@SequenceGenerator(name = "SEQ2" , 
-sequenceName = "SEQ_GroupCode_NO",
-initialValue = 1,
-allocationSize = 1)
 public class Authority {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ2")
 	@Column(name = "GroupCode")
-	private long groupCode;
+	private long groupCode = 1L;
 	
-	@Column(name = "userAuthority")
-	private String userAuthority;
-	
-	@Column(name = "adminAuthority")
-	private String adminAuthority;
+	@Column(name = "memberAuthority")
+	private String memberAuthority;
 	
 	@OneToMany(mappedBy = "auth")
 	private List<Member> members = new ArrayList<>();
@@ -50,32 +42,23 @@ public class Authority {
 		this.groupCode = groupCode;
 	}
 
-	public String getUser() {
-		return userAuthority;
+	public String getMember() {
+		return memberAuthority;
 	}
 
-	public void setUser(String userAuthority) {
-		this.userAuthority = userAuthority;
-	}
-
-	public String getAdmin() {
-		return adminAuthority;
-	}
-
-	public void setAdmin(String adminAuthority) {
-		this.adminAuthority = adminAuthority;
+	public void setUser(String memberAuthority) {
+		this.memberAuthority = memberAuthority;
 	}
 
 	@Override
 	public String toString() {
-		return "Authority [groupCode=" + groupCode + ", userAuthority=" + userAuthority + ", adminAuthority=" + adminAuthority + "]";
+		return "Authority [groupCode=" + groupCode + ", memberAuthority=" + memberAuthority + "]";
 	}
 
-	public Authority(long groupCode, String userAuthority, String adminAuthority) {
+	public Authority(long groupCode, String memberAuthority) {
 		super();
 		this.groupCode = groupCode;
-		this.userAuthority = userAuthority;
-		this.adminAuthority = adminAuthority;
+		this.memberAuthority = memberAuthority;
 	}
 	
 	public Authority() {

@@ -43,8 +43,6 @@ public class SecutiryConfig extends WebSecurityConfigurerAdapter{
 		//권한에 따른 페이지 설정 ex) 127.0.0.1:9090/ROOT/admin은 ADMIN권한만 접근가능
 		http.authorizeRequests()
 		.antMatchers("/Admin", "/Admin/*").hasAnyAuthority("ADMIN") // url , * => 접근 할 수있는 모든 페이지
-		.antMatchers("/Silver", "/Silver/*").hasAnyAuthority("Silver")
-		.antMatchers("/Bronze", "/Bronze/*").hasAnyAuthority("Bronze")
 		.anyRequest().permitAll()
 		.and()
 		

@@ -23,13 +23,14 @@ public class MyMemberDetailService implements UserDetailsService{
 	MemberRepository memberRepository;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 		
-		Member vo = memberRepository.findByUserId(username);
+		System.out.println(userId);
+		Member vo = memberRepository.findByUserId(userId);
 		
-		
+		System.out.println(vo.toString());
 		//가져온 권한정보를 문자열 배열로 만들기
-		String[] strRoles = {vo.getAuthority().getUser()};
+		String[] strRoles = {vo.getAuthority().getMember()};
 		// import org.springframework.security.core.userdetails.User;
 				// String 배열을 Collection<GrantedAuthority>타입으로 바꾸기
 		Collection<GrantedAuthority> roles

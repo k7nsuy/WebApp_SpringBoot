@@ -36,27 +36,24 @@ public class HeaderController {
 		
 		model.addAttribute("list", list);
 		
-		
 		return "header/header_join";
 	}
 	
 	@RequestMapping(value = "/join",method = RequestMethod.POST)
-	public String joinPOST(@ModelAttribute Member vo,
-			@RequestParam("GroupCode") long GroupCode) throws IOException {
+	public String joinPOST(@ModelAttribute Member vo) {
+		
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
 		String changePw = bcpe.encode(vo.getUserPass());
 		vo.setUserPass(changePw);
 		
-		Optional<Authority> auth = authRepository.findByGroupCode(GroupCode);
-		vo.setAuthority(auth.get());
+		vo.setAuthority( new Authority() ); 
 		
 		memberRepository.save(vo);
 		return "redirect:/home";
 	}
 	
-	@RequestMapping(value = "/logout",method = RequestMethod.POST)
-	public String logoutPOST() {
-		
-		return "redirect:/header/home";
+	@RequestMapping(value = "/login")
+	public String loginGET() {
+		return "header/header_login";
 	}
 }

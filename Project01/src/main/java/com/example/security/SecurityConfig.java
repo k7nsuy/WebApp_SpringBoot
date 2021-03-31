@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		//127.0.0.1:9090/ROOT/vvip/aaa
 		//권한에 따른 페이지 설정 ex) 127.0.0.1:9090/ROOT/admin은 adminAutority권한만 접근가능
 		http.authorizeRequests()
-		.antMatchers("/admin", "/admin/*").hasAnyAuthority("adminAuthority") // url , * => 접근 할 수있는 모든 페이지
+		.antMatchers("/admin", "/admin/*").hasAnyAuthority("ADMIN") // url , * => 접근 할 수있는 모든 페이지
 		.anyRequest().permitAll()
 		.and()
 		
@@ -51,8 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.formLogin()
 		.loginPage("/login") //127.0.0.1:9090/ROOT/login
 		.loginProcessingUrl("/loginProcess") //<form action="loginProcess" />
-		.usernameParameter("username") //<input type="text" name="username" />
-		.passwordParameter("password") //<input type"password" name="password />
+		.usernameParameter("userId") //<input type="text" name="username" />
+		.passwordParameter("userPass") //<input type"password" name="password />
 		.permitAll()
 		.defaultSuccessUrl("/home") // 로그인 성공시 127.0.0.1:9090/ROOT/home 으로 이동
 //		.successHandler(new MyLoginHandler()) //권한 별 페이지 전환 구현
@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		// 로그아웃
 		.logout()
-		.logoutUrl("/logout") //로그아웃 수행할 페이지 url 단, post로 전송되어야 함
+		.logoutUrl("/header/logout") //로그아웃 수행할 페이지 url 단, post로 전송되어야 함
 		.logoutSuccessUrl("/home") //로그아웃 성공시 이동할 페이지
 		.invalidateHttpSession(true) //세션삭제
 		.clearAuthentication(true) //인증정보 지우기
