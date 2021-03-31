@@ -18,7 +18,7 @@
             <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/mypage">마이페이지</a></span>
         </div>
         <div class="main-nav">
-        	<span><a href="${pageContext.request.contextPath}/home">logo</a></span>
+        	<span><a href="${pageContext.request.contextPath}/home">MostBody</a></span>
             <span><a href="${pageContext.request.contextPath}/nav/items">상품보기</a></span>
             <span><a href="${pageContext.request.contextPath}/nav/best">베스트</a></span>
             <span><a href="${pageContext.request.contextPath}/nav/noti">공지사항</a></span>

@@ -7,8 +7,8 @@
 <title>Admin</title>
 </head>
 <body>
-	<a href="${pageContext.request.contextPath}/admin/memberlist">회원관리</a>
-	<a href="${pageContext.request.contextPath}/admin/itemlist">상품관리</a>
-	<a href="${pageContext.request.contextPath}/admin/orderlist">주문조회</a>
+	<a href="${pageContext.request.contextPath}/member/manage">회원관리</a>
+	<a href="${pageContext.request.contextPath}/item/manage">상품관리</a>
+	<a href="${pageContext.request.contextPath}/admin/orderlist">고객주문조회</a>
 </body>
 </html>

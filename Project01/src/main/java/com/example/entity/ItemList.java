@@ -40,7 +40,7 @@ public class ItemList {
 	private String itemRecommend;
 	
 	@Column(name = "itemHit")
-	private long itemHit;
+	private long itemHit = 0;
 	
 
 	public ItemList(long itemHit) {
