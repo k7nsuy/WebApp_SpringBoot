@@ -7,7 +7,8 @@
 <title>Item Insert</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/item/insert" method="post">
+	<form action="${pageContext.request.contextPath}/item/insert" method="post" 
+	enctype="multipart/form-data">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		물품명 : <input type="text" name="itemName" > <br />
 		물품가격 : <input type="text" name="itemPrice" > <br />
@@ -21,7 +22,8 @@
 		<input type="checkbox" name="itemRecommend" value="middleWomen" >중년여자 
 		<input type="checkbox" name="itemRecommend" value="middleMen" >중년남자 <br />
 		<input type="checkbox" name="itemRecommend" value="oldWomen" >고령여자 
-		<input type="checkbox" name="itemRecommend" value="oldMen" >고령남자 <br /> -->
+		<input type="checkbox" name="itemRecommend" value="oldMen" >고령남자 <br />
+		이미지등록 : <input type="file" name="image"> <br />
 		<input type="submit" value="물품등록" >
 	</form>
 </body>

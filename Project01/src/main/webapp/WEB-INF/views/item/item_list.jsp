@@ -8,18 +8,43 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 <!-- css스타일시트 쓰기 위함 -->
 <meta charset="UTF-8">
+<style type="text/css">
+	.page {
+	display: flex;
+	justify-content: center;
+	}
+	
+	.search {
+	display: flex;
+	justify-content: space-between;
+	margin: 17px 17px;
+	}
+	
+	.search-text {
+	margin-right: 5px;
+	height: 40px;
+	width: 200px;
+	border:2px solid;
+	border-radius: 5px;
+	}
+	
+	.insert {
+	padding-bottom: 15px;
+	}
+</style>
 </head>
 <body>
-
+	<div class="search">
 	<form action="${pageContext.request.contextPath}/item/list" method="get" class="search">
-		<input type="text" name="txt" placeholder="검색" />
-		<input type="submit" value="검색" />
+		<input type="text" class="search-text" name="txt" placeholder="검색" />
+		<input type="submit" class="btn btn-outline-dark" value="검색" />
 	</form>
+	</div>
 
 	<div style="padding:30px 0 0 0" class="container">
 		<h4>물품목록</h4>
 		<hr />
-		<div>
+		<div class="insert">
 			<a href="${pageContext.request.contextPath}/item/insert" class="btn btn-outline-success">물품등록</a>
 		</div>
 
@@ -34,6 +59,7 @@
 					<th>물품상세</th>
 					<th>물품추천</th>
 					<th>물품HIT</th>
+					<th>이미지</th>
 				</tr>
 			</thead>
 
@@ -48,13 +74,22 @@
 						<td>${vo.itemDetail}</td>
 						<td>${vo.itemRecommend}</td>
 						<td>${vo.itemHit}</td>
+						<td>
+						<c:if test="${vo.base64 ne null}">
+                    		<img src="data:image/png;base64,${vo.base64}" width="50px" height="50px" />
+                    	</c:if>
+	                    	
+                    	<c:if test="${vo.base64 eq null}">
+                    		NO이미지
+                    	</c:if>
+                    	</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 		
-		 <div id="pagination-div"></div>
+		 <div class="page" id="pagination-div"></div>
 
 	<!-- jquery cdn -->		
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

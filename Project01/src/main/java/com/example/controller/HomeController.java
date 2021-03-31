@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.entity.Authority;
@@ -26,7 +27,7 @@ public class HomeController {
 	@Autowired
 	AuthorityRepository authRepository;
 	
-	@RequestMapping(value = "/home")
+	@GetMapping("home")
 	public String homeGET(Model model, Authentication auth) {
 
 		if(auth != null) {

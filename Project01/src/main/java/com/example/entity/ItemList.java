@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "itemList")
@@ -39,9 +41,45 @@ public class ItemList {
 	@Column(name = "itemRecommend")
 	private String itemRecommend;
 	
+	@Lob
+	@Column(name = "itemImage")
+	private byte[] itemImage;
+	
 	@Column(name = "itemHit")
 	private long itemHit = 0;
 	
+	@Transient
+	private String base64;
+	
+	public String getBase64() {
+		return base64;
+	}
+
+	public void setBase64(String base64) {
+		this.base64 = base64;
+	}
+
+	public ItemList(long itemNumber, String itemName, long itemPrice, long itemQuantity, String itemNutrition,
+			String itemDetail, String itemRecommend, byte[] itemImage, long itemHit) {
+		super();
+		this.itemNumber = itemNumber;
+		this.itemName = itemName;
+		this.itemPrice = itemPrice;
+		this.itemQuantity = itemQuantity;
+		this.itemNutrition = itemNutrition;
+		this.itemDetail = itemDetail;
+		this.itemRecommend = itemRecommend;
+		this.itemImage = itemImage;
+		this.itemHit = itemHit;
+	}
+
+	public byte[] getItemImage() {
+		return itemImage;
+	}
+
+	public void setItemImage(byte[] itemImage) {
+		this.itemImage = itemImage;
+	}
 
 	public ItemList(long itemHit) {
 		super();

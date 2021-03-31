@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +31,7 @@ public class HeaderController {
 	AuthorityRepository authRepository;
 	
 
-	@RequestMapping(value = "/join")
+	@GetMapping("join")
 	public String joinGET(Model model) {
 		
 		List<Authority> list = authRepository.findAll();
@@ -39,7 +41,7 @@ public class HeaderController {
 		return "header/header_join";
 	}
 	
-	@RequestMapping(value = "/join",method = RequestMethod.POST)
+	@PostMapping("join")
 	public String joinPOST(@ModelAttribute Member vo) {
 		
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
