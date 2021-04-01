@@ -35,10 +35,10 @@
             <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/join">회원가입</a></span>
             </security:authorize>
             
-            <security:authorize access="isAuthenticated()">
-            <c:if test="${Authority eq 'USER'}">
             <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/orederlist">장바구니</a></span>
             <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/mypage">마이페이지</a></span>
+            <security:authorize access="isAuthenticated()">
+            <c:if test="${Authority eq 'USER'}">
             </c:if>
             </security:authorize>
             <security:authorize access="isAuthenticated()">

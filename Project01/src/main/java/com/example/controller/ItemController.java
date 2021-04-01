@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -85,10 +87,47 @@ public class ItemController {
 	}
 	
 	@GetMapping("content")
-	public String contentGET(Model model) {
+	public String contentGET(Model model,
+			@RequestParam(value = "no") Long no) {
+		
+		Optional<ItemList> vo = itemRepository.findById(no);
+		ItemList vo2 = vo.get();
+		
+		model.addAttribute("vo2", vo2);
 		
 		
 		return "item/item_content";
 	}
 	
+	@GetMapping("update")
+	public String updateGET(@RequestParam(value = "no") Long no,
+			Model model) {
+		
+		Optional<ItemList> vo = itemRepository.findById(no);
+		ItemList vo2 = vo.get();
+		
+		model.addAttribute("vo2", vo2);
+		
+		return "item/item_update";
+	}
+	
+	@PostMapping("update")
+	public String updatePOST(@ModelAttribute ItemList vo,
+			@RequestParam(value = "itemNumber") long no) {
+		
+		 itemRepository.save(vo);
+		
+		return "redirect:/item/content?no="+no;
+		
+	}
+	
+	@PostMapping("delete")
+	public String deletePOST(@RequestParam(value = "no") long no) {
+		
+		System.out.println(no);
+		
+		itemRepository.deleteByItemNumber(no);
+		
+		return "redirect:/item/list";
+	}
 }

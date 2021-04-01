@@ -71,7 +71,7 @@
 						<td>${vo.itemPrice}</td>
 						<td>${vo.itemQuantity}</td>
 						<td>${vo.itemNutrition}</td>
-						<td>${vo.itemDetail}</td>
+						<td>...</td>
 						<td>${vo.itemRecommend}</td>
 						<td>${vo.itemHit}</td>
 						<td>

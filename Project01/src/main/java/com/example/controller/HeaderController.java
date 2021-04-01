@@ -58,4 +58,9 @@ public class HeaderController {
 	public String loginGET() {
 		return "header/header_login";
 	}
+	
+	@GetMapping("mypage")
+	public String mypageGET() {
+		return "header/header_mypage";
+	}
 }

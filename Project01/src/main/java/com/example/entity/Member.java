@@ -27,7 +27,7 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ")
 	private long memberNum;
 	
-	@Column(name = "userId")
+	@Column(name = "userId", unique = true)
 	private String userId;
 	
 	@Column(name = "userPass")

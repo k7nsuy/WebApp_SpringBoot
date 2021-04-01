@@ -67,8 +67,8 @@
 
 		<div
 			class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-			<h1 class="display-4">Pricing</h1>
-			<p class="lead">ss</p>
+			<h1 class="display-4">Most Body</h1>
+			<p class="lead">--------</p>
 		</div>
 
 			<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
@@ -76,21 +76,21 @@
 		    	<div class="col">
 			      <div class="card mb-4 shadow-sm">
 				      <div class="card-header">
-				        <h4 class="my-0 fw-normal">${tmp.code}</h4>
+				        <h4 class="my-0 fw-normal">${tmp.itemNumber}</h4>
 				      </div>
 				      <div class="card-body">
-					    <c:if test="${tmp.base64Img eq null}">
+					    <c:if test="${tmp.base64 eq null}">
 	    					<img src="images/default.jpg" width="100%" />
 	    				</c:if>
 	    			
-	    				<c:if test="${tmp.base64Img ne null}">
-	    					<img src="data:image/jpeg;base64,${tmp.base64Img}" width="100%"/>
+	    				<c:if test="${tmp.base64 ne null}">
+	    					<img src="data:image/jpeg;base64,${tmp.base64}" width="100%"/>
 	    				</c:if>
 	    			
-				        <h1 class="card-title pricing-card-title">${tmp.price} <small class="text-muted">/ 원</small></h1>
+				        <h1 class="card-title pricing-card-title">${tmp.itemPrice} <small class="text-muted">/ 원</small></h1>
 				        <ul class="list-unstyled mt-3 mb-4">
-				          <li>${tmp.name}</li>
-				          <li>남은수량 : ${tmp.quantity}</li>
+				          <li>${tmp.itemName}</li>
+				          <li>남은수량 : ${tmp.itemQuantity}</li>
 				        </ul>
 				        <button type="button" class="w-100 btn btn-lg btn-outline-primary">주문하기</button>
 				      </div>
