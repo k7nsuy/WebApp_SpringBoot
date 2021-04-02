@@ -6,12 +6,15 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+@EnableAspectJAutoProxy
 @EnableJpaRepositories(basePackages = {"com.example.repository"})
 @EntityScan({"com.example.entity"})
 @ComponentScan({"com.example.controller",
-"com.example.security"})
+"com.example.security",
+"com.example.aop"})
 @SpringBootApplication
 public class Project01Application extends SpringBootServletInitializer {
 

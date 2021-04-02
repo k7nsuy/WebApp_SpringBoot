@@ -41,4 +41,74 @@ public class NavController {
 		
 		return "nav/nav_items";
 	}
+	
+	@RequestMapping(value = "/best")
+	String bestGET(Model model, Authentication auth) {
+		
+		if(auth != null) {
+			MyMember vo = (MyMember)auth.getPrincipal();
+		
+			Collection<GrantedAuthority> roles = vo.getAuthorities(); 
+			for(GrantedAuthority tmp : roles) {
+				System.out.println(tmp);
+				model.addAttribute("Authority", tmp);
+			}
+		}
+		
+		List<ItemList> list = itemRepository.findAll();
+		
+		model.addAttribute("list", list);
+		
+		
+		return "nav/nav_best";
+	}
+	
+	@RequestMapping(value = "/noti")
+	String notiGET(Model model, Authentication auth) {
+		
+		if(auth != null) {
+			MyMember vo = (MyMember)auth.getPrincipal();
+		
+			Collection<GrantedAuthority> roles = vo.getAuthorities(); 
+			for(GrantedAuthority tmp : roles) {
+				System.out.println(tmp);
+				model.addAttribute("Authority", tmp);
+			}
+		}
+		
+		return "nav/nav_noti";
+	}
+	
+	@RequestMapping(value = "/question")
+	String questionGET(Model model, Authentication auth) {
+		
+		if(auth != null) {
+			MyMember vo = (MyMember)auth.getPrincipal();
+		
+			Collection<GrantedAuthority> roles = vo.getAuthorities(); 
+			for(GrantedAuthority tmp : roles) {
+				System.out.println(tmp);
+				model.addAttribute("Authority", tmp);
+			}
+		}
+		
+		return "nav/nav_question";
+	}
+	
+	@RequestMapping(value = "/review")
+	String reviewGET(Model model, Authentication auth) {
+		
+		if(auth != null) {
+			MyMember vo = (MyMember)auth.getPrincipal();
+		
+			Collection<GrantedAuthority> roles = vo.getAuthorities(); 
+			for(GrantedAuthority tmp : roles) {
+				System.out.println(tmp);
+				model.addAttribute("Authority", tmp);
+			}
+		}
+		
+		
+		return "nav/nav_review";
+	}
 }

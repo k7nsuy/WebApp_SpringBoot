@@ -3,16 +3,29 @@
 .main-header {
     display: flex;
     justify-content: flex-end;
+    font-family: 'Arvo', serif;
 }
 
 .main-header_column {
-    margin: 10px 13px;
+    margin: 12px 15px;
     font-size: 13px;
+}
+
+.main-header_column2 {
+	margin : 5px 8px;
+    font-size: 13px;
+    color: white;
+}
+
+.main-header_column3 {
+	margin : 10px 13px;
+    font-size: 13px;
+    color: white;
 }
 
 .main-header_column a {
 	text-decoration: none;
-	color: rgba(0,0,0,0.6);
+	color: white;
 }
 
 .logo {
@@ -46,7 +59,7 @@
 }
 
 .clicked-items {
-	border: 1px solid rgba(0,0,0,0.4);
+	border: 2px solid white;
 	width: 150px;
 	height: 400px;
 	position: fixed;
@@ -55,6 +68,6 @@
 
 .clicked-items_text {
 	margin: 5px 10px;
-	color: rgba(0,0,0,0.6);
+	color: white;
 	font-size: 18px;
 }

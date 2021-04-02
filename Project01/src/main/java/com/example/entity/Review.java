@@ -49,12 +49,39 @@ public class Review {
 	@Column(name = "reviewImage")
 	private byte[] reviewImage;
 	
+	@Column(name = "reviewRating")
+	private long reviewRating;
+	
 	@Transient
 	private String base64;
 	
 	@ManyToOne
 	@JoinColumn(name = "memberNum")
 	private Member member;
+
+	
+	
+	public Review(long reviewNumber, String reviewTitle, String reviewContent, String reviewHit, Date reviewDate,
+			byte[] reviewImage, long reviewRating, String base64, Member member) {
+		super();
+		this.reviewNumber = reviewNumber;
+		this.reviewTitle = reviewTitle;
+		this.reviewContent = reviewContent;
+		this.reviewHit = reviewHit;
+		this.reviewDate = reviewDate;
+		this.reviewImage = reviewImage;
+		this.reviewRating = reviewRating;
+		this.base64 = base64;
+		this.member = member;
+	}
+
+	public long getReviewRating() {
+		return reviewRating;
+	}
+
+	public void setReviewRating(long reviewRating) {
+		this.reviewRating = reviewRating;
+	}
 
 	public long getReviewNumber() {
 		return reviewNumber;
@@ -124,7 +151,8 @@ public class Review {
 	public String toString() {
 		return "Review [reviewNumber=" + reviewNumber + ", reviewTitle=" + reviewTitle + ", reviewContent="
 				+ reviewContent + ", reviewHit=" + reviewHit + ", reviewDate=" + reviewDate + ", reviewImage="
-				+ Arrays.toString(reviewImage) + ", base64=" + base64 + ", member=" + member + "]";
+				+ Arrays.toString(reviewImage) + ", reviewRating=" + reviewRating + ", base64=" + base64 + ", member="
+				+ member + "]";
 	}
 
 	public Review(long reviewNumber, String reviewTitle, String reviewContent, String reviewHit, Date reviewDate,

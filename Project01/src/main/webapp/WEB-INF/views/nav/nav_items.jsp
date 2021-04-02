@@ -1,153 +1,160 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>  
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-    <head>
-    <meta charset="UTF-8">
-        <title> Item </title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main-center.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
-    </head>
-    <body>
-        <div class="main-header">
-        
-        	<security:authorize access="!isAuthenticated()">
-        	
-            <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/login">로그인</a></span>
-            </security:authorize>
-            
-            <security:authorize access="isAuthenticated()">
-            
-			<%-- <security:authentication property="principal"/>  --%>
-				Member : <security:authentication property="authorities"/> <br />
-				'<security:authentication property="name"/>'님 환영합니다. <br />
-				
-				
-				<form action="${pageContext.request.contextPath}/header/logout" method="post">
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-					<input class="main-header_column btn btn-outline-dark" type="submit" value="로그아웃" />
-				</form>
-			</security:authorize>
-			<security:authorize access="!isAuthenticated()">
-            <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/join">회원가입</a></span>
-            </security:authorize>
-            <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/orederlist">장바구니</a></span>
-            
-            <security:authorize access="isAuthenticated()">
-            <c:if test="${Authority eq 'USER'}">
-            <span class="main-header_column"><a href="${pageContext.request.contextPath}/header/mypage">마이페이지</a></span>
-            </c:if>
-            </security:authorize>
-            <security:authorize access="isAuthenticated()">
-            <c:if test="${Authority eq 'ADMIN'}">
-            <span class="main-header_column"><a href="${pageContext.request.contextPath}/admin">관리자페이지</a></span>
-            </c:if>
-            </security:authorize>
-        </div>
-        <div class="main-nav">
-        	<span><a href="${pageContext.request.contextPath}/home">MostBody</a></span>
-            <span><a href="${pageContext.request.contextPath}/nav/items">상품보기</a></span>
-            <span><a href="${pageContext.request.contextPath}/nav/best">베스트</a></span>
-            <span><a href="${pageContext.request.contextPath}/nav/noti">공지사항</a></span>
-            <span><a href="${pageContext.request.contextPath}/nav/review">상품후기</a></span>
-            <span><a href="${pageContext.request.contextPath}/nav/question">문의하기</a></span>
-        </div>
-        <div class="main-body">
-	        <div class="ad">
-	            <img src="${pageContext.request.contextPath}/resources/images/ad2.gif">
-	            <img src="${pageContext.request.contextPath}/resources/images/ad3.gif">
-	            <img src="${pageContext.request.contextPath}/resources/images/ad4.gif">
-	            <img src="${pageContext.request.contextPath}/resources/images/ad5.gif">
-	        </div>
-	        
-	        <main class="container">
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>HOME</title>
 
-		<div
-			class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-			<h1 class="display-4">Most Body</h1>
-			<p class="lead">--------</p>
-		</div>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/main.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/main-center.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
+<link type="text/css" media="screen" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed'
+	rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Marvel'
+	rel='stylesheet' type='text/css' />
+<link
+	href='http://fonts.googleapis.com/css?family=Marvel|Delius+Unicase'
+	rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Arvo'
+	rel='stylesheet' type='text/css' />
 
-			<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-			<c:forEach var="tmp" items="${list}">
-		    	<div class="col">
-			      <div class="card mb-4 shadow-sm">
-				      <div class="card-header">
-				        <h4 class="my-0 fw-normal">${tmp.itemNumber}</h4>
-				      </div>
-				      <div class="card-body">
-					    <c:if test="${tmp.base64 eq null}">
-	    					<img src="images/default.jpg" width="100%" />
-	    				</c:if>
-	    			
-	    				<c:if test="${tmp.base64 ne null}">
-	    					<img src="data:image/jpeg;base64,${tmp.base64}" width="100%"/>
-	    				</c:if>
-	    			
-				        <h1 class="card-title pricing-card-title">${tmp.itemPrice} <small class="text-muted">/ 원</small></h1>
-				        <ul class="list-unstyled mt-3 mb-4">
-				          <li>${tmp.itemName}</li>
-				          <li>남은수량 : ${tmp.itemQuantity}</li>
-				        </ul>
-				        <button type="button" class="w-100 btn btn-lg btn-outline-primary">주문하기</button>
-				      </div>
-				    </div>
-		    	</div>
-		    </c:forEach>
-		</div>
+</head>
+<body>
+	<div class="main-header">
 
-		<footer class="pt-4 my-md-5 pt-md-5 border-top">
-			<div class="row">
-				<div class="col-12 col-md">
-					<img class="mb-2" src="/docs/5.0/assets/brand/bootstrap-logo.svg"
-						alt="" width="24" height="19"> <small
-						class="d-block mb-3 text-muted">&copy; 2017-2021</small>
+		<security:authorize access="!isAuthenticated()">
+
+			<span class="main-header_column"><a
+				href="${pageContext.request.contextPath}/header/login">Login</a></span>
+		</security:authorize>
+
+		<security:authorize access="isAuthenticated()">
+			<span class="main-header_column2"> <%-- <security:authentication property="principal"/>  --%>
+				Member <security:authentication property="authorities" /> <br />
+				Welcome <security:authentication property="name" /> ! <br />
+			</span>
+
+			<form action="${pageContext.request.contextPath}/header/logout"
+				method="post">
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
+				<input class="main-header_column3 btn btn-outline-light"
+					type="submit" value="Log out" />
+			</form>
+		</security:authorize>
+		<security:authorize access="!isAuthenticated()">
+			<span class="main-header_column"><a
+				href="${pageContext.request.contextPath}/header/join">Join</a></span>
+		</security:authorize>
+
+		<security:authorize access="isAuthenticated()">
+			<c:if test="${Authority eq 'USER'}">
+				<span class="main-header_column"><a
+					href="${pageContext.request.contextPath}/header/orederlist">Order
+						List</a></span>
+				<span class="main-header_column"><a
+					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
+			</c:if>
+		</security:authorize>
+		<security:authorize access="isAuthenticated()">
+			<c:if test="${Authority eq 'ADMIN'}">
+				<span class="main-header_column"><a
+					href="${pageContext.request.contextPath}/admin">Admin Page</a></span>
+			</c:if>
+		</security:authorize>
+	</div>
+
+	<div id="wrapper">
+		<div id="wrapper2">
+			<div id="header" class="container">
+				<div id="logo">
+					<h1>
+						<a href="${pageContext.request.contextPath}/home">Most <span>Body</span></a>
+					</h1>
 				</div>
-				<div class="col-6 col-md">
-					<h5>Features</h5>
-					<ul class="list-unstyled text-small">
-						<li><a class="link-secondary" href="#">Cool stuff</a></li>
-						<li><a class="link-secondary" href="#">Random feature</a></li>
-						<li><a class="link-secondary" href="#">Team feature</a></li>
-						<li><a class="link-secondary" href="#">Stuff for
-								developers</a></li>
-						<li><a class="link-secondary" href="#">Another one</a></li>
-						<li><a class="link-secondary" href="#">Last time</a></li>
-					</ul>
-				</div>
-				<div class="col-6 col-md">
-					<h5>Resources</h5>
-					<ul class="list-unstyled text-small">
-						<li><a class="link-secondary" href="#">Resource</a></li>
-						<li><a class="link-secondary" href="#">Resource name</a></li>
-						<li><a class="link-secondary" href="#">Another resource</a></li>
-						<li><a class="link-secondary" href="#">Final resource</a></li>
-					</ul>
-				</div>
-				<div class="col-6 col-md">
-					<h5>About</h5>
-					<ul class="list-unstyled text-small">
-						<li><a class="link-secondary" href="#">Team</a></li>
-						<li><a class="link-secondary" href="#">Locations</a></li>
-						<li><a class="link-secondary" href="#">Privacy</a></li>
-						<li><a class="link-secondary" href="#">Terms</a></li>
+				<div id="menu">
+					<ul>
+						<li class="current_page_item"><a
+							href="${pageContext.request.contextPath}/nav/items">Item</a></li>
+						<li><a href="${pageContext.request.contextPath}/nav/best">Best</a></li>
+						<li><a href="${pageContext.request.contextPath}/nav/noti">Anouncement</a></li>
+						<li><a href="${pageContext.request.contextPath}/nav/review">Review</a></li>
+						<li><a href="${pageContext.request.contextPath}/nav/question">Question</a></li>
 					</ul>
 				</div>
 			</div>
-		</footer>
+			<div id="banner"></div>
 
-	</main>
-	        
-	        <div class="main-body">
-	        	<div class="clicked-items">
-	        		<div class="clicked-items_text">
-	        		최근 본 상품
-	        		</div>
-	        	</div>
-	        </div>
-        </div>
-    </body>
+			<!-- end #header -->
+			<div id="page">
+				<div id="content">
+					<div class="post">
+					
+					</div>
+					<!-- post -->
+				</div>
+					<!-- content -->
+			</div>
+			<!-- page -->				
+				
+				<div style="clear: both;">&nbsp;</div>
+				
+			</div>
+			<!-- end #content -->
+			<!-- <div id="sidebar">
+					<ul>
+						<li>
+							<div id="search">
+								<form method="get" action="#">
+									<div>
+										<input type="text" name="s" id="search-text" value="" /> <input
+											type="submit" id="search-submit" value="GO" />
+									</div>
+								</form>
+							</div>
+							<div style="clear: both;">&nbsp;</div>
+						</li>
+						<li>
+							<h2>마이 페이지</h2>
+							<ul>
+								<li><a href="#">Aliquam libero</a></li>
+								<li><a href="#">Consectetuer adipiscing elit</a></li>
+								<li><a href="#">Metus aliquam pellentesque</a></li>
+								<li><a href="#">Suspendisse iaculis mauris</a></li>
+								<li><a href="#">Metus aliquam pellentesque</a></li>
+								<li><a href="#">Suspendisse iaculis mauris</a></li>
+								<li><a href="#">Urnanet non molestie semper</a></li>
+								<li><a href="#">Proin gravida orci porttitor</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div> -->
+			<!-- end #sidebar -->
+			<div style="clear: both;">&nbsp;</div>
+			<!-- end #page -->
+			<div id="footer">
+				<p>
+					&copy; MostBody. All rights reserved. Design by <a
+						href="${pageContext.request.contextPath}/home" rel="nofollow">MostBody</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+
+</body>
 </html>
+
+
+
+
