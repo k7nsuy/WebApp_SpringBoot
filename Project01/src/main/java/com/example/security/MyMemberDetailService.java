@@ -39,6 +39,6 @@ public class MyMemberDetailService implements UserDetailsService{
 		//가져온 정보에서 아이디, 암호, 권한,유저네임을 리턴함.
 				//세션에서 아이디와 권한만 + 이름, 가입일자
 		//MyUser객체로 리턴
-		return new MyMember(vo.getUserId(), vo.getUserPass(), roles, vo.getUserName());
+		return new MyMember(vo.getUserId(), vo.getUserPass(), roles, vo.getMemberNum());
 	}
 }

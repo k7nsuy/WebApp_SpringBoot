@@ -1,10 +1,15 @@
 package com.example.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +21,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Authority;
+import com.example.entity.ItemList;
 import com.example.entity.Member;
+import com.example.entity.OrderList;
 import com.example.repository.AuthorityRepository;
+import com.example.repository.ItemRepository;
 import com.example.repository.MemberRepository;
+import com.example.repository.OrderlistRepository;
+import com.example.security.MyMember;
+import com.example.security.MyMemberDetailService;
 
 @Controller
 @RequestMapping(value = "/header")
@@ -30,7 +41,12 @@ public class HeaderController {
 	@Autowired
 	AuthorityRepository authRepository;
 	
-
+	@Autowired
+	ItemRepository itemRepository;
+	
+	@Autowired
+	OrderlistRepository orderRepository;
+	
 	@GetMapping("join")
 	public String joinGET(Model model) {
 		
@@ -62,5 +78,28 @@ public class HeaderController {
 	@GetMapping("mypage")
 	public String mypageGET() {
 		return "header/header_mypage";
+	}
+	
+	@GetMapping("orderlist")
+	public String orderlistGET() {
+		return "header/header_orderlist";
+	}
+	
+	@PostMapping("orderlist")
+	public String orderlistPOST(@ModelAttribute ItemList itemvo,
+			@RequestParam(value = "Mnum") Long no,
+			Model model) {
+		
+		OrderList list = new OrderList();
+		list.setOrderNum(itemvo.getItemNumber());
+		list.setOrderName(itemvo.getItemName());
+		list.setOrderPrice(itemvo.getItemPrice());
+		
+		Member member = memberRepository.getOne(no);
+		list.setMember(member);
+		
+		model.addAttribute("list", list);
+		
+		return "redirect:/nav/items";
 	}
 }

@@ -441,6 +441,7 @@ mark,
 .list-unstyled {
   padding-left: 0;
   list-style: none;
+  color: rgba(0,0,0,0.7);
 }
 
 .list-inline {
@@ -2969,8 +2970,8 @@ fieldset:disabled a.btn {
 }
 
 .btn-lg, .btn-group-lg > .btn {
-  padding: 0.5rem 1rem;
-  font-size: 1.25rem;
+  padding: 0.25rem 0.3rem;
+  font-size: 0.75rem;
   line-height: 1.5;
   border-radius: 0.3rem;
 }
@@ -4555,12 +4556,12 @@ input[type="button"].btn-block {
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
+  width:200px;
+  box-sizing:border-box;
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
 }
 
 .card > hr {
@@ -4585,7 +4586,7 @@ input[type="button"].btn-block {
 }
 
 .card-title {
-  margin-bottom: 0.75rem;
+  margin : 0.75rem;
 }
 
 .card-subtitle {
@@ -4606,10 +4607,8 @@ input[type="button"].btn-block {
 }
 
 .card-header {
-  padding: 0.75rem 1.25rem;
+  padding: 0.175rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card-header:first-child {
@@ -4653,6 +4652,7 @@ input[type="button"].btn-block {
 
 .card-img {
   width: 100%;
+  height: 100px;
   border-radius: calc(0.25rem - 1px);
 }
 
@@ -7844,6 +7844,7 @@ button.bg-dark:focus {
 
 .w-50 {
   width: 50% !important;
+  margin: 0 5px;
 }
 
 .w-75 {
@@ -7992,7 +7993,7 @@ button.bg-dark:focus {
 
 .mt-3,
 .my-3 {
-  margin-top: 1rem !important;
+  margin-top: 0.1rem !important;
 }
 
 .mr-3,

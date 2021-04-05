@@ -61,7 +61,7 @@
 		<security:authorize access="isAuthenticated()">
 			<c:if test="${Authority eq 'USER'}">
 				<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/orederlist">Order
+					href="${pageContext.request.contextPath}/header/orderlist">Order
 						List</a></span>
 				<span class="main-header_column"><a
 					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
@@ -100,6 +100,43 @@
 			<div id="page">
 				<div id="content">
 					<div class="post">
+					
+					
+			<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+			<c:forEach var="tmp" items="${list}">
+		    	<div class="col">
+			      <div class="card mb-4 shadow-sm">
+				      <div class="card-header">
+				        <h4 class="my-0 fw-normal">${tmp.itemName}</h4>
+				      </div>
+				      <div class="card-body">
+					    <c:if test="${tmp.base64 eq null}">
+	    					<img src="images/default.jpg" class="" />
+	    				</c:if>
+	    			
+	    				<c:if test="${tmp.base64 ne null}">
+	    					<img src="data:image/jpeg;base64,${tmp.base64}" width="150px" height="200px"/>
+	    				</c:if>
+	    			
+				        <h4 class="card-title pricing-card-title"><small class="text-muted">$ </small>${tmp.itemPrice}</h4>
+				        <ul class="list-unstyled mt-3 mb-4">
+				          <li>남은수량 : ${tmp.itemQuantity}</li>
+				        </ul>
+				        <div class="space-between">
+				        <button type="button" class="w-50 btn btn-lg btn-outline-success">주문하기</button>
+				        <form action="${pageContext.request.contextPath}/header/orderlist" method="post">
+				        <input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
+					<input type="hidden" name="Item" value="${tmp}" />
+					<input type="hidden" name="Mnum" value="${Mnum}" /> 
+				        <input type="submit" class="w-100 btn btn-lg btn-outline-primary" value="장바구니" />
+				        </form>
+				        </div>
+				      </div>
+				    </div>
+		    	</div>
+		    </c:forEach>
+		</div>
 					
 					</div>
 					<!-- post -->

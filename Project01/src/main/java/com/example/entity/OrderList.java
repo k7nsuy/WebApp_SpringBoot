@@ -12,22 +12,27 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.example.security.MyMember;
+
 @Entity
 @Table(name = "orderList")
 public class OrderList {
 	
 	@Id
 	@Column(name = "orderNum")
-	private long orderNum;
+	private Long orderNum;
+	
+	@Column(name = "orderName")
+	private String orderName;
 	
 	@Column(name = "orderPrice")
-	private String orederItem;
+	private Long orderPrice;
 	
 	@Column(name = "orderQuanity")
-	private String orderQuantity;
+	private Long orderQuantity = 1L;
 	
 	@Column(name = "totalPrice")
-	private String totalPrice;
+	private Long totalPrice;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
 	@CreationTimestamp
@@ -38,35 +43,43 @@ public class OrderList {
 	@JoinColumn(name = "memberNum")
 	private Member member;
 
-	public long getOrderNum() {
+	public Long getOrderNum() {
 		return orderNum;
 	}
 
-	public void setOrderNum(long orderNum) {
+	public void setOrderNum(Long orderNum) {
 		this.orderNum = orderNum;
 	}
 
-	public String getOrederItem() {
-		return orederItem;
+	public String getOrderName() {
+		return orderName;
 	}
 
-	public void setOrederItem(String orederItem) {
-		this.orederItem = orederItem;
+	public void setOrderName(String orderName) {
+		this.orderName = orderName;
 	}
 
-	public String getOrderQuantity() {
+	public Long getOrderPrice() {
+		return orderPrice;
+	}
+
+	public void setOrderPrice(Long orderPrice) {
+		this.orderPrice = orderPrice;
+	}
+
+	public Long getOrderQuantity() {
 		return orderQuantity;
 	}
 
-	public void setOrderQuantity(String orderQuantity) {
+	public void setOrderQuantity(Long orderQuantity) {
 		this.orderQuantity = orderQuantity;
 	}
 
-	public String getTotalPrice() {
+	public Long getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(String totalPrice) {
+	public void setTotalPrice(Long totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
@@ -88,15 +101,17 @@ public class OrderList {
 
 	@Override
 	public String toString() {
-		return "OrderList [orderNum=" + orderNum + ", orederItem=" + orederItem + ", orderQuantity=" + orderQuantity
-				+ ", totalPrice=" + totalPrice + ", orderDate=" + orderDate + ", member=" + member + "]";
+		return "OrderList [orderNum=" + orderNum + ", orderName=" + orderName + ", orderPrice=" + orderPrice
+				+ ", orderQuantity=" + orderQuantity + ", totalPrice=" + totalPrice + ", orderDate=" + orderDate
+				+ ", member=" + member + "]";
 	}
 
-	public OrderList(long orderNum, String orederItem, String orderQuantity, String totalPrice, Date orderDate,
-			Member member) {
+	public OrderList(Long orderNum, String orderName, Long orderPrice, Long orderQuantity, Long totalPrice,
+			Date orderDate, Member member) {
 		super();
 		this.orderNum = orderNum;
-		this.orederItem = orederItem;
+		this.orderName = orderName;
+		this.orderPrice = orderPrice;
 		this.orderQuantity = orderQuantity;
 		this.totalPrice = totalPrice;
 		this.orderDate = orderDate;
@@ -106,4 +121,5 @@ public class OrderList {
 	public OrderList() {
 		super();
 	}
+	
 }

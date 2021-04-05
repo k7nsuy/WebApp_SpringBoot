@@ -65,7 +65,7 @@
 		<security:authorize access="isAuthenticated()">
 			<c:if test="${Authority eq 'USER'}">
 				<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/orederlist">Order List</a></span>
+					href="${pageContext.request.contextPath}/header/orderlist">Order List</a></span>
 				<span class="main-header_column"><a
 					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
 			</c:if>

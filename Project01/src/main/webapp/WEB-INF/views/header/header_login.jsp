@@ -61,7 +61,7 @@
 		<security:authorize access="isAuthenticated()">
 			<c:if test="${Authority eq 'USER'}">
 				<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/orederlist">Order
+					href="${pageContext.request.contextPath}/header/orderlist">Order
 						List</a></span>
 				<span class="main-header_column"><a
 					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
@@ -101,27 +101,34 @@
 				<div id="content">
 					<div class="post">
 
-<form action="${pageContext.request.contextPath}/loginProcess" method="post">
-	        	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		        	<h2 class="col-sm-8">LOGIN</h2>
-		        		<div class="col-sm-7">
-			        		<label class="col-sm-3 col-form-label">아이디</label>
-			        		<input class="form-control" type="text" name="userId" placeholder="아이디를 입력하세요.">
-		        		</div>
-		        		<div class="col-sm-7">
-			        		<label class="col-sm-3 col-form-label">비밀번호</label>
-			        		<input class="form-control" type="password" name="userPass" placeholder="비밀번호를 입력하세요.">
-		        		</div>
+						<form action="${pageContext.request.contextPath}/loginProcess"
+							method="post">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+							<h2 class="col-sm-8">LOGIN</h2>
+							<div class="col-sm-7">
+								<label class="col-sm-3 col-form-label">아이디</label> <input
+									class="form-control" type="text" name="userId"
+									placeholder="아이디를 입력하세요.">
+							</div>
+							<div class="col-sm-7">
+								<label class="col-sm-3 col-form-label">비밀번호</label> <input
+									class="form-control" type="password" name="userPass"
+									placeholder="비밀번호를 입력하세요.">
+							</div>
 							<div class="col-sm-6">
 								<input type="submit" class="btn btn-outline-dark" value="로그인" />
 							</div>
-	<br />
+						</form>
+						<br />
 					</div>
 				</div>
-				
-				
-				<div style="clear: both;">&nbsp;</div>
-				
+
+
+				<div style="clear: both;">
+					&nbsp;
+				</div>
+
 			</div>
 			<!-- end #content -->
 			<!-- <div id="sidebar">
@@ -153,11 +160,14 @@
 					</ul>
 				</div> -->
 			<!-- end #sidebar -->
-			<div style="clear: both;">&nbsp;</div>
+			<div style="clear: both;">
+				&nbsp;
+			</div>
 			<!-- end #page -->
 			<div id="footer">
 				<p>
-					&copy; MostBody. All rights reserved. Design by <a
+					&copy;
+					MostBody. All rights reserved. Design by <a
 						href="${pageContext.request.contextPath}/home" rel="nofollow">MostBody</a>.
 				</p>
 			</div>

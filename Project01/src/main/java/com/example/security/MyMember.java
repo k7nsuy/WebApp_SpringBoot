@@ -7,16 +7,16 @@ import org.springframework.security.core.userdetails.User;
 
 public class MyMember extends User {
 
-	public MyMember(String username, String password, Collection<? extends GrantedAuthority> authorities, String name) {
-		super(username, password, authorities);
+	public MyMember(String username, String password, Collection<? extends GrantedAuthority> authorities, Long membernumber) {
+		super(username, password,authorities);
 		this.userid = username;
 		this.userpw = password;
-		this.username = name;
+		this.membernumber = membernumber;
 	}
 	
 	private String userid = null;
 	private String userpw = null;
-	private String username = null;
+	private Long membernumber = null;
 	
 	public String getUserid() {
 		return userid;
@@ -30,11 +30,11 @@ public class MyMember extends User {
 	public void setUserpw(String userpw) {
 		this.userpw = userpw;
 	}
-	public String getUsername() {
-		return username;
+	public Long getMembernumber() {
+		return membernumber;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setMembernumber(Long membernumber) {
+		this.membernumber = membernumber;
 	}
 
 }

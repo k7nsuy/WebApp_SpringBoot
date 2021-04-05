@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.Base64;
 import java.util.Collection;
 import java.util.List;
 
@@ -26,15 +27,33 @@ public class NavController {
 		
 		if(auth != null) {
 			MyMember vo = (MyMember)auth.getPrincipal();
-		
+			
+			vo.getMembernumber();
+			System.out.println(vo.getMembernumber());
+			
 			Collection<GrantedAuthority> roles = vo.getAuthorities(); 
 			for(GrantedAuthority tmp : roles) {
 				System.out.println(tmp);
+			
 				model.addAttribute("Authority", tmp);
+				model.addAttribute("vo", vo);
 			}
 		}
 		
 		List<ItemList> list = itemRepository.findAll();
+		
+		for(ItemList vo : list) {
+			System.out.println(vo.toString());
+			// byte[] => String(base64)
+			// import java.util.Base64;
+
+			if(vo.getItemImage() !=null) {
+
+				String tmp = Base64.getEncoder().encodeToString(vo.getItemImage());
+				vo.setBase64( tmp );
+				vo.setItemImage(null);
+			}
+		}
 		
 		model.addAttribute("list", list);
 		
@@ -58,7 +77,6 @@ public class NavController {
 		List<ItemList> list = itemRepository.findAll();
 		
 		model.addAttribute("list", list);
-		
 		
 		return "nav/nav_best";
 	}

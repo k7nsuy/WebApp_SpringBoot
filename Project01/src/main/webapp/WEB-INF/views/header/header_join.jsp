@@ -61,7 +61,7 @@
 		<security:authorize access="isAuthenticated()">
 			<c:if test="${Authority eq 'USER'}">
 				<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/orederlist">Order
+					href="${pageContext.request.contextPath}/header/orderlist">Order
 						List</a></span>
 				<span class="main-header_column"><a
 					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
@@ -108,9 +108,8 @@
 							<h2 class="col-sm-8">JOIN</h2>
 							<div class="col-sm-7">
 								<label class="col-sm-3 col-form-label">아이디</label> 
-								<input
-									class="form-control" name="userId" type="text" required
-									placeholder="아이디">
+								<input class="form-control" name="userId" type="text" required
+									placeholder="아이디" />
 							</div>
 							<div class="col-sm-7">
 								<label class="col-sm-3 col-form-label">비밀번호</label> <input
@@ -143,7 +142,7 @@
 									class="form-control" name="userEmail" type="email" required
 									placeholder="email" >
 							</div>
-							
+							<br />
 							<div class="col-sm-6">
 								<input type="submit" class="btn btn-outline-dark" value="회원가입" />
 							</div>
