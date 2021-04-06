@@ -113,14 +113,16 @@
 							</div>
 							<div class="col-sm-7">
 								<label class="col-sm-3 col-form-label">비밀번호</label> <input
-									class="form-control" name="userPass" type="password" required
+									class="form-control" id="pwd1" name="userPass" type="password" required
 									placeholder="비밀번호">
 							</div>
 							<div class="col-sm-7">
 								<label class="col-sm-3 col-form-label">비밀번호 확인</label> <input
-									class="form-control" name="userPass1" type="password" required
+									class="form-control" id="pwd2" name="userPass1" type="password" required
 									placeholder="비밀번호 재입력">
 							</div>
+							<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다</div>
+							<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다</div>
 							<div class="col-sm-7">
 								<label class="col-sm-3 col-form-label">이름</label> <input
 									class="form-control" name="userName" type="text" required
@@ -139,12 +141,20 @@
 							</div>
 							<div class="col-sm-7">
 								<label class="col-sm-3 col-form-label">이메일</label> <input
-									class="form-control" name="userEmail" type="email" required
+									class="form-control" id="email1" name="userEmail" type="email" required
 									placeholder="email" >
 							</div>
+							
+							<div class="col-sm-7">
+								<label class="col-sm-3 col-form-label">이메일확인</label> <input
+									class="form-control" id="email2" name="userEmail" type="email" required
+									placeholder="email확인" >
+							</div>
+							<div class="alert alert-success" id="alert-success2">이메일이 일치합니다</div>
+							<div class="alert alert-danger" id="alert-danger2">이메일이 일치하지 않습니다</div>
 							<br />
 							<div class="col-sm-6">
-								<input type="submit" class="btn btn-outline-dark" value="회원가입" />
+								<input type="submit" id="submit" class="btn btn-outline-dark" value="회원가입" />
 							</div>
 						</form>
 						<br />
@@ -194,6 +204,53 @@
 			</div>
 		</div>
 	</div>
+	
+	
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#alert-success").hide();
+        $("#alert-danger").hide();
+        $("input").keyup(function(){
+            var pwd1=$("#pwd1").val();
+            var pwd2=$("#pwd2").val();
+            if(pwd1 != "" || pwd2 != ""){
+                if(pwd1 == pwd2){
+                    $("#alert-success").show();
+                    $("#alert-danger").hide();
+                    $("#submit").removeAttr("disabled");
+                }else{
+                    $("#alert-success").hide();
+                    $("#alert-danger").show();
+                    $("#submit").attr("disabled", "disabled");
+                }    
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        $("#alert-success2").hide();
+        $("#alert-danger2").hide();
+        $("input").keyup(function(){
+            var email1=$("#email1").val();
+            var email2=$("#email2").val();
+            if(email1 != "" || email2 != ""){
+                if(email1 == email2){
+                    $("#alert-success2").show();
+                    $("#alert-danger2").hide();
+                    $("#submit").removeAttr("disabled");
+                }else{
+                    $("#alert-success2").hide();
+                    $("#alert-danger2").show();
+                    $("#submit").attr("disabled", "disabled");
+                }    
+            }
+        });
+    });
+</script>
+​
 
 </body>
 </html>

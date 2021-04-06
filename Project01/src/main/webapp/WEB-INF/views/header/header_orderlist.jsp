@@ -51,61 +51,23 @@
 					<th>물품번호</th>
 					<th>물품명</th>
 					<th>물품가격</th>
-					<th>물품수량</th>
-					<th>물품영양</th>
-					<th>물품상세</th>
-					<th>물품추천</th>
-					<th>물품HIT</th>
-					<th>이미지</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<c:forEach var="vo" items="${list}">
 					<tr>
-						<td>${vo.itemNumber}</td>
-						<td>${vo.itemName}</td>
-						<td>${vo.itemPrice}</td>
-						<td>${vo.itemQuantity}</td>
-						<td>${vo.itemNutrition}</td>
-						<td>...</td>
-						<td>${vo.itemRecommend}</td>
-						<td>${vo.itemHit}</td>
-						<td>
-						<c:if test="${vo.base64 ne null}">
-                    		<img src="data:image/png;base64,${vo.base64}" width="50px" height="50px" />
-                    	</c:if>
-	                    	
-                    	<c:if test="${vo.base64 eq null}">
-                    		NO이미지
-                    	</c:if>
-                    	</td>
+						<td>${vo.orderNum}</td>
+						<td>${vo.orderName}</td>
+						<td>${vo.orderPrice}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 		
-		 <div class="page" id="pagination-div"></div>
-
 	<!-- jquery cdn -->		
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<!-- twbspagination cdn -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 	
-	<script>
-		$(function(){
-			    $('#pagination-div').twbsPagination({
-				    totalPages: Number('${totPages}'),
-		            visiblePages: 10,
-		            startPage : Number('${param.page}'),
-		            initiateStartPageClick :false,
-		            onPageClick: function (event, page) {
-		            window.location.href = "${pageContext.request.contextPath}/item/list?txt="+'${param.txt}'+ "&page="+page;
-		            }
-			    });
-			});	
-	</script>
-		
 </body>
 </html>

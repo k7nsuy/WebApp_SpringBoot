@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.entity.ItemList;
+import com.example.entity.Member;
 import com.example.repository.ItemRepository;
+import com.example.repository.MemberRepository;
 import com.example.security.MyMember;
 
 @Controller
@@ -22,21 +24,22 @@ public class NavController {
 	@Autowired
 	ItemRepository itemRepository;
 	
+	@Autowired
+	MemberRepository memberRepository;
+	
 	@RequestMapping(value = "/items")
 	String itemsGET(Model model, Authentication auth) {
 		
 		if(auth != null) {
 			MyMember vo = (MyMember)auth.getPrincipal();
-			
-			vo.getMembernumber();
-			System.out.println(vo.getMembernumber());
+			long memberNum = vo.getMembernumber();
 			
 			Collection<GrantedAuthority> roles = vo.getAuthorities(); 
 			for(GrantedAuthority tmp : roles) {
 				System.out.println(tmp);
-			
+				
 				model.addAttribute("Authority", tmp);
-				model.addAttribute("vo", vo);
+				model.addAttribute("mNum", memberNum);
 			}
 		}
 		

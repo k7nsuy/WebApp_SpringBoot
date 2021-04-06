@@ -58,11 +58,10 @@
 				href="${pageContext.request.contextPath}/header/join">Join</a></span>
 		</security:authorize>
 
-				<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/orederlist">Order
-						List</a></span>
-				<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
+		<span class="main-header_column"><a
+			href="${pageContext.request.contextPath}/header/orederlist">Order
+				List</a></span> <span class="main-header_column"><a
+			href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
 		<security:authorize access="isAuthenticated()">
 			<c:if test="${Authority eq 'USER'}">
 			</c:if>
@@ -100,54 +99,207 @@
 			<div id="page">
 				<div id="content">
 					<div class="post">
-					
+
+						<h2>Update Info</h2>
+						<hr />
+						<form action="${pageContext.request.contextPath}/mypage/update"
+							method="post" enctype="multipart/form-data">
+							<input type="hidden" name="${_csrf.parameterName }"
+								value="${_csrf.token}" />
+
+							<div class="row2" style="margin-bottom: 5px">
+							
+							<input type="hidden" name="memberNum" value="${vo.memberNum}" />
+
+								<label for="labelId" class="col-sm-3 col-form-label">아이디</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" name="userId"
+										value="${vo.userId}" readonly /><br />
+								</div>
+
+								<label for="labelname" class="col-sm-3 col-form-label">*비밀번호</label>
+								<div class="col-sm-9">
+									<input type="password" id="pwd1" class="form-control"
+										name="userPass" autofocus /><br />
+								</div>
+
+								<label for="labelname" class="col-sm-3 col-form-label">*비밀번호확인</label>
+								<div class="col-sm-9">
+									<input type="password" id="pwd2" class="form-control"
+										name="userPass1" autofocus /><br />
+								</div>
+
+								<div class="alert alert-success" id="alert-success">비밀번호가
+									일치합니다</div>
+								<div class="alert alert-danger" id="alert-danger">비밀번호가
+									일치하지 않습니다</div>
+
+								<label for="labelphone" class="col-sm-3 col-form-label">*이름</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" name="userName"
+										value="${vo.userName}" autofocus /><br />
+								</div>
+
+								<label for="labelpw1" class="col-sm-3 col-form-label">*주소
+								</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" name="userAdress"
+										value="${vo.userAdress}" autofocus /><br />
+								</div>
+
+								<label for="labelpw1" class="col-sm-3 col-form-label">*전화번호
+								</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" name="userPhone"
+										value="${vo.userPhone}" autofocus /><br />
+								</div>
+
+								<label for="labelpw1" class="col-sm-3 col-form-label">*Email
+								</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" name="userEmail"
+										value="${vo.userEmail}" id="email1" autofocus /><br />
+								</div>
+
+								<label for="labelpw1" class="col-sm-3 col-form-label">*Email확인
+								</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" name="userEmail"
+										value="${vo.userEmail}" id="email2" autofocus /><br />
+								</div>
+								<div class="alert alert-success" id="alert-success2">이메일이
+									일치합니다</div>
+								<div class="alert alert-danger" id="alert-danger2">이메일이
+									일치하지 않습니다</div>
+
+							</div>
+							<div class="row">
+								<div class="col-sm-3"></div>
+								<div class="col-sm-9">
+
+									<div class="form">
+										<input type="submit" id="submit"
+											class="btn btn-success margin" value="수정완료" />
+						</form>
+						<form action="${pageContext.request.contextPath}/mypage/delete"
+							method="post">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+							<input type="hidden" name="userId" value="${vo.userId }" />
+							<input type="submit" class="btn btn-danger margin" value="아이디삭제" />
+						</form>
+
 					</div>
 					<!-- post -->
 				</div>
-					<!-- content -->
-			</div>
-			<!-- page -->				
-				
-				<div style="clear: both;">&nbsp;</div>
-				
-			</div>
-			<!-- end #content -->
-			<div id="sidebar">
-					<ul>
-						<li>
-							<div id="search">
-								<form method="get" action="#">
-									<div>
-										<input type="text" name="s" id="search-text" value="" /> <input
-											type="submit" id="search-submit" value="GO" />
-									</div>
-								</form>
-							</div>
-							<div style="clear: both;">&nbsp;</div>
-						</li>
-						<li>
-							<h2>My Page</h2>
-							<ul>
-								<li><a href="${pageContext.request.contextPath}/mypage/update">Update Info</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/orderlist">Order List</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/ship">Shipping Info</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/myreview">My Review</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/myquestion">My Question</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			<!-- end #sidebar -->
-			<div style="clear: both;">&nbsp;</div>
-			<!-- end #page -->
-			<div id="footer">
-				<p>
-					&copy; MostBody. All rights reserved. Design by <a
-						href="${pageContext.request.contextPath}/home" rel="nofollow">MostBody</a>.
-				</p>
+				<!-- content -->
 			</div>
 		</div>
+		<!-- page -->
+
+		<div style="clear: both;">
+			&nbsp;
+		</div>
 	</div>
+
+	<!-- end #content -->
+	<div id="sidebar">
+		<ul>
+			<li>
+				<div id="search">
+					<form method="get" action="#">
+						<div>
+							<input type="text" name="s" id="search-text" value="" /> <input
+								type="submit" id="search-submit" value="GO" />
+						</div>
+					</form>
+				</div>
+				<div style="clear: both;">
+					&nbsp;
+				</div>
+			</li>
+			<li>
+				<h2>My Page</h2>
+				<ul>
+					<li><a href="${pageContext.request.contextPath}/mypage/update">Update
+							Info</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/mypage/orderlist">Order
+							List</a></li>
+					<li><a href="${pageContext.request.contextPath}/mypage/ship">Shipping
+							Info</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/mypage/myreview">My
+							Review</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/mypage/myquestion">My
+							Question</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end #sidebar -->
+	<div style="clear: both;">
+		&nbsp;
+	</div>
+	<!-- end #page -->
+	<div id="footer">
+		<p>
+			&copy;
+			MostBody. All rights reserved. Design by <a
+				href="${pageContext.request.contextPath}/home" rel="nofollow">MostBody</a>.
+		</p>
+	</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#alert-success").hide();
+			$("#alert-danger").hide();
+			$("input").keyup(function() {
+				var pwd1 = $("#pwd1").val();
+				var pwd2 = $("#pwd2").val();
+				if (pwd1 != "" || pwd2 != "") {
+					if (pwd1 == pwd2) {
+						$("#alert-success").show();
+						$("#alert-danger").hide();
+						$("#submit").removeAttr("disabled");
+					} else {
+						$("#alert-success").hide();
+						$("#alert-danger").show();
+						$("#submit").attr("disabled", "disabled");
+					}
+				} else if (pwd1 == "" || pwd2 == "") {
+					$("#alert-success").hide();
+					$("#alert-danger").show();
+					$("#submit").attr("disabled", "disabled");
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$("#alert-success2").hide();
+			$("#alert-danger2").hide();
+			$("input").keyup(function() {
+				var email1 = $("#email1").val();
+				var email2 = $("#email2").val();
+				if (email1 != "" || email2 != "") {
+					if (email1 == email2) {
+						$("#alert-success2").show();
+						$("#alert-danger2").hide();
+						$("#submit").removeAttr("disabled");
+					} else {
+						$("#alert-success2").hide();
+						$("#alert-danger2").show();
+						$("#submit").attr("disabled", "disabled");
+					}
+				}
+			});
+		});
+	</script>
+
 
 </body>
 </html>

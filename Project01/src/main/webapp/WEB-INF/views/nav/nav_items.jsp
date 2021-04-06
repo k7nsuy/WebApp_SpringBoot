@@ -127,8 +127,8 @@
 				        <form action="${pageContext.request.contextPath}/header/orderlist" method="post">
 				        <input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
-					<input type="hidden" name="Item" value="${tmp}" />
-					<input type="hidden" name="Mnum" value="${Mnum}" /> 
+					<input type="hidden" name="itemList" value="${list}" />
+					<input type="hidden" name="mNum" value="${mNum}" /> 
 				        <input type="submit" class="w-100 btn btn-lg btn-outline-primary" value="장바구니" />
 				        </form>
 				        </div>

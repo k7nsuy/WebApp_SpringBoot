@@ -78,7 +78,6 @@ public class MemberController {
 			String id = user.getUsername();
 			// mapper에서 selectMemberOne(id)
 			MemberVO vo = memberMapper.selectMemberOne(id);
-
 			//jsp로 전달
 			model.addAttribute("vo",vo);
 			//<input type="text" name="userid" value="${vo.userid}" />

@@ -11,6 +11,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -78,6 +79,9 @@ public class HeaderController {
 	@GetMapping("mypage")
 	public String mypageGET() {
 		return "header/header_mypage";
+		
+	
+		
 	}
 	
 	@GetMapping("orderlist")
@@ -86,20 +90,24 @@ public class HeaderController {
 	}
 	
 	@PostMapping("orderlist")
-	public String orderlistPOST(@ModelAttribute ItemList itemvo,
-			@RequestParam(value = "Mnum") Long no,
+	public String orderlistPOST(@ModelAttribute ItemList vo,
+			@RequestParam(value = "mNum") long no,
 			Model model) {
 		
 		OrderList list = new OrderList();
-		list.setOrderNum(itemvo.getItemNumber());
-		list.setOrderName(itemvo.getItemName());
-		list.setOrderPrice(itemvo.getItemPrice());
+		list.setOrderNum(vo.getItemNumber());
+		list.setOrderName(vo.getItemName());
+		list.setOrderPrice(vo.getItemPrice());
 		
-		Member member = memberRepository.getOne(no);
-		list.setMember(member);
+		System.out.println(list);
+		
+		Member mn = memberRepository.getOne(no);
+		list.setMember(mn);
+		
+		System.out.println(mn);
 		
 		model.addAttribute("list", list);
 		
-		return "redirect:/nav/items";
+		return "redirect:/header/orderlist";
 	}
 }

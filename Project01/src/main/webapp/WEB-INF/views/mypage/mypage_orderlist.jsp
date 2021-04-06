@@ -58,11 +58,10 @@
 				href="${pageContext.request.contextPath}/header/join">Join</a></span>
 		</security:authorize>
 
-				<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/orederlist">Order
-						List</a></span>
-				<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
+		<span class="main-header_column"><a
+			href="${pageContext.request.contextPath}/header/orederlist">Order
+				List</a></span> <span class="main-header_column"><a
+			href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
 		<security:authorize access="isAuthenticated()">
 			<c:if test="${Authority eq 'USER'}">
 			</c:if>
@@ -99,53 +98,66 @@
 			<!-- end #header -->
 			<div id="page">
 				<div id="content">
-					<div class="post">
-					
-					</div>
+					<div class="post"></div>
 					<!-- post -->
 				</div>
-					<!-- content -->
+				<!-- content -->
 			</div>
-			<!-- page -->				
-				
-				<div style="clear: both;">&nbsp;</div>
-				
-			</div>
-			<!-- end #content -->
-			<div id="sidebar">
-					<ul>
-						<li>
-							<div id="search">
-								<form method="get" action="#">
-									<div>
-										<input type="text" name="s" id="search-text" value="" /> <input
-											type="submit" id="search-submit" value="GO" />
-									</div>
-								</form>
+			<!-- page -->
+
+		</div>
+		<div style="clear: both;">
+			&nbsp;
+		</div>
+
+		<!-- end #content -->
+		<div id="sidebar">
+			<ul>
+				<li>
+					<div id="search">
+						<form method="get" action="#">
+							<div>
+								<input type="text" name="s" id="search-text" value="" /> <input
+									type="submit" id="search-submit" value="GO" />
 							</div>
-							<div style="clear: both;">&nbsp;</div>
-						</li>
-						<li>
-							<h2>My Page</h2>
-							<ul>
-								<li><a href="${pageContext.request.contextPath}/mypage/update">Update Info</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/orderlist">Order List</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/ship">Shipping Info</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/myreview">My Review</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/myquestion">My Question</a></li>
-							</ul>
-						</li>
+						</form>
+					</div>
+					<div style="clear: both;">
+						&nbsp;
+					</div>
+				</li>
+				<li>
+					<h2>My Page</h2>
+					<ul>
+						<li><a
+							href="${pageContext.request.contextPath}/mypage/update">Update
+								Info</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/mypage/orderlist">Order
+								List</a></li>
+						<li><a href="${pageContext.request.contextPath}/mypage/ship">Shipping
+								Info</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/mypage/myreview">My
+								Review</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/mypage/myquestion">My
+								Question</a></li>
 					</ul>
-				</div>
-			<!-- end #sidebar -->
-			<div style="clear: both;">&nbsp;</div>
-			<!-- end #page -->
-			<div id="footer">
-				<p>
-					&copy; MostBody. All rights reserved. Design by <a
-						href="${pageContext.request.contextPath}/home" rel="nofollow">MostBody</a>.
-				</p>
-			</div>
+				</li>
+			</ul>
+		</div>
+		<!-- end #sidebar -->
+		<div style="clear: both;">
+			&nbsp;
+		</div>
+		<!-- end #page -->
+		<div id="footer">
+			<p>
+				&copy;
+				MostBody. All rights reserved. Design by <a
+					href="${pageContext.request.contextPath}/home" rel="nofollow">MostBody</a>.
+			</p>
 		</div>
 	</div>
 
