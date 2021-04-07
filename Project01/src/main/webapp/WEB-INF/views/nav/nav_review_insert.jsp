@@ -101,70 +101,33 @@
 				<div id="content">
 					<div class="post">
 					
-					<div style="padding:30px 0 0 0" class="container">
-		<h2>Review</h2>
-		<hr />
-		<div class="search">
-			<div>
-				<a href="${pageContext.request.contextPath}/nav/reviewinsert" class="btn btn-outline-success">리뷰등록</a>
-			</div>
-		</div>
-
-		<table class="table2" style="border:1px solid #cccccc">
-			<thead>
-				<tr>
-					<th>리뷰번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>조회수</th>
-					<th>등록날짜</th>
-					<th>리뷰사진</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<c:forEach var="vo" items="${review}">
-					<tr>
-						<td>${vo.reviewNumber}</td>
-						<td><a href="${pageContext.request.contextPath}/nav/reviewcontent?no=${vo.reviewNumber}">${vo.reviewTitle}</a></td>
-						<td></td>
-						<td>${vo.reviewHit}</td>
-						<td>${vo.reviewDate}</td>
-						<td>
-						<c:if test="${vo.base64 ne null}">
-                    		<img src="data:image/png;base64,${vo.base64}" width="20px" height="20px" />
-                    	</c:if>
-	                    	
-                    	<c:if test="${vo.base64 eq null}">
-                    		NO이미지
-                    	</c:if>
-                    	</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
-		
-		 <div class="page" id="pagination-div"></div>
-
-	<!-- jquery cdn -->		
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<!-- twbspagination cdn -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-	
-	<script>
-		$(function(){
-			    $('#pagination-div').twbsPagination({
-				    totalPages: Number('${totPages}'),
-		            visiblePages: 10,
-		            startPage : Number('${param.page}'),
-		            initiateStartPageClick :false,
-		            onPageClick: function (event, page) {
-		            window.location.href = "${pageContext.request.contextPath}/nav/review?txt="+'${param.txt}'+ "&page="+page;
-		            }
-			    });
-			});	
-	</script>
+	        <form action="${pageContext.request.contextPath}/nav/reviewinsert"
+					method="post" enctype="multipart/form-data">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	        	<h2>Review 등록</h2>
+	        		<div class="col-sm-8">
+		        		<label class="col-sm-3 col-form-label">제목</label>
+		        		<input class="form-control" name="reviewTitle" type="text" 
+		        		required placeholder="제목">
+	        		</div>
+	        		<div class="col-sm-8">
+		        		<label class="col-sm-3 col-form-label">작성자</label>
+		        		<input class="form-control" name="" type="text" 
+		        		required readonly/>
+	        		</div>
+	        		<div class="col-sm-8">
+		        		<label class="col-sm-3 col-form-label">내용</label>
+		        	<textarea rows="6" class="form-control" name="content"></textarea><br />
+	        		</div>
+	        		<div class="col-sm-8">
+		        		<label class="col-sm-3 col-form-label">사진</label>
+		        		<input class="form-control" name="img" type="file" />
+	        		</div>
+						<div class="col-sm-7">
+							<input type="submit" class="btn btn-outline-success" style="margin-right: 10px;" value="리뷰등록" />
+							<a href="${pageContext.request.contextPath}/nav/review" class="btn btn-outline-primary">리뷰</a>
+						</div>
+	        	</form>
 					
 					</div>
 					<!-- post -->

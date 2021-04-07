@@ -18,7 +18,7 @@ public class Authority {
 	
 	@Id
 	@Column(name = "GroupCode")
-	private long groupCode = 1L;
+	private long groupCode = 2L;
 	
 	@Column(name = "memberAuthority")
 	private String memberAuthority;

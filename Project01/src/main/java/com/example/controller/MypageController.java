@@ -57,7 +57,7 @@ public class MypageController {
 		String changePw = bcpe.encode(vo.getUserPass());
 		vo.setUserPass(changePw);
 		
-		vo.setAuthority( new Authority() ); 
+		vo.setAuth( new Authority() ); 
 		
 		memberRepository.save(vo);
 		

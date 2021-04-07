@@ -101,6 +101,36 @@
 				<div id="content">
 					<div class="post">
 					
+					<div style="padding:30px 0 0 0" class="container">
+		
+		<h2>Announcement</h2>
+		<hr />
+
+		<table class="table2" style="border:1px solid #cccccc">
+			<thead>
+				<tr>
+					<th>글번호</th>
+					<th>글제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
+					<th>등록날짜</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<c:forEach var="vo" items="${list}">
+					<tr>
+						<td>${vo.no}</td>
+						<td><a href="${pageContext.request.contextPath}/nav/noticontent?no=${vo.no}">${vo.title}</a></td>
+						<td>${vo.writer}</td>
+						<td>${vo.hit}</td>
+						<td>${vo.regdate}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+					
 					</div>
 					<!-- post -->
 				</div>

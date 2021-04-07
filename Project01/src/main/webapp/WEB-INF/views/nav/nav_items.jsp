@@ -115,7 +115,7 @@
 	    				</c:if>
 	    			
 	    				<c:if test="${tmp.base64 ne null}">
-	    					<img src="data:image/jpeg;base64,${tmp.base64}" width="150px" height="200px"/>
+	    					<img src="data:image/jpeg;base64,${tmp.base64}" width="150px" height="150px"/>
 	    				</c:if>
 	    			
 				        <h4 class="card-title pricing-card-title"><small class="text-muted">$ </small>${tmp.itemPrice}</h4>

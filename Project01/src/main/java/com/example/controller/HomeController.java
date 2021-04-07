@@ -27,7 +27,7 @@ public class HomeController {
 	@Autowired
 	AuthorityRepository authRepository;
 	
-	@GetMapping("home")
+	@RequestMapping(value = {"home","/"})
 	public String homeGET(Model model, Authentication auth) {
 
 		if(auth != null) {

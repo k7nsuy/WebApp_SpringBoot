@@ -52,23 +52,11 @@ public class Member {
 	@OneToMany(mappedBy = "member")
 	private List<OrderList> orderList = new ArrayList<>();
 	
-	public Authority getAuthority() {
-		return auth;
-	}
-
-	public List<OrderList> getOrderList() {
-		return orderList;
-	}
-
-	public void setOrderList(List<OrderList> orderList) {
-		this.orderList = orderList;
-	}
-
-
-
-	public void setAuthority(Authority auth) {
-		this.auth = auth;
-	}
+	@OneToMany(mappedBy = "member2")
+	private List<Review> review = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "member3")
+	private List<Question> question = new ArrayList<>();
 
 	public long getMemberNum() {
 		return memberNum;
@@ -126,8 +114,40 @@ public class Member {
 		this.userEmail = userEmail;
 	}
 
+	public Authority getAuth() {
+		return auth;
+	}
+
+	public void setAuth(Authority auth) {
+		this.auth = auth;
+	}
+
+	public List<OrderList> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<OrderList> orderList) {
+		this.orderList = orderList;
+	}
+
+	public List<Review> getReview() {
+		return review;
+	}
+
+	public void setReview(List<Review> review) {
+		this.review = review;
+	}
+
+	public List<Question> getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(List<Question> question) {
+		this.question = question;
+	}
+
 	public Member(long memberNum, String userId, String userPass, String userName, String userAdress, String userPhone,
-			String userEmail) {
+			String userEmail, Authority auth, List<OrderList> orderList, List<Review> review, List<Question> question) {
 		super();
 		this.memberNum = memberNum;
 		this.userId = userId;
@@ -136,17 +156,18 @@ public class Member {
 		this.userAdress = userAdress;
 		this.userPhone = userPhone;
 		this.userEmail = userEmail;
+		this.auth = auth;
+		this.orderList = orderList;
+		this.review = review;
+		this.question = question;
 	}
 	
 	public Member() {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "Member [memberNum=" + memberNum + ", userId=" + userId + ", userPass=" + userPass + ", userName="
-				+ userName + ", userAdress=" + userAdress + ", userPhone=" + userPhone + ", userEmail=" + userEmail
-				+ "]";
-	}
+	
+	
+	
 	
 }

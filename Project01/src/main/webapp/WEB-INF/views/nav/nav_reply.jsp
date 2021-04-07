@@ -101,83 +101,31 @@
 				<div id="content">
 					<div class="post">
 					
-					<div style="padding:30px 0 0 0" class="container">
-		<h2>Review</h2>
-		<hr />
-		<div class="search">
-			<div>
-				<a href="${pageContext.request.contextPath}/nav/reviewinsert" class="btn btn-outline-success">리뷰등록</a>
-			</div>
+					<div class="container">
+					<h2>답글쓰기</h2>
+		<div style="width:450px; padding:30px; border:1px solid #cccccc">
+			<form action="${pageContext.request.contextPath}/nav/navreply" method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				글번호 : ${vo.no} <br />
+				내용 : <textarea rows="5" name="repcontent" /></textarea><br />
+				<input type="hidden" name="no" value="${vo.no}" />
+				<input type="submit" value="답글쓰기" />
+			</form>
 		</div>
-
-		<table class="table2" style="border:1px solid #cccccc">
-			<thead>
-				<tr>
-					<th>리뷰번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>조회수</th>
-					<th>등록날짜</th>
-					<th>리뷰사진</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<c:forEach var="vo" items="${review}">
-					<tr>
-						<td>${vo.reviewNumber}</td>
-						<td><a href="${pageContext.request.contextPath}/nav/reviewcontent?no=${vo.reviewNumber}">${vo.reviewTitle}</a></td>
-						<td></td>
-						<td>${vo.reviewHit}</td>
-						<td>${vo.reviewDate}</td>
-						<td>
-						<c:if test="${vo.base64 ne null}">
-                    		<img src="data:image/png;base64,${vo.base64}" width="20px" height="20px" />
-                    	</c:if>
-	                    	
-                    	<c:if test="${vo.base64 eq null}">
-                    		NO이미지
-                    	</c:if>
-                    	</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
 	</div>
-		
-		 <div class="page" id="pagination-div"></div>
-
-	<!-- jquery cdn -->		
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<!-- twbspagination cdn -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-	
-	<script>
-		$(function(){
-			    $('#pagination-div').twbsPagination({
-				    totalPages: Number('${totPages}'),
-		            visiblePages: 10,
-		            startPage : Number('${param.page}'),
-		            initiateStartPageClick :false,
-		            onPageClick: function (event, page) {
-		            window.location.href = "${pageContext.request.contextPath}/nav/review?txt="+'${param.txt}'+ "&page="+page;
-		            }
-			    });
-			});	
-	</script>
 					
 					</div>
 					<!-- post -->
 				</div>
-					<!-- content -->
+				<!-- content -->
 			</div>
-			<!-- page -->				
-				
-				<div style="clear: both;">&nbsp;</div>
-				
-			</div>
-			<!-- end #content -->
-			<!-- <div id="sidebar">
+			<!-- page -->
+
+			<div style="clear: both;">&nbsp;</div>
+
+		</div>
+		<!-- end #content -->
+		<!-- <div id="sidebar">
 					<ul>
 						<li>
 							<div id="search">
@@ -205,21 +153,17 @@
 						</li>
 					</ul>
 				</div> -->
-			<!-- end #sidebar -->
-			<div style="clear: both;">&nbsp;</div>
-			<!-- end #page -->
-			<div id="footer">
-				<p>
-					&copy; MostBody. All rights reserved. Design by <a
-						href="${pageContext.request.contextPath}/home" rel="nofollow">MostBody</a>.
-				</p>
-			</div>
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+		<!-- end #page -->
+		<div id="footer">
+			<p>
+				&copy; MostBody. All rights reserved. Design by <a
+					href="${pageContext.request.contextPath}/home" rel="nofollow">MostBody</a>.
+			</p>
 		</div>
+	</div>
 	</div>
 
 </body>
 </html>
-
-
-
-

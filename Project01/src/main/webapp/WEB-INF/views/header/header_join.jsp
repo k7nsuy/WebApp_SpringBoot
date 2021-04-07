@@ -45,12 +45,9 @@
 				Welcome <security:authentication property="name" /> ! <br />
 			</span>
 
-			<form action="${pageContext.request.contextPath}/header/logout"
-				method="post">
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
-				<input class="main-header_column3 btn btn-outline-light"
-					type="submit" value="Log out" />
+			<form action="${pageContext.request.contextPath}/header/logout" method="post">
+				<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
+				<input class="main-header_column3 btn btn-outline-light" type="submit" value="Log out" />
 			</form>
 		</security:authorize>
 		<security:authorize access="!isAuthenticated()">
@@ -102,7 +99,7 @@
 					<div class="post">
 
 						<form action="${pageContext.request.contextPath}/header/join"
-							method="post" enctype="multipart/form-data">
+							method="post" >
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
 							<h2 class="col-sm-8">JOIN</h2>

@@ -164,7 +164,7 @@
 								<label for="labelpw1" class="col-sm-3 col-form-label">*Email확인
 								</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control" name="userEmail"
+									<input type="text" class="form-control" name="userEmail1"
 										value="${vo.userEmail}" id="email2" autofocus /><br />
 								</div>
 								<div class="alert alert-success" id="alert-success2">이메일이

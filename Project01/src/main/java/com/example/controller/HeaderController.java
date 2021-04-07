@@ -65,7 +65,7 @@ public class HeaderController {
 		String changePw = bcpe.encode(vo.getUserPass());
 		vo.setUserPass(changePw);
 		
-		vo.setAuthority( new Authority() ); 
+		vo.setAuth( new Authority() ); 
 		
 		memberRepository.save(vo);
 		return "redirect:/home";
@@ -90,23 +90,10 @@ public class HeaderController {
 	}
 	
 	@PostMapping("orderlist")
-	public String orderlistPOST(@ModelAttribute ItemList vo,
-			@RequestParam(value = "mNum") long no,
+	public String orderlistPOST(@ModelAttribute ItemList list,
+			@RequestParam(value = "mNum") long memno,
 			Model model) {
 		
-		OrderList list = new OrderList();
-		list.setOrderNum(vo.getItemNumber());
-		list.setOrderName(vo.getItemName());
-		list.setOrderPrice(vo.getItemPrice());
-		
-		System.out.println(list);
-		
-		Member mn = memberRepository.getOne(no);
-		list.setMember(mn);
-		
-		System.out.println(mn);
-		
-		model.addAttribute("list", list);
 		
 		return "redirect:/header/orderlist";
 	}

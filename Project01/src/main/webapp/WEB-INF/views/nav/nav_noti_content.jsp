@@ -100,73 +100,38 @@
 			<div id="page">
 				<div id="content">
 					<div class="post">
-					
-					<div style="padding:30px 0 0 0" class="container">
-		<h2>Review</h2>
+	<div class="container">
+	<div style="width:450px; padding:30px; border:1px solid #cccccc">
+	<h2>공지사항상세보기</h2>
+	<hr />
+		글번호 : ${vo.no}<br />
+		글제목 : ${vo.title}<br />
+		작성자 : ${vo.writer}<br />
+		조회수 : ${vo.hit}<br />
+		내용 : ${vo.content}<br />
+		등록일 : ${vo.regdate}<br />
 		<hr />
-		<div class="search">
-			<div>
-				<a href="${pageContext.request.contextPath}/nav/reviewinsert" class="btn btn-outline-success">리뷰등록</a>
-			</div>
-		</div>
-
-		<table class="table2" style="border:1px solid #cccccc">
-			<thead>
-				<tr>
-					<th>리뷰번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>조회수</th>
-					<th>등록날짜</th>
-					<th>리뷰사진</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<c:forEach var="vo" items="${review}">
-					<tr>
-						<td>${vo.reviewNumber}</td>
-						<td><a href="${pageContext.request.contextPath}/nav/reviewcontent?no=${vo.reviewNumber}">${vo.reviewTitle}</a></td>
-						<td></td>
-						<td>${vo.reviewHit}</td>
-						<td>${vo.reviewDate}</td>
-						<td>
-						<c:if test="${vo.base64 ne null}">
-                    		<img src="data:image/png;base64,${vo.base64}" width="20px" height="20px" />
-                    	</c:if>
-	                    	
-                    	<c:if test="${vo.base64 eq null}">
-                    		NO이미지
-                    	</c:if>
-                    	</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+		<hr />
+		<hr />
 		
-		 <div class="page" id="pagination-div"></div>
+			<h2>답글</h2>
+			<hr />
+			<c:forEach var="obj" items="${list}">
+				<h4>답글번호 : ${obj.repno} </h4>
+				답글내용 : ${obj.repcontent} <br />
+				답글등록일 : ${obj.repregdate}
+				<hr />
+			</c:forEach> 
+		<hr />
+		<div class="line">
+		<a href = "${pageContext.request.contextPath}/nav/noti" class = "btn btn-primary">공지사항</a>
+		
+		<a href = "${pageContext.request.contextPath}/nav/navreply?no=${vo.no}" class = "btn btn-success">답글쓰기</a>
 
-	<!-- jquery cdn -->		
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<!-- twbspagination cdn -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-	
-	<script>
-		$(function(){
-			    $('#pagination-div').twbsPagination({
-				    totalPages: Number('${totPages}'),
-		            visiblePages: 10,
-		            startPage : Number('${param.page}'),
-		            initiateStartPageClick :false,
-		            onPageClick: function (event, page) {
-		            window.location.href = "${pageContext.request.contextPath}/nav/review?txt="+'${param.txt}'+ "&page="+page;
-		            }
-			    });
-			});	
-	</script>
-					
-					</div>
+		</div>
+	</div>
+	</div>
+</div>
 					<!-- post -->
 				</div>
 					<!-- content -->
@@ -219,7 +184,3 @@
 
 </body>
 </html>
-
-
-
-

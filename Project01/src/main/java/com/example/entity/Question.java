@@ -34,15 +34,15 @@ public class Question {
 	@Column(name = "questionContent")
 	private String questionContent;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@CreationTimestamp
 	@Column(name = "questionDate")
 	private Date questionDate;
 	
 	@ManyToOne
 	@JoinColumn(name = "memberNum")
-	private Member member;
-	
+	private Member member3;
+
 	public long getQuestionNumber() {
 		return questionNumber;
 	}
@@ -75,32 +75,32 @@ public class Question {
 		this.questionDate = questionDate;
 	}
 
-	public Member getMember() {
-		return member;
+	public Member getMember3() {
+		return member3;
 	}
 
-	public void setMember(Member member) {
-		this.member = member;
+	public void setMember3(Member member3) {
+		this.member3 = member3;
 	}
 
 	@Override
 	public String toString() {
 		return "Question [questionNumber=" + questionNumber + ", questionTitle=" + questionTitle + ", questionContent="
-				+ questionContent + ", questionDate=" + questionDate + ", member=" + member + "]";
+				+ questionContent + ", questionDate=" + questionDate + ", member3=" + member3 + "]";
 	}
 
 	public Question(long questionNumber, String questionTitle, String questionContent, Date questionDate,
-			Member member) {
+			Member member3) {
 		super();
 		this.questionNumber = questionNumber;
 		this.questionTitle = questionTitle;
 		this.questionContent = questionContent;
 		this.questionDate = questionDate;
-		this.member = member;
+		this.member3 = member3;
 	}
 	
 	public Question() {
 		super();
 	}
-
+	
 }

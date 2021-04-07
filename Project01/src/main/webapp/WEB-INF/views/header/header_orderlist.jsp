@@ -55,11 +55,11 @@
 			</thead>
 
 			<tbody>
-				<c:forEach var="vo" items="${list}">
+				<c:forEach var="vo" items="${list2}">
 					<tr>
-						<td>${vo.orderNum}</td>
-						<td>${vo.orderName}</td>
-						<td>${vo.orderPrice}</td>
+						<td>${vo.itemNumber}</td>
+						<td>${vo.itemName}</td>
+						<td>${vo.itemPrice}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

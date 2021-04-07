@@ -19,8 +19,9 @@
 	<div class="container">
 		<div style="width:600px; padding:30px; border:1px solid #cccccc">
 		<h3>게시판등록</h3>
-			<form action="${pageContext.request.contextPath}/board/insert" method="post">
-			
+			<form action="${pageContext.request.contextPath}/noti/insert" method="post">
+			<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
 				제목 : <input type="text" name="title" /><br />
 				내용 : <textarea rows="6" name="content" id="summernote" /></textarea><br />
 				작성자 : <input type="text" name="writer" /><br />

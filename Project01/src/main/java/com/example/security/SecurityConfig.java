@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		//로그인 설정
 		//화면은 만들디만 실제 처리는 security에서 설정
 		.formLogin()
-		.loginPage("/login") //127.0.0.1:9090/ROOT/login
+		.loginPage("/header/login") //127.0.0.1:9090/ROOT/login
 		.loginProcessingUrl("/loginProcess") //<form action="loginProcess" />
 		.usernameParameter("userId") //<input type="text" name="username" />
 		.passwordParameter("userPass") //<input type"password" name="password />

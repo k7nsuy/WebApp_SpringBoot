@@ -9,6 +9,7 @@
 <body>
 	<a href="${pageContext.request.contextPath}/member/manage">회원관리</a>
 	<a href="${pageContext.request.contextPath}/item/manage">상품관리</a>
+	<a href="${pageContext.request.contextPath}/noti/manage">공지사항관리</a>
 	<a href="${pageContext.request.contextPath}/admin/orderlist">고객주문조회</a>
 </body>
 </html>

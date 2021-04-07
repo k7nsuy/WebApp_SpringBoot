@@ -38,9 +38,9 @@ public class Review {
 	private String reviewContent;
 	
 	@Column(name = "reviewHit")
-	private String reviewHit;
+	private Long reviewHit = 1L;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@CreationTimestamp
 	@Column(name = "reviewDate")
 	private Date reviewDate;
@@ -57,31 +57,7 @@ public class Review {
 	
 	@ManyToOne
 	@JoinColumn(name = "memberNum")
-	private Member member;
-
-	
-	
-	public Review(long reviewNumber, String reviewTitle, String reviewContent, String reviewHit, Date reviewDate,
-			byte[] reviewImage, long reviewRating, String base64, Member member) {
-		super();
-		this.reviewNumber = reviewNumber;
-		this.reviewTitle = reviewTitle;
-		this.reviewContent = reviewContent;
-		this.reviewHit = reviewHit;
-		this.reviewDate = reviewDate;
-		this.reviewImage = reviewImage;
-		this.reviewRating = reviewRating;
-		this.base64 = base64;
-		this.member = member;
-	}
-
-	public long getReviewRating() {
-		return reviewRating;
-	}
-
-	public void setReviewRating(long reviewRating) {
-		this.reviewRating = reviewRating;
-	}
+	private Member member2;
 
 	public long getReviewNumber() {
 		return reviewNumber;
@@ -107,11 +83,11 @@ public class Review {
 		this.reviewContent = reviewContent;
 	}
 
-	public String getReviewHit() {
+	public Long getReviewHit() {
 		return reviewHit;
 	}
 
-	public void setReviewHit(String reviewHit) {
+	public void setReviewHit(Long reviewHit) {
 		this.reviewHit = reviewHit;
 	}
 
@@ -131,6 +107,14 @@ public class Review {
 		this.reviewImage = reviewImage;
 	}
 
+	public long getReviewRating() {
+		return reviewRating;
+	}
+
+	public void setReviewRating(long reviewRating) {
+		this.reviewRating = reviewRating;
+	}
+
 	public String getBase64() {
 		return base64;
 	}
@@ -139,24 +123,24 @@ public class Review {
 		this.base64 = base64;
 	}
 
-	public Member getMember() {
-		return member;
+	public Member getMember2() {
+		return member2;
 	}
 
-	public void setMember(Member member) {
-		this.member = member;
+	public void setMember2(Member member2) {
+		this.member2 = member2;
 	}
 
 	@Override
 	public String toString() {
 		return "Review [reviewNumber=" + reviewNumber + ", reviewTitle=" + reviewTitle + ", reviewContent="
 				+ reviewContent + ", reviewHit=" + reviewHit + ", reviewDate=" + reviewDate + ", reviewImage="
-				+ Arrays.toString(reviewImage) + ", reviewRating=" + reviewRating + ", base64=" + base64 + ", member="
-				+ member + "]";
+				+ Arrays.toString(reviewImage) + ", reviewRating=" + reviewRating + ", base64=" + base64 + ", member2="
+				+ member2 + "]";
 	}
 
-	public Review(long reviewNumber, String reviewTitle, String reviewContent, String reviewHit, Date reviewDate,
-			byte[] reviewImage, String base64, Member member) {
+	public Review(long reviewNumber, String reviewTitle, String reviewContent, Long reviewHit, Date reviewDate,
+			byte[] reviewImage, long reviewRating, String base64, Member member2) {
 		super();
 		this.reviewNumber = reviewNumber;
 		this.reviewTitle = reviewTitle;
@@ -164,10 +148,11 @@ public class Review {
 		this.reviewHit = reviewHit;
 		this.reviewDate = reviewDate;
 		this.reviewImage = reviewImage;
+		this.reviewRating = reviewRating;
 		this.base64 = base64;
-		this.member = member;
+		this.member2 = member2;
 	}
-	
+
 	public Review() {
 		super();
 	}

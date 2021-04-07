@@ -28,9 +28,13 @@ public class MyMemberDetailService implements UserDetailsService{
 		System.out.println(userId);
 		Member vo = memberRepository.findByUserId(userId);
 		
+		System.out.println("AAA");
 		System.out.println(vo.toString());
+		System.out.println("BBB");
+		
+		
 		//가져온 권한정보를 문자열 배열로 만들기
-		String[] strRoles = {vo.getAuthority().getMember()};
+		String[] strRoles = {vo.getAuth().getMember()};
 		// import org.springframework.security.core.userdetails.User;
 				// String 배열을 Collection<GrantedAuthority>타입으로 바꾸기
 		Collection<GrantedAuthority> roles

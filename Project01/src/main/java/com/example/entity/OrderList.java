@@ -4,29 +4,34 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.example.security.MyMember;
 
 @Entity
 @Table(name = "orderList")
+@SequenceGenerator(name = "SEQ",
+sequenceName = "SEQ_ORDER_NUMBER",
+allocationSize = 1,
+initialValue = 1)
 public class OrderList {
 	
 	@Id
+	@GeneratedValue(generator = "SEQ",strategy = GenerationType.SEQUENCE)
 	@Column(name = "orderNum")
 	private Long orderNum;
-	
-	@Column(name = "orderName")
-	private String orderName;
-	
-	@Column(name = "orderPrice")
-	private Long orderPrice;
 	
 	@Column(name = "orderQuanity")
 	private Long orderQuantity = 1L;
@@ -42,6 +47,10 @@ public class OrderList {
 	@ManyToOne
 	@JoinColumn(name = "memberNum")
 	private Member member;
+	
+	@ManyToOne
+	@JoinColumn(name = "itemNumber")
+	private ItemList itemlist;
 
 	public Long getOrderNum() {
 		return orderNum;
@@ -49,22 +58,6 @@ public class OrderList {
 
 	public void setOrderNum(Long orderNum) {
 		this.orderNum = orderNum;
-	}
-
-	public String getOrderName() {
-		return orderName;
-	}
-
-	public void setOrderName(String orderName) {
-		this.orderName = orderName;
-	}
-
-	public Long getOrderPrice() {
-		return orderPrice;
-	}
-
-	public void setOrderPrice(Long orderPrice) {
-		this.orderPrice = orderPrice;
 	}
 
 	public Long getOrderQuantity() {
@@ -99,27 +92,32 @@ public class OrderList {
 		this.member = member;
 	}
 
-	@Override
-	public String toString() {
-		return "OrderList [orderNum=" + orderNum + ", orderName=" + orderName + ", orderPrice=" + orderPrice
-				+ ", orderQuantity=" + orderQuantity + ", totalPrice=" + totalPrice + ", orderDate=" + orderDate
-				+ ", member=" + member + "]";
+	public ItemList getItemlist() {
+		return itemlist;
 	}
 
-	public OrderList(Long orderNum, String orderName, Long orderPrice, Long orderQuantity, Long totalPrice,
-			Date orderDate, Member member) {
+	public void setItemlist(ItemList itemlist) {
+		this.itemlist = itemlist;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderList [orderNum=" + orderNum + ", orderQuantity=" + orderQuantity + ", totalPrice=" + totalPrice
+				+ ", orderDate=" + orderDate + ", member=" + member + ", itemlist=" + itemlist + "]";
+	}
+
+	public OrderList(Long orderNum, Long orderQuantity, Long totalPrice, Date orderDate, Member member,
+			ItemList itemlist) {
 		super();
 		this.orderNum = orderNum;
-		this.orderName = orderName;
-		this.orderPrice = orderPrice;
 		this.orderQuantity = orderQuantity;
 		this.totalPrice = totalPrice;
 		this.orderDate = orderDate;
 		this.member = member;
+		this.itemlist = itemlist;
 	}
 
 	public OrderList() {
 		super();
 	}
-	
 }
