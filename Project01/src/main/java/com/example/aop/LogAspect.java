@@ -14,21 +14,37 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @Component
 public class LogAspect {
 	
-//	@Around("execution(* com.example.controller.*Controller.*(..))")
-//	public Object sessionLog(ProceedingJoinPoint joinPoint) throws Throwable {
-//		
-//		//
-//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder);
-//		
-//		//session객체 가져오기
-//		HttpSession httpSession = request.getSession();
-//		
-//		//controller 수행시 표시되는 url정보를 가져옴.
-//		//ex 127.0.0.1:9090/ROOT/member/main?userid=aaaa
-//		String path = request.getServletPath(); // /member/main
-//		String query = request.getQueryString(); // /userid=aaaa
-//		
-//		//제거할 url 정보
-		
+	// 모든 controller를 방문시 수행
+		@Around("execution(* com.example.controller.*Controller.*(..))")
+		public Object sessionLog(ProceedingJoinPoint joinPoint) throws Throwable {
+			
+			//request 객체 가져오기
+			HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+			
+			//session 객체 가져오기
+			HttpSession httpSession = request.getSession();
+			
+			//controller 수행시 표시되는 url정보를 가져옴.
+			//ex) 127.0.0.1:9090/ROOT/member/main?userid=aaaa
+			String path = request.getServletPath(); // /member/main
+			String query = request.getQueryString(); // userid=aaaa
+				
+			//제거할 url정보
+			if( !path.startsWith("/header/login")
+					&& !path.startsWith("/header/logout") ) {
+				//세션에 url정보를 추가함.
+				if(query == null) {
+					httpSession.setAttribute("CURRENT_URL", path);
+				}
+				else {
+					httpSession.setAttribute("CURRENT_URL", path + "?" + query);
+				}
+			}
+			
+			String backUrl = (String)httpSession.getAttribute("CURRENT_URL");
+			
+			System.out.println(backUrl);
+			return joinPoint.proceed();
+		}		
 
 }

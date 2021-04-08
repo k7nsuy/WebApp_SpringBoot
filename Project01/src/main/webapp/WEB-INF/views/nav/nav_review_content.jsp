@@ -58,12 +58,12 @@
 				href="${pageContext.request.contextPath}/header/join">Join</a></span>
 		</security:authorize>
 
+		<security:authorize access="isAuthenticated()">
+			<c:if test="${Authority eq 'USER'}">
 			<span class="main-header_column"><a
 					href="${pageContext.request.contextPath}/header/orderlist">Order List</a></span>
 				<span class="main-header_column"><a
 					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
-		<security:authorize access="isAuthenticated()">
-			<c:if test="${Authority eq 'USER'}">
 			</c:if>
 		</security:authorize>
 		<security:authorize access="isAuthenticated()">
@@ -99,8 +99,36 @@
 			<div id="page">
 				<div id="content">
 					<div class="post">
-					
-					</div>
+	<div class="container">
+	<div style="width:450px; padding:30px; border:1px solid #cccccc">
+	<h2>Review</h2>
+	<hr />
+		글번호 : ${vo.reviewNumber}<br />
+		글제목 : ${vo.reviewTitle}<br />
+		조회수 : ${vo.reviewContent}<br />
+		내용 : ${vo.reviewHit}<br />
+		등록일 : ${vo.reviewDate}<br />
+		<hr />
+		<hr />
+		<hr />
+		
+			<h2>답글</h2>
+			<hr />
+			<c:forEach var="obj" items="${list}">
+				<h4>답글번호 : ${obj.replyNumber} </h4>
+				답글내용 : ${obj.replyContent} <br />
+				<hr />
+			</c:forEach> 
+		<hr />
+		<div class="line">
+		<a href = "${pageContext.request.contextPath}/nav/review" class = "btn btn-primary">Review</a>
+		
+		<a href = "${pageContext.request.contextPath}/nav/reviewreply?no=${vo.reviewNumber}" class = "btn btn-success">답글쓰기</a>
+
+		</div>
+	</div>
+	</div>
+</div>
 					<!-- post -->
 				</div>
 					<!-- content -->
@@ -111,7 +139,7 @@
 				
 			</div>
 			<!-- end #content -->
-			<div id="sidebar">
+			<!-- <div id="sidebar">
 					<ul>
 						<li>
 							<div id="search">
@@ -125,17 +153,20 @@
 							<div style="clear: both;">&nbsp;</div>
 						</li>
 						<li>
-							<h2>My Page</h2>
+							<h2>마이 페이지</h2>
 							<ul>
-								<li><a href="${pageContext.request.contextPath}/mypage/update">Update Info</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/orderlist">Order List</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/ship">Shipping Info</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/myreview">My Review</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/myquestion">My Question</a></li>
+								<li><a href="#">Aliquam libero</a></li>
+								<li><a href="#">Consectetuer adipiscing elit</a></li>
+								<li><a href="#">Metus aliquam pellentesque</a></li>
+								<li><a href="#">Suspendisse iaculis mauris</a></li>
+								<li><a href="#">Metus aliquam pellentesque</a></li>
+								<li><a href="#">Suspendisse iaculis mauris</a></li>
+								<li><a href="#">Urnanet non molestie semper</a></li>
+								<li><a href="#">Proin gravida orci porttitor</a></li>
 							</ul>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 			<!-- end #sidebar -->
 			<div style="clear: both;">&nbsp;</div>
 			<!-- end #page -->
@@ -150,7 +181,3 @@
 
 </body>
 </html>
-
-
-
-

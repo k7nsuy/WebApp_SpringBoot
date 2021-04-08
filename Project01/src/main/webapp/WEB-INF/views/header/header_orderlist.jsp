@@ -55,7 +55,7 @@
 			</thead>
 
 			<tbody>
-				<c:forEach var="vo" items="${list2}">
+				<c:forEach var="vo" items="${olist}">
 					<tr>
 						<td>${vo.itemNumber}</td>
 						<td>${vo.itemName}</td>

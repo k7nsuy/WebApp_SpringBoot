@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -48,6 +49,36 @@ public class Member {
 	@ManyToOne
 	@JoinColumn(name = "GroupCode")
 	private Authority auth;
+	
+	@OneToOne
+	@JoinColumn(name = "cartNum")
+	private Cart cartMember;
+	
+	public Member(long memberNum, String userId, String userPass, String userName, String userAdress, String userPhone,
+			String userEmail, Authority auth, Cart cartMember, List<OrderList> orderList, List<Review> review,
+			List<Question> question) {
+		super();
+		this.memberNum = memberNum;
+		this.userId = userId;
+		this.userPass = userPass;
+		this.userName = userName;
+		this.userAdress = userAdress;
+		this.userPhone = userPhone;
+		this.userEmail = userEmail;
+		this.auth = auth;
+		this.cartMember = cartMember;
+		this.orderList = orderList;
+		this.review = review;
+		this.question = question;
+	}
+
+	public Cart getCartMember() {
+		return cartMember;
+	}
+
+	public void setCartMember(Cart cartMember) {
+		this.cartMember = cartMember;
+	}
 
 	@OneToMany(mappedBy = "member")
 	private List<OrderList> orderList = new ArrayList<>();

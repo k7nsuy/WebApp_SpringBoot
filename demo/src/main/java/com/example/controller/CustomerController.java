@@ -30,7 +30,7 @@ import com.example.vo.CustomerVO;
 //djfjajsTESTasdasdasd
 
 @Controller
-@RequestMapping(value="customer") //url에서 이 코드가 합쳐진다. host를 구별하기 위해 설정
+@RequestMapping(value="/customer") //url에서 이 코드가 합쳐진다. host를 구별하기 위해 설정
 public class CustomerController {
  // test
 	@Autowired // DBConnection
