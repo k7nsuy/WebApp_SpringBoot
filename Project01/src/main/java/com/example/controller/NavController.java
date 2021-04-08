@@ -27,12 +27,10 @@ import com.example.entity.Member;
 import com.example.entity.Notification;
 import com.example.entity.NotificationReply;
 import com.example.entity.Review;
-import com.example.entity.ReviewReply;
 import com.example.repository.ItemRepository;
 import com.example.repository.MemberRepository;
 import com.example.repository.NotiReplyRepository;
 import com.example.repository.NotiRepository;
-import com.example.repository.ReviewReplyRepository;
 import com.example.repository.ReviewRepository;
 import com.example.security.MyMember;
 
@@ -54,9 +52,6 @@ public class NavController {
 	
 	@Autowired
 	ReviewRepository reviewRepo;
-	
-	@Autowired
-	ReviewReplyRepository reviewreplyRepo;
 	
 	@RequestMapping(value = "/items")
 	String itemsGET(Model model, Authentication auth) {
@@ -237,16 +232,11 @@ public class NavController {
 	}
 	
 	@GetMapping("reviewinsert")
-	public String reviewInsertGET(Authentication auth) {
-		if (auth == null) {
-			return "header/header_login";
-		}
-		else {
-			
-			return "nav/nav_review_insert";
-		}
-	}
+	public String reviewInsertGET() {
 		
+		
+		return "nav/nav_review_insert";
+	}
 	
 	@PostMapping("reviewinsert")
 	public String reviewInsertPOST(@ModelAttribute Review vo,
@@ -260,45 +250,5 @@ public class NavController {
 		reviewRepo.save(vo);
 		
 		return "redirect:/nav/review";
-	}
-	
-	@GetMapping("reviewcontent")
-	public String reviewContentGET(@RequestParam(value = "no") long no,
-			Model model) {
-		
-		Optional<Review> vo1 = reviewRepo.findById(no);
-		Review vo = vo1.get();
-		model.addAttribute("vo", vo);
-		
-		List<ReviewReply> list = vo.getReviewReply();
-		model.addAttribute("list", list);
-		
-		
-		return "nav/nav_review_content";
-	}
-	
-	@RequestMapping(value = "/reviewreply")
-	public String reviewreplyGET(@RequestParam(value="no", defaultValue = "0") Long no,
-			Model model) {
-		
-		Optional<Review> vo1 = reviewRepo.findById(no); 
-		Review vo = vo1.get();
-		model.addAttribute("vo", vo);
-		
-		return "nav/nav_reviewreply";
-	}
-	
-	@RequestMapping(value = "/reviewreply",method = RequestMethod.POST)
-	public String reivewreplyPOST(@ModelAttribute ReviewReply vo,
-			@RequestParam(value = "no" ) Long no) {
-		
-		// 외래키 값을 받아오는 객체를 만들어서 저장
-		Optional<Review> vo1 = reviewRepo.findById(no); 
-		Review vo2 = vo1.get();
-		vo.setReview(vo2);
-		
-		reviewreplyRepo.save(vo);
-		
-		return "redirect:/nav/reviewcontent?no="+no;
 	}
 }

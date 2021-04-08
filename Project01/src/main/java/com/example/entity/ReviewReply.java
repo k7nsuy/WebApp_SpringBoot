@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -35,18 +33,6 @@ public class ReviewReply {
 	@Column(name = "replyImage")
 	private byte[] replyImage;
 	
-	@ManyToOne
-	@JoinColumn(name = "reviewNumber")
-	private Review review;
-	
-	public Review getReview() {
-		return review;
-	}
-
-	public void setReview(Review review) {
-		this.review = review;
-	}
-
 	@Transient
 	private String base64;
 

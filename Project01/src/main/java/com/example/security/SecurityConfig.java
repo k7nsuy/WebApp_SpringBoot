@@ -54,8 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.usernameParameter("userId") //<input type="text" name="username" />
 		.passwordParameter("userPass") //<input type"password" name="password />
 		.permitAll()
-		//.defaultSuccessUrl("/home") // 로그인 성공시 127.0.0.1:9090/ROOT/home 으로 이동
-		.successHandler(new MyLoginHandler()) //권한 별 페이지 전환 구현
+		.defaultSuccessUrl("/home") // 로그인 성공시 127.0.0.1:9090/ROOT/home 으로 이동
+//		.successHandler(new MyLoginHandler()) //권한 별 페이지 전환 구현
 		.and()
 		
 		// 로그아웃

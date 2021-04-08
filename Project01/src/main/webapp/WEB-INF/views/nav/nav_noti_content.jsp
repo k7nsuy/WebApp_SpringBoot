@@ -60,8 +60,9 @@
 
 		<security:authorize access="isAuthenticated()">
 			<c:if test="${Authority eq 'USER'}">
-			<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/orderlist">Order List</a></span>
+				<span class="main-header_column"><a
+					href="${pageContext.request.contextPath}/header/orderlist">Order
+						List</a></span>
 				<span class="main-header_column"><a
 					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
 			</c:if>
@@ -101,7 +102,7 @@
 					<div class="post">
 	<div class="container">
 	<div style="width:450px; padding:30px; border:1px solid #cccccc">
-	<h2>Announcement</h2>
+	<h2>공지사항상세보기</h2>
 	<hr />
 		글번호 : ${vo.no}<br />
 		글제목 : ${vo.title}<br />
@@ -118,7 +119,7 @@
 			<c:forEach var="obj" items="${list}">
 				<h4>답글번호 : ${obj.repno} </h4>
 				답글내용 : ${obj.repcontent} <br />
-				답글날짜 : ${obj.repregdate} <br />
+				답글등록일 : ${obj.repregdate}
 				<hr />
 			</c:forEach> 
 		<hr />

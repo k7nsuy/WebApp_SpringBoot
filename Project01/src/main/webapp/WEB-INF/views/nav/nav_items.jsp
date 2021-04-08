@@ -60,8 +60,9 @@
 
 		<security:authorize access="isAuthenticated()">
 			<c:if test="${Authority eq 'USER'}">
-			<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/orderlist">Order List</a></span>
+				<span class="main-header_column"><a
+					href="${pageContext.request.contextPath}/header/orderlist">Order
+						List</a></span>
 				<span class="main-header_column"><a
 					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
 			</c:if>
@@ -126,7 +127,7 @@
 				        <form action="${pageContext.request.contextPath}/header/orderlist" method="post">
 				        <input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
-					<input type="hidden" name="no" value="${tmp.itemNumber}" />
+					<input type="hidden" name="itemList" value="${list}" />
 					<input type="hidden" name="mNum" value="${mNum}" /> 
 				        <input type="submit" class="w-100 btn btn-lg btn-outline-primary" value="장바구니" />
 				        </form>

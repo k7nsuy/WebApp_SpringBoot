@@ -60,8 +60,9 @@
 
 		<security:authorize access="isAuthenticated()">
 			<c:if test="${Authority eq 'USER'}">
-			<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/orderlist">Order List</a></span>
+				<span class="main-header_column"><a
+					href="${pageContext.request.contextPath}/header/orderlist">Order
+						List</a></span>
 				<span class="main-header_column"><a
 					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
 			</c:if>
@@ -99,10 +100,7 @@
 			<div id="page">
 				<div id="content">
 					<div class="post">
-					<h2>Question</h2>
-					<hr />
-					<img src="${pageContext.request.contextPath}/resources/images/2.jpg"
-					style="width: 500px;" />
+					
 					</div>
 					<!-- post -->
 				</div>

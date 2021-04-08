@@ -22,12 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Authority;
-import com.example.entity.Cart;
 import com.example.entity.ItemList;
 import com.example.entity.Member;
 import com.example.entity.OrderList;
 import com.example.repository.AuthorityRepository;
-import com.example.repository.CartRepository;
 import com.example.repository.ItemRepository;
 import com.example.repository.MemberRepository;
 import com.example.repository.OrderlistRepository;
@@ -50,12 +48,12 @@ public class HeaderController {
 	@Autowired
 	OrderlistRepository orderRepository;
 	
-	@Autowired
-	CartRepository cartRepo;
-	
 	@GetMapping("join")
 	public String joinGET(Model model) {
 		
+		List<Authority> list = authRepository.findAll();
+		
+		model.addAttribute("list", list);
 		
 		return "header/header_join";
 	}
@@ -92,23 +90,10 @@ public class HeaderController {
 	}
 	
 	@PostMapping("orderlist")
-	public String orderlistPOST(@RequestParam(value = "no") long no,
+	public String orderlistPOST(@ModelAttribute ItemList list,
 			@RequestParam(value = "mNum") long memno,
 			Model model) {
 		
-		System.out.println(no);
-		System.out.println(memno);
-		
-		Optional<ItemList> list = itemRepository.findById(no);
-		ItemList vo = list.get();
-		
-		
-		OrderList olist = new OrderList();
-
-		
-		orderRepository.save(olist);
-		
-		model.addAttribute("olist", olist);
 		
 		return "redirect:/header/orderlist";
 	}
