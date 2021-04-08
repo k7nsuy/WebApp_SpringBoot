@@ -58,9 +58,8 @@
 				href="${pageContext.request.contextPath}/header/join">Join</a></span>
 		</security:authorize>
 
-				<span class="main-header_column"><a
-					href="${pageContext.request.contextPath}/header/orederlist">Order
-						List</a></span>
+<span class="main-header_column"><a
+					href="${pageContext.request.contextPath}/header/orderlist">Order List</a></span>
 				<span class="main-header_column"><a
 					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
 		<security:authorize access="isAuthenticated()">

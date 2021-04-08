@@ -144,7 +144,7 @@
 							
 							<div class="col-sm-7">
 								<label class="col-sm-3 col-form-label">이메일확인</label> <input
-									class="form-control" id="email2" name="userEmail" type="email" required
+									class="form-control" id="email2" name="userEmail2" type="email" required
 									placeholder="email확인" >
 							</div>
 							<div class="alert alert-success" id="alert-success2">이메일이 일치합니다</div>

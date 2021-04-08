@@ -12,7 +12,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 	"com.example.controller",
 	"com.example.aop",
 	"com.example.restcontroller",
-	"com.example.manager"}) //컨트롤러 패키지명
+	"com.example.manager",
+	"com.example.security"}) //컨트롤러 패키지명
 @MapperScan({"com.example.mapper"}) //mapper 패키지
 //controller를 찾기 위해 componentscan 설정
 public class DemoApplication {
