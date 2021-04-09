@@ -99,6 +99,8 @@
 			<div id="page">
 				<div id="content">
 					<div class="post">
+					<h2>Best Item</h2>
+					<hr />
 					
 					</div>
 					<!-- post -->

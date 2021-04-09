@@ -1,17 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ page session="true"%>
+   <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %> 
 <!DOCTYPE html>
 <html>
-    <head>
-    <meta charset="UTF-8">
-        <title> JOIN </title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main-center.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
-    </head>
-    <body>
-	        <div class="main-body">
+<head>
+<link type="text/css" media="screen" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css" />
+<link 
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet" /> <!-- ${pageContext.request.contextPath} => ROOT (아무이름)
+	server.servlet.context-path=/ROOT context-path값을 읽어온다  -->
+<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png">
+<meta charset="UTF-8">
+<title>Home</title>
+<style>
+</style>
+
+</head>
+<body>
+	<header
+		class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+		<p class="h5 my-0 me-md-auto fw-normal">Admin</p>
+	</header>
+	
+	<div id="page">
+					<div class="post">
+			
 	        <form action="${pageContext.request.contextPath}/member/join"
 					method="post" enctype="multipart/form-data">
 	        	<div class="center" style="margin-bottom: 5px">
@@ -58,11 +74,21 @@
 		        		<input class="form-control" name="userEmail1" type="email" required 
 		        		placeholder="email 재입력">
 	        		</div>
+	        		<br />
 						<div class="col-sm-6">
-							<input type="submit" class="btn btn-outline-dark" value="회원가입" />
+							<input type="submit" class="btn btn-dark" value="회원가입" />
 						</div>
 	        	</div>
 	        	</form>
-	        </div>
-    </body>
+	        	</div>
+	        	</div>
+
+</body>
 </html>
+
+
+	
+
+	
+
+	    

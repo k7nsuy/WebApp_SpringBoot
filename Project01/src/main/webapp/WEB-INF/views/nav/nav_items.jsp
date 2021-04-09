@@ -100,7 +100,8 @@
 				<div id="content">
 					<div class="post">
 					
-					
+					<h2>Item</h2>
+					<hr />
 			<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
 			<c:forEach var="tmp" items="${list}">
 		    	<div class="col">

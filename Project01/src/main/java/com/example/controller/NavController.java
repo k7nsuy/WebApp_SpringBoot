@@ -26,12 +26,14 @@ import com.example.entity.ItemList;
 import com.example.entity.Member;
 import com.example.entity.Notification;
 import com.example.entity.NotificationReply;
+import com.example.entity.OrderList;
 import com.example.entity.Review;
 import com.example.entity.ReviewReply;
 import com.example.repository.ItemRepository;
 import com.example.repository.MemberRepository;
 import com.example.repository.NotiReplyRepository;
 import com.example.repository.NotiRepository;
+import com.example.repository.OrderlistRepository;
 import com.example.repository.ReviewReplyRepository;
 import com.example.repository.ReviewRepository;
 import com.example.security.MyMember;
@@ -57,6 +59,9 @@ public class NavController {
 	
 	@Autowired
 	ReviewReplyRepository reviewreplyRepo;
+	
+	@Autowired
+	OrderlistRepository orderRepo;
 	
 	@RequestMapping(value = "/items")
 	String itemsGET(Model model, Authentication auth) {
@@ -92,7 +97,6 @@ public class NavController {
 		}
 		
 		model.addAttribute("list", list);
-		
 		
 		return "nav/nav_items";
 	}

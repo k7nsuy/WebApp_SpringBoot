@@ -50,44 +50,8 @@ public class Member {
 	@JoinColumn(name = "GroupCode")
 	private Authority auth;
 	
-	@OneToOne
-	@JoinColumn(name = "cartNum")
-	private Cart cartMember;
-	
-	public Member(long memberNum, String userId, String userPass, String userName, String userAdress, String userPhone,
-			String userEmail, Authority auth, Cart cartMember, List<OrderList> orderList, List<Review> review,
-			List<Question> question) {
-		super();
-		this.memberNum = memberNum;
-		this.userId = userId;
-		this.userPass = userPass;
-		this.userName = userName;
-		this.userAdress = userAdress;
-		this.userPhone = userPhone;
-		this.userEmail = userEmail;
-		this.auth = auth;
-		this.cartMember = cartMember;
-		this.orderList = orderList;
-		this.review = review;
-		this.question = question;
-	}
-
-	public Cart getCartMember() {
-		return cartMember;
-	}
-
-	public void setCartMember(Cart cartMember) {
-		this.cartMember = cartMember;
-	}
-
 	@OneToMany(mappedBy = "member")
-	private List<OrderList> orderList = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "member2")
-	private List<Review> review = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "member3")
-	private List<Question> question = new ArrayList<>();
+	private	List<OrderList> order = new ArrayList<>();
 
 	public long getMemberNum() {
 		return memberNum;
@@ -153,32 +117,23 @@ public class Member {
 		this.auth = auth;
 	}
 
-	public List<OrderList> getOrderList() {
-		return orderList;
+	public List<OrderList> getOrder() {
+		return order;
 	}
 
-	public void setOrderList(List<OrderList> orderList) {
-		this.orderList = orderList;
+	public void setOrder(List<OrderList> order) {
+		this.order = order;
 	}
 
-	public List<Review> getReview() {
-		return review;
-	}
-
-	public void setReview(List<Review> review) {
-		this.review = review;
-	}
-
-	public List<Question> getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(List<Question> question) {
-		this.question = question;
+	@Override
+	public String toString() {
+		return "Member [memberNum=" + memberNum + ", userId=" + userId + ", userPass=" + userPass + ", userName="
+				+ userName + ", userAdress=" + userAdress + ", userPhone=" + userPhone + ", userEmail=" + userEmail
+				+ "]";
 	}
 
 	public Member(long memberNum, String userId, String userPass, String userName, String userAdress, String userPhone,
-			String userEmail, Authority auth, List<OrderList> orderList, List<Review> review, List<Question> question) {
+			String userEmail, Authority auth, List<OrderList> order) {
 		super();
 		this.memberNum = memberNum;
 		this.userId = userId;
@@ -188,17 +143,11 @@ public class Member {
 		this.userPhone = userPhone;
 		this.userEmail = userEmail;
 		this.auth = auth;
-		this.orderList = orderList;
-		this.review = review;
-		this.question = question;
-	}
+		this.order = order;
+	} 
 	
 	public Member() {
 		super();
 	}
-
-	
-	
-	
 	
 }

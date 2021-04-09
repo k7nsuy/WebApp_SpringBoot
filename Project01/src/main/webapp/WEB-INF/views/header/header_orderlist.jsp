@@ -49,17 +49,14 @@
 			<thead>
 				<tr>
 					<th>물품번호</th>
-					<th>물품명</th>
-					<th>물품가격</th>
+					<th>멤버번호</th>
+					<th>아이템번호</th>
 				</tr>
 			</thead>
-
+					
 			<tbody>
-				<c:forEach var="vo" items="${olist}">
+					<c:forEach var="vo" items="${list}">
 					<tr>
-						<td>${vo.itemNumber}</td>
-						<td>${vo.itemName}</td>
-						<td>${vo.itemPrice}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

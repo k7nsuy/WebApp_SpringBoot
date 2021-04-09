@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -22,12 +23,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Authority;
-import com.example.entity.Cart;
 import com.example.entity.ItemList;
 import com.example.entity.Member;
 import com.example.entity.OrderList;
 import com.example.repository.AuthorityRepository;
-import com.example.repository.CartRepository;
 import com.example.repository.ItemRepository;
 import com.example.repository.MemberRepository;
 import com.example.repository.OrderlistRepository;
@@ -50,9 +49,6 @@ public class HeaderController {
 	@Autowired
 	OrderlistRepository orderRepository;
 	
-	@Autowired
-	CartRepository cartRepo;
-	
 	@GetMapping("join")
 	public String joinGET(Model model) {
 		
@@ -67,8 +63,10 @@ public class HeaderController {
 		String changePw = bcpe.encode(vo.getUserPass());
 		vo.setUserPass(changePw);
 		
+		
 		vo.setAuth( new Authority() ); 
 		
+		System.out.println(vo);
 		memberRepository.save(vo);
 		return "redirect:/home";
 	}
@@ -87,7 +85,19 @@ public class HeaderController {
 	}
 	
 	@GetMapping("orderlist")
-	public String orderlistGET() {
+	public String orderlistGET(Authentication auth,
+			Model model) {
+		
+		if(auth != null) {
+			MyMember vo = (MyMember)auth.getPrincipal();
+			long memberNum = vo.getMembernumber();
+		
+		List<OrderList> list = orderRepository.findByMember_MemberNumber(memberNum);
+		
+		model.addAttribute("list", list);
+		
+		}
+		
 		return "header/header_orderlist";
 	}
 	
@@ -96,19 +106,20 @@ public class HeaderController {
 			@RequestParam(value = "mNum") long memno,
 			Model model) {
 		
-		System.out.println(no);
-		System.out.println(memno);
+		Optional<ItemList> iList = itemRepository.findById(no);
+		ItemList ivo = iList.get();
+		System.out.println(ivo);
 		
-		Optional<ItemList> list = itemRepository.findById(no);
-		ItemList vo = list.get();
+		Optional<Member> mList = memberRepository.findById(memno);
+		Member mvo = mList.get();
+		System.out.println(mvo);
 		
+		OrderList o1 = new OrderList();
+		o1.setMember(mvo);
+		o1.setItem(ivo);
 		
-		OrderList olist = new OrderList();
-
-		
-		orderRepository.save(olist);
-		
-		model.addAttribute("olist", olist);
+		System.out.println(o1);
+		orderRepository.save(o1);
 		
 		return "redirect:/header/orderlist";
 	}

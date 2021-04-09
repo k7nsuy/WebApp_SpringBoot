@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.remove-padding {
+  padding: 0;
+}
+
+img {
+  image-rendering: auto;
+}
