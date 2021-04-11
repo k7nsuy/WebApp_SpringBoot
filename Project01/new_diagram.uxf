@@ -131,7 +131,7 @@ Admin Authority</panel_attributes>
       <x>40</x>
       <y>270</y>
       <w>280</w>
-      <h>200</h>
+      <h>260</h>
     </coordinates>
     <panel_attributes>*Main*
 fontsize=20
@@ -182,7 +182,7 @@ layer=2</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>120</x>
+      <x>50</x>
       <y>410</y>
       <w>120</w>
       <h>40</h>
@@ -429,9 +429,9 @@ bg=yellow</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>730</x>
-      <y>90</y>
+      <y>70</y>
       <w>150</w>
-      <h>50</h>
+      <h>30</h>
     </coordinates>
     <panel_attributes>Members Management
 bg=blue</panel_attributes>
@@ -441,9 +441,9 @@ bg=blue</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>730</x>
-      <y>160</y>
+      <y>110</y>
       <w>150</w>
-      <h>50</h>
+      <h>30</h>
     </coordinates>
     <panel_attributes>Items Management
 bg=blue</panel_attributes>
@@ -472,5 +472,55 @@ lt=&lt;&lt;.</panel_attributes>
     <panel_attributes>*Accessible*
 lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>720</x>
+      <y>190</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Notification Management
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>180</x>
+      <y>410</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Admin Page
+bg=green
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>120</x>
+      <y>460</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>User Page
+bg=green
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>730</x>
+      <y>150</y>
+      <w>160</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>OrderList Management
+bg=blue</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

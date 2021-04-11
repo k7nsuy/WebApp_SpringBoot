@@ -14,6 +14,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/main.css" />
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/slide.css" />
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/main-center.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
@@ -41,20 +43,17 @@
 		</security:authorize>
 
 		<security:authorize access="isAuthenticated()">
-		<span class="main-header_column2">
-			<%-- <security:authentication property="principal"/>  --%>
-				Member  <security:authentication property="authorities" />
-			<br />
+			<span class="main-header_column2"> <%-- <security:authentication property="principal"/>  --%>
+				Member <security:authentication property="authorities" /> <br />
 				Welcome <security:authentication property="name" /> ! <br />
-	</span>
+			</span>
 
 			<form action="${pageContext.request.contextPath}/header/logout"
 				method="post">
 				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" /> 
-				<input
-					class="main-header_column3 btn btn-outline-light" type="submit"
-					value="Log out" />
+					value="${_csrf.token}" />
+				<input class="main-header_column3 btn btn-outline-light"
+					type="submit" value="Log out" />
 			</form>
 		</security:authorize>
 		<security:authorize access="!isAuthenticated()">
@@ -64,7 +63,9 @@
 
 		<security:authorize access="isAuthenticated()">
 			<c:if test="${Authority eq 'USER'}">
-				
+				<span class="main-header_column"><a
+					href="${pageContext.request.contextPath}/header/orderlist">Order
+						List</a></span>
 				<span class="main-header_column"><a
 					href="${pageContext.request.contextPath}/header/mypage">My Page</a></span>
 			</c:if>
@@ -89,38 +90,113 @@
 					<ul>
 						<li class="current_page_item"><a
 							href="${pageContext.request.contextPath}/nav/items">Item</a></li>
-						<li><a href="${pageContext.request.contextPath}/nav/best">Best</a></li>
 						<li><a href="${pageContext.request.contextPath}/nav/noti">Anouncement</a></li>
 						<li><a href="${pageContext.request.contextPath}/nav/review">Review</a></li>
 						<li><a href="${pageContext.request.contextPath}/nav/question">Question</a></li>
 					</ul>
 				</div>
 			</div>
-			<div id="banner"></div>
 
 
-				<div id="banner"></div>
-				
-				<!-- end #header -->
-				<div id="page">
-					<div id="content">
-					
-					<div class="post">
-					<h2 class="title"><a href="#">Welcome to Most Body </a></h2>
-					<p class="meta"><span class="date">December 26, 2011</span><span class="posted">Posted by <a href="#">Someone</a></span></p>
-					<div style="clear: both;">&nbsp;</div>
-					<div class="entry">
-						<p>This is <strong>Captive Green </strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. The photo used in this template is form <a href="http://pdphoto.org/">pdphoto.org</a>. This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so you’re pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :)</p>
-						<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.</p>
-						<p class="links"><a href="#" class="more">Read More</a><a href="#" title="b0x" class="comments">Comments</a></p>
-					</div>
+
+			<!-- end #header -->
+			</div>
+		<div id="page">
+		<div id="content">
+		<h1>Welcome To MostBody</h1>
+		<hr />
+			<div class="slidebox">
+				<input type="radio" name="slide" id="slide01" checked> <input
+					type="radio" name="slide" id="slide02"> <input type="radio"
+						name="slide" id="slide03"> <input type="radio"
+							name="slide" id="slide04">
+								<ul class="slidelist">
+									<li class="slideitem">
+										<div>
+											<label for="slide04" class="left"></label> <label
+												for="slide02" class="right"></label> <a><img
+												src="${pageContext.request.contextPath}/resources/images/s1.jpg"></a>
+										</div>
+									</li>
+									<li class="slideitem">
+										<div>
+											<label for="slide01" class="left"></label> <label
+												for="slide03" class="right"></label> <a><img
+												src="${pageContext.request.contextPath}/resources/images/s2.jpg"></a>
+										</div>
+									</li>
+									<li class="slideitem">
+										<div>
+											<label for="slide02" class="left"></label> <label
+												for="slide04" class="right"></label> <a><img
+												src="${pageContext.request.contextPath}/resources/images/s3.jpg"></a>
+										</div>
+									</li>
+									<li class="slideitem">
+										<div>
+											<label for="slide03" class="left"></label> <label
+												for="slide01" class="right"></label> <a><img
+												src="${pageContext.request.contextPath}/resources/images/s4.jpg"></a>
+										</div>
+									</li>
+								</ul> <!-- <ul class="paginglist">
+		<li>
+			<label for="slide01"></label>
+		</li>
+		<li>
+			<label for="slide02"></label>
+		</li>
+		<li>
+			<label for="slide03"></label>
+		</li>
+		<li>
+			<label for="slide04"></label>
+		</li>
+	</ul> -->
+			</div>
+			</div>
+			
+			<div id="sidebar">
+		<ul>
+			<li>
+				<div id="search">
+					<form method="get" action="#">
+						<div>
+							<input type="text" name="s" id="search-text" value="" /> <input
+								type="submit" id="search-submit" value="GO" />
+						</div>
+					</form>
 				</div>
-					
-					</div>
-					<div style="clear: both;">&nbsp;</div>
+				<div style="clear: both;">
+					&nbsp;
 				</div>
-				<!-- end #content -->
-				<!-- <div id="sidebar">
+			</li>
+			<li>
+				<h2>Home</h2>
+				<ul>
+					<li><a href="${pageContext.request.contextPath}/mypage/update">Best
+							Items</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/mypage/orderlist">Food
+						</a></li>
+					<li><a href="${pageContext.request.contextPath}/mypage/ship">Vitamin & Minerals
+							</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/mypage/myreview">Nutrition
+						Info
+							</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/mypage/myquestion">Health
+							Info</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+			</div>
+
+
+			<!-- end #content -->
+			<!-- <div id="sidebar">
 					<ul>
 						<li>
 							<div id="search">
@@ -148,12 +224,15 @@
 						</li>
 					</ul>
 				</div> -->
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
+			<!-- end #sidebar -->
+			<div style="clear: both;">
+				&nbsp;
+			</div>
 			<!-- end #page -->
 			<div id="footer">
 				<p>
-					&copy; MostBody. All rights reserved. Design by <a
+					&copy;
+					MostBody. All rights reserved. Design by <a
 						href="${pageContext.request.contextPath}/home" rel="nofollow">MostBody</a>.
 				</p>
 			</div>

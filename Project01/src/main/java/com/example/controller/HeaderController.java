@@ -77,7 +77,10 @@ public class HeaderController {
 	}
 	
 	@GetMapping("mypage")
-	public String mypageGET() {
+	public String mypageGET(Authentication auth) {
+		
+		
+		
 		return "header/header_mypage";
 		
 	
@@ -86,17 +89,19 @@ public class HeaderController {
 	
 	@GetMapping("orderlist")
 	public String orderlistGET(Authentication auth,
-			Model model) {
+			Model model
+			) {
 		
-		if(auth != null) {
-			MyMember vo = (MyMember)auth.getPrincipal();
-			long memberNum = vo.getMembernumber();
-		
-		List<OrderList> list = orderRepository.findByMember_MemberNumber(memberNum);
-		
-		model.addAttribute("list", list);
-		
-		}
+//	if(auth != null) {
+//		MyMember vo = (MyMember)auth.getPrincipal();
+//		long memberNum = vo.getMembernumber();
+//	System.out.println(memberNum);
+//	
+//	List<OrderList> list = orderRepository.findByOrderList_Member(memberNum);
+//
+//	model.addAttribute("list", list);
+//
+//	}
 		
 		return "header/header_orderlist";
 	}
@@ -121,6 +126,6 @@ public class HeaderController {
 		System.out.println(o1);
 		orderRepository.save(o1);
 		
-		return "redirect:/header/orderlist";
+		return "redirect:/nav/items";
 	}
 }

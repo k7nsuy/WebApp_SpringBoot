@@ -98,7 +98,31 @@
 			<!-- end #header -->
 			<div id="page">
 				<div id="content">
-					<div class="post"></div>
+					<div class="post">
+					
+					<div style="padding:30px 0 0 0" class="container">
+		<h4>장바구니</h4>
+		<hr />
+
+		<table class="table" style="border:1px solid #cccccc">
+			<thead>
+				<tr>
+					<th>물품번호</th>
+					<th>멤버번호</th>
+					<th>아이템번호</th>
+				</tr>
+			</thead>
+					
+			<tbody>
+					<c:forEach var="vo" items="${list}">
+					<tr>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+					
+					</div>
 					<!-- post -->
 				</div>
 				<!-- content -->

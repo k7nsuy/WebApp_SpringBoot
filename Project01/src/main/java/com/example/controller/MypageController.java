@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.entity.Authority;
 import com.example.entity.Member;
 import com.example.repository.MemberRepository;
+import com.example.repository.OrderlistRepository;
 import com.example.security.MyMember;
 
 @Controller
@@ -70,11 +71,16 @@ public class MypageController {
 		
 		if(auth != null) {
 			MyMember vo = (MyMember)auth.getPrincipal();
-		
+			long memno = vo.getMembernumber();
+			
 			Collection<GrantedAuthority> roles = vo.getAuthorities(); 
 			for(GrantedAuthority tmp : roles) {
 				System.out.println(tmp);
 				model.addAttribute("Authority", tmp);
+				model.addAttribute("memno", memno);
+				
+			
+				
 			}
 		}
 		

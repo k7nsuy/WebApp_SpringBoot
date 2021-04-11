@@ -86,7 +86,6 @@
 					<ul>
 						<li class="current_page_item"><a
 							href="${pageContext.request.contextPath}/nav/items">Item</a></li>
-						<li><a href="${pageContext.request.contextPath}/nav/items">Best</a></li>
 						<li><a href="${pageContext.request.contextPath}/nav/noti">Anouncement</a></li>
 						<li><a href="${pageContext.request.contextPath}/nav/review">Review</a></li>
 						<li><a href="${pageContext.request.contextPath}/nav/question">Question</a></li>
