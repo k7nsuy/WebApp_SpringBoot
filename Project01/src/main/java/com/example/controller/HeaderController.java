@@ -92,16 +92,19 @@ public class HeaderController {
 			Model model
 			) {
 		
-//	if(auth != null) {
-//		MyMember vo = (MyMember)auth.getPrincipal();
-//		long memberNum = vo.getMembernumber();
-//	System.out.println(memberNum);
-//	
-//	List<OrderList> list = orderRepository.findByOrderList_Member(memberNum);
-//
-//	model.addAttribute("list", list);
-//
-//	}
+	if(auth != null) {
+		MyMember vo = (MyMember)auth.getPrincipal();
+		long memberNum = vo.getMembernumber();
+	System.out.println(memberNum);
+	
+	List<OrderList> list = orderRepository.findByMember_MemberNum(memberNum);
+
+	
+	
+	System.out.println(list);
+	model.addAttribute("list", list);
+
+	}
 		
 		return "header/header_orderlist";
 	}

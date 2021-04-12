@@ -72,7 +72,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.accessDeniedPage("/page403") //접근 불가 페이지면 /ROOT/page403으로 이동
 		.and();
 		
-		//비권장!! CSRF공격에 취약!! => 일일이 jsp에서 csrfname과 token을 넣지 않아도 되게 해준다. 
-		//하지만 보안에 취약하므로 practice할 때만 사용
+//		http.csrf().disable();
+//		//비권장!! CSRF공격에 취약!! => 일일이 jsp에서 csrfname과 token을 넣지 않아도 되게 해준다. 
+//		//하지만 보안에 취약하므로 practice할 때만 사용
+//		http.headers().frameOptions().sameOrigin();
 	}
 }

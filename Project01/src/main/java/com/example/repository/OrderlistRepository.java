@@ -12,5 +12,6 @@ public interface OrderlistRepository extends JpaRepository<OrderList, Long> {
 
 //	List<OrderList> findByItemList_ItemNumberAndMember_MemberNum(long no , long no2);
 
-//	List<OrderList> findByOrderList_Member(long memberNum);
+	List<OrderList> findByMember_MemberNum
+	(long memberNum);
 }

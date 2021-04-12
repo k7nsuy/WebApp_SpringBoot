@@ -57,6 +57,9 @@
 			<tbody>
 					<c:forEach var="vo" items="${list}">
 					<tr>
+						<th>${vo.orderNum }</th>
+						<th>${vo.member.memberNum}</th>
+						<th>${vo.item }
 					</tr>
 				</c:forEach>
 			</tbody>
