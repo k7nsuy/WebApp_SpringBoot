@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.fkpk.mapper.ProductMapper">
+
+<insert id="productRegister">
+insert into product(member_id,product_name,product_price,product_des,product_img,stock,category,exp)
+values (#{memberId},#{productName},#{productPrice},#{productDes},#{productImg},#{stock},#{category},#{exp})
+</insert>
+
+<select id="productList" resultType="Product">
+select * from product order by product_id desc
+</select>
+
+<select id="newProductList" resultType="Product">
+select * from product order by product_id desc limit 0,5
+</select>
+
+<select id="fruitList" resultType="Product">
+select * from product where category="과일" order by product_id desc
+</select>
+
+<select id="VegetableList" resultType="Product">
+select * from product where category="채소" order by product_id desc
+</select>
+
+<select id="productDetail" resultType="Product">
+select * from product where product_id=#{productId}
+</select>
+
+<insert id="addCart">
+insert into cart(product_id,cart_amount,cart_regdate,member_id)
+values (#{productId},#{cartAmount},now(),#{memberId})
+</insert>
+
+<select id="cartCheck" resultType="int">
+select count(*) from cart where product_id=#{productId} and member_id=#{memberId}
+</select>
+
+<select id="cartList" resultType="CartProduct">
+select 
+cart.product_id,cart_id,cart_amount,cart.member_id,product_name,product_price,product_img
+from cart
+left outer join product on
+cart.product_id=product.product_id
+where cart.member_id = #{memberId}
+</select>
+
+<update id="cartChange">
+update cart set cart_amount=#{cartAmount} where cart_id=#{cartId}
+</update>
+
+<delete id="cartDelete">
+delete from cart where cart_id=#{cartId}
+</delete>
+
+<insert id="addOrder">
+insert into tbl_order(order_id,member_id,status,order_addr,order_phone,total_order_amount,order_date)
+values(#{orderId},#{memberId},#{status},#{orderAddr},#{orderPhone},#{totalOrderAmount},now())
+</insert>
+
+<select id="cartIdList" resultType="int">
+select cart_id from cart where member_id=#{memberId}
+</select>
+
+<select id="getCart" resultType="Cart">
+select * from cart where cart_id=#{cartId}
+</select>
+
+<insert id="addOrderDetails">
+insert into order_details(order_id,product_id,qty)
+values (#{orderId},#{productId},#{qty})
+</insert>
+
+<update id="stockChange">
+update product set stock= stock - #{qty}
+where product_id=#{productId}
+</update>
+
+<update id="salesAmountChange">
+update product set sales_amount = sales_amount + #{qty}
+where product_id=#{productId}
+</update>
+
+<select id="orderList" resultType="Order">
+select * from tbl_order order by order_date desc
+</select>
+
+<update id="pickupCompleted">
+update tbl_order set status="픽업완료" where order_id=#{orderId}
+</update>
+
+<update id="delieveryCompleted">
+update tbl_order set status="배송완료" where order_id=#{orderId}
+</update>
+
+<select id="getOrderDetailList" resultType="int">
+select orderdetails_id from order_details where order_id=#{orderId}
+</select>
+
+<select id="getOrderDetail" resultType="OrderDetailProduct">
+select 
+orderdetails_id,order_details.product_id,order_details.qty,order_id,product_price,exp
+from order_details
+left outer join product on
+order_details.product_id=product.product_id
+where order_details.orderdetails_id = #{orderdetailsId}
+</select>
+
+<select id="getOrderStatus" resultType="String">
+select status from tbl_order where order_id=#{orderId}
+</select>
+
+<insert id="addRefrige">
+insert into refrige(product_id,member_id,product_amount)
+values(#{productId},#{memberId},#{productAmount})
+</insert>
+
+<update id="updateRefrige">
+update refrige set product_amount = product_amount + #{productAmount} where member_id=#{memberId} and product_id=#{productId}
+</update>
+
+<update id="refrigeChange">
+update refrige set product_amount = #{productAmount} where refrige_id=#{refrigeId}
+</update>
+
+<delete id="refrigeDelete">
+delete from refrige where refrige_id=#{refrigeId}
+</delete>
+
+<select id="refrigeList" resultType="RefrigeProduct">
+select 
+refrige.product_id,refrige_id,refrige.member_id,product_name,product_amount,exp,product_img
+from refrige
+left outer join product on
+refrige.product_id=product.product_id
+where refrige.member_id = #{memberId}
+order by exp
+</select>
+
+<select id="refrigeDupCheck" resultType="int">
+select count(*) from refrige where product_id=#{productId} and member_id=#{memberId}
+</select>
+
+<insert id="recipeRegister">
+insert into recipe(recipe_name,recipe_ingredient,recipe_cookingorder,recipe_img) 
+values(#{recipeName},#{recipeIngredient},#{recipeCookingorder},#{recipeImg})
+</insert>
+
+<select id="recipeList" resultType="Recipe">
+select * from recipe order by recipe_id desc
+</select>
+
+<select id="recipeListByIg" resultType="Recipe">
+SELECT * FROM recipe where recipe_ingredient like CONCAT('%',#{productName},'%')
+</select>
+
+<select id="recipeDetail" resultType="Recipe">
+select * from recipe where recipe_id=#{recipeId}
+</select>
+
+</mapper>
